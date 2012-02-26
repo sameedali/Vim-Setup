@@ -1,3 +1,7 @@
+" === Pathogen ===
+runtime bundle/vim-pathogen/autoload/pathogen.vim   " Allows Pathogen to be installed in it's own bundle subdir
+call pathogen#infect()
+call pathogen#helptags()
 
 " === Basics ===
 set nocompatible    " Get out of vi compatible mode
@@ -53,10 +57,6 @@ set nowrap          " Don't wrap lines
 map <F2> <ESC>:NERDTreeToggle<RETURN>   " Toggle NERDTree with F2
 set pastetoggle=<F10>                   " Toggle past mode with F10
 nnoremap <C-L> :nohl<CR><C-L>           " Disable search highlight on Ctrl-L refresh
-
-" === Pathogen ===
-runtime bundle/vim-pathogen/autoload/pathogen.vim   " Allows Pathogen to be installed in it's own bundle subdir
-call pathogen#infect()                              " Start up Pathogen
 
 " === Plugins ===
 let g:Powerline_symbols='fancy'         " Use fancy chars for Powerline
