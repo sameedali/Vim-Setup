@@ -6,7 +6,7 @@ call pathogen#helptags()                            " Make vim read in the helpt
 " === Plugins ===
 let g:Powerline_symbols='fancy'         " Use fancy chars for Powerline
 let g:solarized_visibility='normal'     " Set the solarized list visibility
-let g:pad_dir='~/Dropbox/vim_pad'
+let g:pad_dir='~/Dropbox/vim_pad'       " Put pad notes in dropbox so they're synced across computers
 
 " === Basics ===
 set nocompatible    " Get out of vi compatible mode
@@ -28,7 +28,7 @@ filetype indent plugin on       " Try to determine filetype by it's name and con
 set cryptmethod=blowfish        " Set the encryption method to blowfish (stronger)
 
 " === Spell Checking ===
-set spell                       " Activate the spell checker
+set nospell                     " Deactivates the spell checker
 set spelllang=en_us             " Change the spell check lang to US English
 
 " === Indention ===
@@ -54,12 +54,24 @@ set colorcolumn=80                      " Highlight after the 80th column
 set virtualedit=all                     " Allow the cursor to move beyond the end of the line in insert and visual mode
 set wildmenu                            " Enable command-mode autocompletion when hitting <TAB>
 set cursorline                          " Hilight the row the cursor is on
-
-" === Text Formatting ===
+set conceallevel=2                      " Concealed text is hidden unless it has a custom replacement character
 set nowrap                              " Don't wrap lines
 
-" === Key Mappings ===
-map <F2> <ESC>:NERDTreeToggle<RETURN>   " Toggle NERDTree with F2
-set pastetoggle=<F10>                   " Toggle past mode with F10
-nnoremap <C-L> :nohl<CR><C-L>           " Disable search highlight on Ctrl-L refresh
+" === Utility Functions ===
+function! ToggleCopy()                  " Toggle what I call 'copy' mode.  Turns off list, linenumbers, and concealment
+    set list!
+    set number!
+    if (&cole == 2)
+        set cole=0
+    else
+        set cole=2
+    endif
+endfunction
 
+" === Key Mappings ===
+"                                       " F1 - Help
+map <F2> <ESC>:NERDTreeToggle<CR>       " F2 - Toggle NERDTree
+set pastetoggle=<F3>                    " F3 - Toggle paste mode
+map <F4> :call ToggleCopy()<CR>         " F4 - Toggle copy mode
+map <F5> :set spell!<CR>                " F5 - Toggle the spell checker
+nnoremap <C-L> :nohl<CR><C-L>           " Disable search highlight on Ctrl-L refresh
