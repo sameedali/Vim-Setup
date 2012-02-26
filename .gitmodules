@@ -1,30 +1,40 @@
 [submodule "bundle/vim-pathogen"]
-	path = bundle/vim-pathogen
-	url = https://github.com/tpope/vim-pathogen.git
+    path = bundle/vim-pathogen
+    url = https://github.com/tpope/vim-pathogen.git
+    ignore = dirty
 [submodule "bundle/vim-powerline"]
-	path = bundle/vim-powerline
-	url = https://github.com/Lokaltog/vim-powerline.git
+    path = bundle/vim-powerline
+    url = https://github.com/Lokaltog/vim-powerline.git
+    ignore = dirty
 [submodule "bundle/vim-nerdtree"]
-	path = bundle/vim-nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
+    path = bundle/vim-nerdtree
+    url = https://github.com/scrooloose/nerdtree.git
+    ignore = dirty
 [submodule "bundle/vim-solarized"]
-	path = bundle/vim-solarized
-	url = https://github.com/altercation/vim-colors-solarized
+    path = bundle/vim-solarized
+    url = https://github.com/altercation/vim-colors-solarized
+    ignore = dirty
 [submodule "bundle/vim-pad"]
-	path = bundle/vim-pad
-	url = https://github.com/fmoralesc/vim-pad.git
+    path = bundle/vim-pad
+    url = https://github.com/fmoralesc/vim-pad.git
+    ignore = dirty
 [submodule "bundle/vim-cute-python"]
-	path = bundle/vim-cute-python
-	url = https://github.com/ehamberg/vim-cute-python.git
+    path = bundle/vim-cute-python
+    url = https://github.com/ehamberg/vim-cute-python.git
+    ignore = dirty
 [submodule "bundle/vim-flake8"]
-	path = bundle/vim-flake8
-	url = https://github.com/nvie/vim-flake8.git
+    path = bundle/vim-flake8
+    url = https://github.com/nvie/vim-flake8.git
+    ignore = dirty
 [submodule "bundle/vim-fugitive"]
-	path = bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
+    path = bundle/vim-fugitive
+    url = https://github.com/tpope/vim-fugitive.git
+    ignore = dirty
 [submodule "bundle/vim-afterimage"]
-	path = bundle/vim-afterimage
-	url = https://github.com/tpope/vim-afterimage.git
+    path = bundle/vim-afterimage
+    url = https://github.com/tpope/vim-afterimage.git
+    ignore = dirty
 [submodule "bundle/vim-virtualenv"]
-	path = bundle/vim-virtualenv
-	url = https://github.com/jmcantrell/vim-virtualenv.git
+    path = bundle/vim-virtualenv
+    url = https://github.com/jmcantrell/vim-virtualenv.git
+    ignore = dirty
