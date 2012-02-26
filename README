@@ -1,0 +1,14 @@
+Installation
+------------
+
+    cd ~
+    git clone http://github.com/ryanshow/vim-folder.git ~/.vim
+    ln -s ~/.vim/vimrc ~/.vimrc
+    cd ~/.vim
+    git submodule update --init
+
+
+Upgrading The Submodules
+------------------------
+
+    git submodule foreach git pull origin master
