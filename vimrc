@@ -7,6 +7,8 @@ call pathogen#helptags()                            " Make vim read in the helpt
 let g:Powerline_symbols='fancy'         " Use fancy chars for Powerline
 let g:solarized_visibility='normal'     " Set the solarized list visibility
 let g:pad_dir='~/Dropbox/vim_pad'       " Put pad notes in dropbox so they're synced across computers
+let g:virtualenv_directory='~/websites' " Set the directory with virtualenvs
+let g:NERDTreeQuitOnOpen=1
 
 " === Basics ===
 set nocompatible    " Get out of vi compatible mode
