@@ -1,3 +1,5 @@
+source ~/.vim/vimrc_secrets
+
 " === Pathogen ===
 runtime bundle/vim-pathogen/autoload/pathogen.vim   " Allows Pathogen to be installed in it's own bundle subdir
 call pathogen#infect()                              " Boot up pathogen
