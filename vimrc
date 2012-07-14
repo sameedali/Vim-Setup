@@ -1,4 +1,10 @@
-source ~/.vim/vimrc_secrets
+if has("win64") || has("win32") || has("win16")
+  source ~/vimfiles/vimrc_secrets
+  set directory=~/vimfiles/tmp
+else
+  source ~/.vim/vimrc_secrets
+  set directory=~/.vim/tmp
+endif
 
 " === Pathogen ===
 runtime bundle/vim-pathogen/autoload/pathogen.vim   " Allows Pathogen to be installed in it's own bundle subdir
@@ -20,7 +26,7 @@ set title           " Set the terminal's title to the open file
 set t_Co=256        " Use a 256 color terminal
 
 " === General ===
-set directory=~/.vim/tmp        " Set the directory where we store swap files
+set backspace=2                 " Allows backspace to be used in gVim on windows
 set fileformats=unix,mac,dos    " Support file formats in this order
 set modeline                    " Enable modelines
 set modelines=5                 " Modelines look 5 lines from start and end of file
