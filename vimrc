@@ -1,6 +1,16 @@
 if has("win64") || has("win32") || has("win16")
   source ~/vimfiles/vimrc_secrets
   set directory=~/vimfiles/tmp
+  let g:netrw_cygwin=0
+  if has("win64")
+    let g:netrw_ssh_cmd='"C:\Program Files (x86)\PuTTY\plink.exe" -batch -T -ssh'
+    let g:netrw_scp_cmd='"C:\Program Files (x86)\PuTTY\pscp.exe" -batch -q -scp'
+    let g:netrw_sftp_cmd='"C:\Program Files (x86)\PuTTY\pscp.exe" -batch -q -sftp'
+  else
+    let g:netrw_ssh_cmd='"C:\Program Files\PuTTY\plink.exe" -batch -T -ssh'
+    let g:netrw_scp_cmd='"C:\Program Files\PuTTY\pscp.exe" -batch -q -scp'
+    let g:netrw_sftp_cmd='"C:\Program Files\PuTTY\pscp.exe" -batch -q -sftp'
+  endif
 else
   source ~/.vim/vimrc_secrets
   set directory=~/.vim/tmp
@@ -47,6 +57,7 @@ set tabstop=4       " Tab counts as 4 visual columns
 set shiftwidth=4    " How many spaces reindent operators use
 set softtabstop=4   " How many columns vim uses when tab pressed in insert mode
 set autoindent      " When creating a newline, keep indent level
+let g:indent_guides_enable_on_vim_startup=1 " Enable indent-guides on startup
 
 " === VIM UI ===
 colorscheme solarized                   " Use 'solarized' colorscheme
@@ -78,6 +89,42 @@ function! ToggleCopy()                  " Toggle what I call 'copy' mode.  Turns
     endif
 endfunction
 
+" === Vim Grep Mapping ===
+" <C-x><C-x> runs grep for the word under the cursor
+" :G <word> runs grep
+" :Gi <word> runs grep as case-insensitive
+
+function! Grep(args, ignorecase)
+    let grepprg_bak=&grepprg
+    let g:gitroot=system('git rev-parse --show-cdup')
+    if v:shell_error
+        if a:ignorecase
+            let g:mygrepprg="grep\\ -nir"
+        else
+            let g:mygrepprg="grep\\ -nr"
+        endif
+        let g:grepcmd="silent! grep " . a:args . " ."
+    else
+        if a:ignorecase
+            let g:mygrepprg="git\\ grep\\ -ni"
+        else
+            let g:mygrepprg="git\\ grep\\ -n"
+        endif
+        let g:grepcmd="silent! grep " . a:args . g:gitroot
+    endif
+
+    exec "set grepprg=" . g:mygrepprg
+    execute g:grepcmd
+    botright copen
+    let &grepprg=grepprg_bak
+    exec "redraw!"
+endfunction
+
+func GrepWord()
+  normal! "zyiw
+  call Grep(getreg('z'), 0)
+endf
+
 " === Key Mappings ===
 "                                       " F1 - Help
 map <F2> <ESC>:NERDTreeToggle<CR>       " F2 - Toggle NERDTree
@@ -85,3 +132,7 @@ set pastetoggle=<F3>                    " F3 - Toggle paste mode
 map <F4> :call ToggleCopy()<CR>         " F4 - Toggle copy mode
 map <F5> :set spell!<CR>                " F5 - Toggle the spell checker
 nnoremap <C-L> :nohl<CR><C-L>           " Disable search highlight on Ctrl-L refresh
+
+nmap <C-x><C-x> :call GrepWord()<CR>
+command! -nargs=1 G call Grep( '<args>', 0)
+command! -nargs=1 Gi call Grep( '<args>', 1)
