@@ -24,7 +24,7 @@ call pathogen#helptags()                            " Make vim read in the helpt
 " === Plugins ===
 let g:Powerline_symbols='fancy'             " Use fancy chars for Powerline
 let g:solarized_visibility='normal'         " Set the solarized list visibility
-let g:pad_dir='~/BTSync'                    " Put pad notes in BTSync so they're synced across computers
+let g:pad_dir='~/BTSync/vim_pad'            " Put pad notes in BTSync so they're synced across computers
 let g:virtualenv_directory='~/websites'     " Set the directory with virtualenvs
 let g:NERDTreeQuitOnOpen=1                  " Make NERDTree close when a file is opened
 let g:syntastic_check_on_open=1             " Check files for errors on open

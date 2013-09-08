@@ -18,37 +18,27 @@
     path = bundle/vim-cute-python
     url = https://github.com/ehamberg/vim-cute-python.git
     ignore = dirty
-[submodule "bundle/vim-flake8"]
-    path = bundle/vim-flake8
-    url = https://github.com/nvie/vim-flake8.git
-    ignore = dirty
 [submodule "bundle/vim-fugitive"]
     path = bundle/vim-fugitive
     url = https://github.com/tpope/vim-fugitive.git
     ignore = dirty
-[submodule "bundle/vim-afterimage"]
-    path = bundle/vim-afterimage
-    url = https://github.com/tpope/vim-afterimage.git
-    ignore = dirty
-[submodule "bundle/vim-virtualenv"]
-    path = bundle/vim-virtualenv
-    url = https://github.com/jmcantrell/vim-virtualenv.git
-    ignore = dirty
 [submodule "bundle/vim-numbers"]
-	path = bundle/vim-numbers
-	url = https://github.com/myusuf3/numbers.vim.git
+    path = bundle/vim-numbers
+    url = https://github.com/myusuf3/numbers.vim.git
+    ignore = dirty
 [submodule "bundle/vim-dwm"]
-	path = bundle/vim-dwm
-	url = https://github.com/spolu/dwm.vim.git
-[submodule "bundle/vim-base16"]
-	path = bundle/vim-base16
-	url = https://github.com/chriskempson/base16-vim.git
+    path = bundle/vim-dwm
+    url = https://github.com/spolu/dwm.vim.git
+    ignore = dirty
 [submodule "bundle/vim-indent"]
-	path = bundle/vim-indent
-	url = https://github.com/nathanaelkane/vim-indent-guides.git
+    path = bundle/vim-indent
+    url = https://github.com/nathanaelkane/vim-indent-guides.git
+    ignore = dirty
 [submodule "extra/powerline"]
-	path = extra/powerline
-	url = https://github.com/Lokaltog/powerline.git
+    path = extra/powerline
+    url = https://github.com/Lokaltog/powerline.git
+    ignore = dirty
 [submodule "bundle/vim-syntastic"]
-	path = bundle/vim-syntastic
-	url = https://github.com/scrooloose/syntastic.git
+    path = bundle/vim-syntastic
+    url = https://github.com/scrooloose/syntastic.git
+    ignore = dirty
