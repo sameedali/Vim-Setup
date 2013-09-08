@@ -27,7 +27,7 @@ let g:solarized_visibility='normal'         " Set the solarized list visibility
 let g:pad_dir='~/BTSync/vim_pad'            " Put pad notes in BTSync so they're synced across computers
 let g:virtualenv_directory='~/websites'     " Set the directory with virtualenvs
 let g:NERDTreeQuitOnOpen=1                  " Make NERDTree close when a file is opened
-let g:syntastic_check_on_open=1             " Check files for errors on open
+let g:syntastic_check_on_wq=0               " Disable checking for errors on save/quit
 let g:syntastic_aggregate_errors=1          " Run all error checking programs at once
 let g:syntastic_error_symbol='✗'            " Custom error sign for Syntastic
 let g:syntastic_warning_symbol='⚠'          " Custom warning sign for Syntastic
@@ -135,6 +135,7 @@ map <F2> <ESC>:NERDTreeToggle<CR>       " F2 - Toggle NERDTree
 set pastetoggle=<F3>                    " F3 - Toggle paste mode
 map <F4> :call ToggleCopy()<CR>         " F4 - Toggle copy mode
 map <F5> :set spell!<CR>                " F5 - Toggle the spell checker
+map <F8> <ESC>:SyntasticCheck<CR>       " F7 - Check the file with Syntastic
 nnoremap <C-L> :nohl<CR><C-L>           " Disable search highlight on Ctrl-L refresh
 
 nmap <C-x><C-x> :call GrepWord()<CR>
