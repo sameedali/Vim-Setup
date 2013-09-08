@@ -3,7 +3,6 @@ Prerequisites
 
 - git         (duh)
 - flake8      (python pep8 checker)
-- imagemagick (for vim-afterimage)
 
 
 Installation
