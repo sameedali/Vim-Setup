@@ -22,11 +22,16 @@ call pathogen#infect()                              " Boot up pathogen
 call pathogen#helptags()                            " Make vim read in the helptags
 
 " === Plugins ===
-let g:Powerline_symbols='fancy'         " Use fancy chars for Powerline
-let g:solarized_visibility='normal'     " Set the solarized list visibility
-let g:pad_dir='~/Dropbox/vim_pad'       " Put pad notes in dropbox so they're synced across computers
-let g:virtualenv_directory='~/websites' " Set the directory with virtualenvs
-let g:NERDTreeQuitOnOpen=1
+let g:Powerline_symbols='fancy'             " Use fancy chars for Powerline
+let g:solarized_visibility='normal'         " Set the solarized list visibility
+let g:pad_dir='~/BTSync'                    " Put pad notes in BTSync so they're synced across computers
+let g:virtualenv_directory='~/websites'     " Set the directory with virtualenvs
+let g:NERDTreeQuitOnOpen=1                  " Make NERDTree close when a file is opened
+let g:syntastic_check_on_open=1             " Check files for errors on open
+let g:syntastic_aggregate_errors=1          " Run all error checking programs at once
+let g:syntastic_error_symbol='✗'            " Custom error sign for Syntastic
+let g:syntastic_warning_symbol='⚠'          " Custom warning sign for Syntastic
+let g:indent_guides_guide_size = 1
 
 " === Basics ===
 set nocompatible    " Get out of vi compatible mode
@@ -57,7 +62,6 @@ set tabstop=4       " Tab counts as 4 visual columns
 set shiftwidth=4    " How many spaces reindent operators use
 set softtabstop=4   " How many columns vim uses when tab pressed in insert mode
 set autoindent      " When creating a newline, keep indent level
-let g:indent_guides_enable_on_vim_startup=1 " Enable indent-guides on startup
 
 " === VIM UI ===
 colorscheme solarized                   " Use 'solarized' colorscheme
@@ -69,7 +73,7 @@ set showmatch                           " Show matching brackets
 set shortmess=atI                       " Abbreviate messages, trunc filenames, don't show intro message
 set laststatus=2                        " Always show the status line
 set list                                " Show extra tabs, spaces, newlines at eol
-set listchars=eol:¬,trail:°,precedes:«  " Set characters for list
+set listchars=eol:↩,trail:°,precedes:«  " Set characters for list
 set confirm                             " Raise a dialog if unsaved changes on exit
 set colorcolumn=80                      " Highlight after the 80th column
 set virtualedit=all                     " Allow the cursor to move beyond the end of the line in insert and visual mode
