@@ -19,3 +19,12 @@ Upgrading The Submodules
 ------------------------
 
     git submodule foreach git pull origin master
+
+
+Custom Key Mappings
+-------------------
+
+F2 - Toggle NERDTree
+F3 - Toggle "paste" mode
+F4 - Toggle what I call "copy" mode (removes glyphs, line numbers)
+F8 - Check file with Syntastic
