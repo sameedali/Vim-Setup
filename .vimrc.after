@@ -101,6 +101,10 @@ set ffs=unix,dos,mac
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
+set undodir=~/.vim/tmp/undo//     " undo files
+set backupdir=~/.vim/tmp/backup// " backups
+set directory=~/.vim/tmp/swap//   " swap files"
+
 " open new split panes to right and bottom
 " set splitbelow
 " set splitright
@@ -124,7 +128,7 @@ map <C-l> <C-W>l    " left
 nnoremap <leader><space> :nohlsearch<CR>
 
 " toggle cursor line
-noremap <leader>_ :set cursorline!<CR>
+noremap <leader>_ :set !cursorline<CR>
 
 " save file
 noremap <leader><CR> :wq<CR> " writes to disk and quits
@@ -143,6 +147,17 @@ nnoremap <Leader>wf :match<CR>
 "alternate colorscheme
 noremap <leader>c1 :colorscheme iceberg<CR>
 
+"rebuild Ctags (mnemonic RC -> CR -> <cr>)
+nnoremap <leader><cr> :silent !myctags >/dev/null 2>&1 &<cr>:redraw!<cr>
+" Made D behave
+nnoremap D d$
+"indent Guides;
+nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
+"list navigation
+"nnoremap <left>  :cprev<cr>zvzz
+"nnoremap <right> :cnext<cr>zvzz
+nnoremap <leader>? :lprev<cr>zvzz "list previous
+nnoremap <leader>/ :lnext<cr>zvzz "list next
 "fix whitespace
 "bufexplorer
 
@@ -214,7 +229,7 @@ let g:airline#extensions#tabline#enabled = 1
 "show airline everytime
 set laststatus=2
 let g:airline_section_b = '%{strftime("%c")}'
-let g:airline_section_y = 'Buffer Number: %{bufnr("%")}'
+let g:airline_section_y = 'Buffer Number: %{bufnr("%")} %{fugitive#statusline()}'
 
 " run command after all plugins load | set theme to wombat
 autocmd VimEnter * AirlineTheme wombat
@@ -243,7 +258,7 @@ colorscheme flatcolor
 " Syntastic
 """""""""""""""""""""""""""""""""""""""""""""""
 "Syntastic
-let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:syntastic_cpp_compiler_options = '-std=c++0x'
 let g:syntastic_cpp_errorformat = '%f:%l:%c: %trror: %m'
@@ -254,13 +269,22 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:pad_dir = "~/.vim/tmp"
+"new option added
+let g:syntastic_enable_signs = 1
+let g:syntastic_auto_jump = 0
+let g:syntastic_java_checker = 'javac'
+let g:syntastic_mode_map = { "mode": "active", "active_filetypes": [], "passive_filetypes": ['java', 'html', 'rst']}
 
+let g:pad_dir = "~/.vim/tmp"
 " linters
 let g:linters_extra = []
 "NERDTREE TABS
 let g:NERDTreeDirArrows = 0
-
+"define indent guide level
+let g:indent_guides_indent_levels = 20
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+let g:indent_guides_default_mapping = 0
 """""""""""""""""""""""""""""""""""""""""""""""
 "                   Snippets
 """""""""""""""""""""""""""""""""""""""""""""""
