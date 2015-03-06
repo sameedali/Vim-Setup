@@ -1,0 +1,214 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+inoremap <buffer> <expr> <Plug>(unite_skip_next_line) unite#mappings#cursor_down(1)
+inoremap <buffer> <expr> <Plug>(unite_select_next_line) unite#mappings#cursor_down(0)
+inoremap <buffer> <expr> <Plug>(unite_skip_previous_line) unite#mappings#cursor_up(1)
+inoremap <buffer> <expr> <Plug>(unite_select_previous_line) unite#mappings#cursor_up(0)
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <silent> <expr> <S-Space> unite#smart_map(' ', "\<Plug>(unite_toggle_mark_current_candidate_up)")
+imap <buffer> <RightMouse> <Plug>(unite_exit)
+imap <buffer> <2-LeftMouse> <Plug>(unite_do_default_action)
+imap <buffer> <Right> <Plug>(unite_move_right)
+imap <buffer> <Left> <Plug>(unite_move_left)
+imap <buffer> <Home> <Plug>(unite_move_head)
+imap <buffer> <BS> <Plug>(unite_delete_backward_char)
+imap <buffer> <Up> <Plug>(unite_select_previous_line)
+imap <buffer> <Down> <Plug>(unite_select_next_line)
+inoremap <buffer> <silent> <expr> <Plug>(unite_do_default_action) unite#do_action(unite#get_current_unite().context.default_action)
+inoremap <buffer> <silent> <Plug>(unite_quick_match_choose_action) :call unite#mappings#_quick_match(1)
+inoremap <buffer> <silent> <Plug>(unite_quick_match_default_action) :call unite#mappings#_quick_match(0)
+inoremap <buffer> <expr> <Plug>(unite_select_previous_page) pumvisible() ? "\<PageUp>" : repeat("\<Up>", winheight(0))
+inoremap <buffer> <expr> <Plug>(unite_select_next_page) pumvisible() ? "\<PageDown>" : repeat("\<Down>", winheight(0))
+nmap <buffer> <nowait>  <Plug>(unite_print_message_log)
+nmap <buffer> <nowait>  <Plug>(unite_exit)
+nmap <buffer> <nowait>  <Plug>(unite_delete_backward_path)
+nmap <buffer> <nowait> 	 <Plug>(unite_choose_action)
+nmap <buffer> <nowait>  <Plug>(unite_print_candidate)
+nmap <buffer> <nowait>  <Plug>(unite_redraw)
+nmap <buffer> <nowait>  <Plug>(unite_do_default_action)
+nmap <buffer> <nowait>  <Plug>(unite_rotate_next_source)
+nmap <buffer> <nowait>  <Plug>(unite_rotate_previous_source)
+nmap <buffer> <nowait>  <Plug>(unite_restart)
+xmap <buffer>   <Plug>(unite_toggle_mark_selected_candidates)
+nmap <buffer> <nowait>   <Plug>(unite_toggle_mark_current_candidate)
+nmap <buffer> <nowait> * <Plug>(unite_toggle_mark_all_candidates)
+nmap <buffer> <nowait> . <Plug>(unite_narrowing_dot)
+nmap <buffer> <nowait> A <Plug>(unite_append_end)
+nmap <buffer> <nowait> G <Plug>(unite_cursor_bottom)
+nmap <buffer> <nowait> I <Plug>(unite_insert_head)
+nmap <buffer> <nowait> J <Plug>(unite_skip_cursor_down)
+nmap <buffer> <nowait> K <Plug>(unite_skip_cursor_up)
+nmap <buffer> <nowait> M <Plug>(unite_disable_max_candidates)
+nmap <buffer> <nowait> N <Plug>(unite_new_candidate)
+nmap <buffer> <nowait> Q <Plug>(unite_all_exit)
+nmap <buffer> <nowait> <silent> <expr> a unite#smart_map("\<Plug>(unite_append_enter)",                 "\<Plug>(unite_choose_action)")
+nnoremap <buffer> <nowait> <silent> <expr> b unite#smart_map('b', unite#do_action('bookmark'))
+nnoremap <buffer> <nowait> <silent> <expr> d unite#smart_map('d', unite#do_action('delete'))
+nnoremap <buffer> <nowait> <silent> <expr> e unite#smart_map('e', unite#do_action('edit'))
+nmap <buffer> <nowait> g? <Plug>(unite_quick_help)
+nmap <buffer> <nowait> gg <Plug>(unite_cursor_top)
+nmap <buffer> <nowait> g <Plug>(unite_all_exit)
+nmap <buffer> <nowait> i <Plug>(unite_insert_enter)
+nmap <buffer> <nowait> j <Plug>(unite_loop_cursor_down)
+nmap <buffer> <nowait> k <Plug>(unite_loop_cursor_up)
+nnoremap <buffer> <nowait> <silent> <expr> o unite#smart_map('o', unite#do_action('open'))
+nnoremap <buffer> <nowait> <silent> <expr> p unite#smart_map('p', unite#mappings#smart_preview())
+nmap <buffer> <nowait> q <Plug>(unite_exit)
+nnoremap <buffer> <nowait> <silent> <expr> t unite#smart_map('t', unite#do_action('tabopen'))
+nmap <buffer> <nowait> <silent> <expr> x unite#smart_map('x', "\<Plug>(unite_quick_match_default_action)")
+nnoremap <buffer> <nowait> <silent> <expr> yy unite#smart_map('yy', unite#do_action('yank'))
+nnoremap <buffer> <expr> <Plug>(unite_skip_cursor_down) unite#mappings#cursor_down(1)
+nnoremap <buffer> <expr> <Plug>(unite_loop_cursor_down) unite#mappings#cursor_down(0)
+nnoremap <buffer> <expr> <Plug>(unite_skip_cursor_up) unite#mappings#cursor_up(1)
+nnoremap <buffer> <expr> <Plug>(unite_loop_cursor_up) unite#mappings#cursor_up(0)
+nmap <buffer> <nowait> <RightMouse> <Plug>(unite_exit)
+nmap <buffer> <nowait> <2-LeftMouse> <Plug>(unite_do_default_action)
+nmap <buffer> <nowait> <Up> <Plug>(unite_loop_cursor_up)
+nmap <buffer> <nowait> <Down> <Plug>(unite_loop_cursor_down)
+nmap <buffer> <nowait> <S-Space> <Plug>(unite_toggle_mark_current_candidate_up)
+nnoremap <buffer> <silent> <expr> <Plug>(unite_do_default_action) unite#do_action(unite#get_current_unite().context.default_action)
+nnoremap <buffer> <silent> <Plug>(unite_quick_match_choose_action) :call unite#mappings#_quick_match(1)
+nnoremap <buffer> <silent> <Plug>(unite_quick_match_default_action) :call unite#mappings#_quick_match(0)
+nnoremap <buffer> <expr> <Plug>(unite_cursor_top) 'gg0z.'
+imap <buffer>  <Plug>(unite_move_head)
+imap <buffer>  <Plug>(unite_select_previous_page)
+inoremap <buffer> <silent> <expr>  unite#do_action('delete')
+inoremap <buffer> <silent> <expr>  unite#do_action('edit')
+imap <buffer>  <Plug>(unite_select_next_page)
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>(unite_exit)
+imap <buffer>  <Plug>(unite_delete_backward_char)
+imap <buffer> 	 <Plug>(unite_choose_action)
+imap <buffer>  <Plug>(unite_redraw)
+imap <buffer>  <Plug>(unite_do_default_action)
+imap <buffer>  <Plug>(unite_select_next_line)
+inoremap <buffer> <silent> <expr>  unite#do_action('open')
+imap <buffer>  <Plug>(unite_select_previous_line)
+inoremap <buffer> <silent> <expr>  unite#do_action('tabopen')
+imap <buffer>  <Plug>(unite_delete_backward_line)
+imap <buffer>  <Plug>(unite_delete_backward_word)
+inoremap <buffer> <silent> <expr>  unite#do_action('yank')
+imap <buffer> <silent> <expr>   unite#smart_map(' ', "\<Plug>(unite_toggle_mark_current_candidate)")
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal nobinary
+setlocal bufhidden=hide
+setlocal nobuflisted
+setlocal buftype=nofile
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=0
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=niv
+setlocal conceallevel=3
+setlocal completefunc=unite#dummy_completefunc
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'unite'
+setlocal filetype=unite
+endif
+setlocal foldcolumn=0
+setlocal nofoldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=10
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=10
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255,-,+,\\,!,~
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal nomodeline
+setlocal nomodifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=8
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%!airline#statusline(1)
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=2048
+if &syntax != 'unite'
+setlocal syntax=unite
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 4 - ((3 * winheight(0) + 10) / 20)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+4
+normal! 0
+lcd ~/.vim/bundle
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :
