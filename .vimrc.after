@@ -1,3 +1,8 @@
+" Sample vimrcs were a lot of help in making this file;
+" Credits to where the're due
+"
+"   VIMRC FILE BEGIN
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -7,7 +12,8 @@ set history=70
 set relativenumber
 set wrap
 set nocompatible
-
+set title           " show title in console title bar"
+set ttyfast         " smoother chanes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Using Pathogen
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -23,6 +29,7 @@ set novisualbell
 set t_vb=
 set tm=500
 
+
 " continue where left off
 au BufWinLeave ?* mkview
 au BufWinEnter ?* silent loadview
@@ -32,17 +39,20 @@ au BufWinEnter ?* silent loadview
 
 " => Text, tab and indent related
 " Be smart when using tabs
-" set smarttab
-" " 1 tab == 4 spaces
-" set shiftwidth=4
-"
+set smarttab
+" 1 tab == 4 spaces
+set shiftwidth=4
+
+"list of characters to highlight when displaying linebreaks
+"set listchars=tab:˙»
+
 " " Linebreak on 500 characters
 " set lbr
 " set tw=500
 "
-" set ai                        "Auto indent
-" set si                        "Smart indent
-" set wrap                      "Wrap lines
+set ai                        "Auto indent
+set si                        "Smart indent
+set wrap                      "Wrap lines
 
 set tabstop=4                   " number of visual spaces per TAB
 set softtabstop=4               " number of spaces in tab when editing
@@ -51,6 +61,7 @@ set expandtab                   " use spaces inseted of tabs
 set showcmd                     " show command in bottom bar
 
 set nocursorline                " dont highlight current line by defualt
+set nocursorcolumn              " dont highlight cursorcolumn
 
 filetype plugin indent on       " load filetype-specific indent files
 
@@ -59,9 +70,19 @@ set lazyredraw                  " redraw only when we need to. Don't redraw whil
 set showmatch                   " highlight matching [{()}]
 set incsearch                   " search as characters are entered
 set hlsearch                    " highlight matchesset hlsearch
-set foldenable                  " enable folding
-set foldlevelstart=10           " open most folds by default
-set foldnestmax=10              " 10 nested fold max
+"set foldenable                  " enable folding
+"set foldlevelstart=10           " open most folds by default
+"set foldnestmax=10              " 10 nested fold max
+
+set foldmarker={,}
+set foldmethod=marker
+set foldtext=substitute(getline(v:foldstart),'{.*','{...}',)
+set foldcolumn=4
+set foldlevelstart=1
+
+"set foldmethod=syntax           " fold on basis of indent
+"set foldlevel=1                 " level of folding
+"set foldclose=all               " close all folds
 
 set synmaxcol=2048              " Syntax coloring too-long lines is slow
                                 " Complete like most shells – longest substring first, then iterate through
@@ -90,7 +111,7 @@ set mat=2
 " if has("gui_running")
 "   set guioptions-=T
 "   set guioptions-=e
-   set t_Co=256
+set t_Co=256
 "   set guitablabel=%M\ %t
 " endif
 "
@@ -128,7 +149,8 @@ map <C-l> <C-W>l    " left
 nnoremap <leader><space> :nohlsearch<CR>
 
 " toggle cursor line
-noremap <leader>_ :set cursorline!<CR>
+nnoremap <leader>- :set cursorline!<CR> :hi CursorLine cterm=bold ctermbg=DarkGray ctermfg=Green<CR>
+nnoremap <leader>_ :set cursorcolumn!<CR>
 
 " save file
 nnoremap <leader><cr> :wq<CR> " writes to disk and quits
@@ -137,12 +159,16 @@ noremap <leader>q :q<CR>     " quits
 noremap <leader>Q :qa<CR>    " quits all buffers
 noremap <leader>] :bn<CR>    " next buffer
 noremap <leader>[ :bp<CR>    " prev buffer
+nnoremap <leader>l :ls<CR>   " list buffers
 nnoremap <leader>$ :!sh<CR>  " open a shell
 map <leader>d d%             " leader d deletes everything inside given paranthesis
 map <leader>y y%             " leader y copies everything inside given paranthesis
 "whitespace highlight
 nnoremap <Leader>wn :match ExtraWhitespace /^\s* \s*\<Bar>\s\+$/<CR>
 nnoremap <Leader>wf :match<CR>
+
+" show line breaks
+nmap <silent> <leader>lb :set nolist!<CR>
 
 "alternate colorscheme
 noremap <leader>c1 :colorscheme iceberg<CR>
@@ -230,9 +256,11 @@ let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 let g:airline_section_b = '%{strftime("%c")}'
 let g:airline_section_y = 'Buffer Number: %{bufnr("%")} %{fugitive#statusline()}'
+let g:airline_theme = 'wombat'
 
 " run command after all plugins load | set theme to wombat
-autocmd VimEnter * AirlineTheme wombat
+"autocmd VimEnter * AirlineTheme wombat
+
 
 """""""""""""""""""""""""""""""""""""""""""""""
 " colorscheme
@@ -268,12 +296,16 @@ let g:syntastic_cpp_auto_refresh_includes = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_check_on_wq = 0
 "new option added
 let g:syntastic_enable_signs = 1
 let g:syntastic_auto_jump = 0
 let g:syntastic_java_checker = 'javac'
 let g:syntastic_mode_map = { "mode": "active", "active_filetypes": [], "passive_filetypes": ['java', 'html', 'rst']}
+
+let g:syntastic_java_javac_delete_output=0  " Don't delete .class files after syntax check.
+set wildignore+=*.class
+"let g:syntastic_java_javac_classpath = '/vagrant/AP/robots/Assignment1/URLExtractor/src/'
 
 let g:pad_dir = "~/.vim/tmp"
 " linters
@@ -282,9 +314,9 @@ let g:linters_extra = []
 let g:NERDTreeDirArrows = 0
 "define indent guide level
 let g:indent_guides_indent_levels = 20
-let g:indent_guides_enable_on_vim_startup = 1
+"let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
-let g:indent_guides_default_mapping = 0
+"let g:indent_guides_default_mapping = 0
 """""""""""""""""""""""""""""""""""""""""""""""
 "                   Snippets
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -304,7 +336,10 @@ let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 "end
-
+""""""""""""""""""""""""""""""""""""""""""""""""
+"               VIM Mini Buffer Explorer
+""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd VimEnter * MBEClose
 
 """""""""""""""""""""""""""""""""""""""""""""""
 " ruler tabs
@@ -314,6 +349,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set hlsearch
 set statusline+=%*
+
 
 """"""""""""""""""""""""""""""""""""""""""
 " => Ack searching and cope displaying
