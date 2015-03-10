@@ -127,8 +127,8 @@ set backupdir=~/.vim/tmp/backup// " backups
 set directory=~/.vim/tmp/swap//   " swap files"
 
 " open new split panes to right and bottom
-" set splitbelow
-" set splitright
+set splitbelow
+set splitright
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 " if has('mouse')
@@ -339,7 +339,8 @@ let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 """"""""""""""""""""""""""""""""""""""""""""""""
 "               VIM Mini Buffer Explorer
 """"""""""""""""""""""""""""""""""""""""""""""""
-autocmd VimEnter * MBEClose
+"autocmd VimEnter * MBEClose
+au BufWinEnter * MBEClose
 
 """""""""""""""""""""""""""""""""""""""""""""""
 " ruler tabs

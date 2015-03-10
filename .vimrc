@@ -1,3 +1,8 @@
+" Sample vimrcs were a lot of help in making this file;
+" Credits to where the're due
+"
+"   VIMRC FILE BEGIN
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -122,8 +127,8 @@ set backupdir=~/.vim/tmp/backup// " backups
 set directory=~/.vim/tmp/swap//   " swap files"
 
 " open new split panes to right and bottom
-" set splitbelow
-" set splitright
+set splitbelow
+set splitright
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 " if has('mouse')
@@ -154,7 +159,7 @@ noremap <leader>q :q<CR>     " quits
 noremap <leader>Q :qa<CR>    " quits all buffers
 noremap <leader>] :bn<CR>    " next buffer
 noremap <leader>[ :bp<CR>    " prev buffer
-nnoremap <leader>l :ls<CR>       " list buffers
+nnoremap <leader>l :ls<CR>   " list buffers
 nnoremap <leader>$ :!sh<CR>  " open a shell
 map <leader>d d%             " leader d deletes everything inside given paranthesis
 map <leader>y y%             " leader y copies everything inside given paranthesis
@@ -251,9 +256,11 @@ let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 let g:airline_section_b = '%{strftime("%c")}'
 let g:airline_section_y = 'Buffer Number: %{bufnr("%")} %{fugitive#statusline()}'
+let g:airline_theme = 'wombat'
 
 " run command after all plugins load | set theme to wombat
-autocmd VimEnter * AirlineTheme wombat
+"autocmd VimEnter * AirlineTheme wombat
+
 
 """""""""""""""""""""""""""""""""""""""""""""""
 " colorscheme
@@ -329,7 +336,11 @@ let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 "end
-
+""""""""""""""""""""""""""""""""""""""""""""""""
+"               VIM Mini Buffer Explorer
+""""""""""""""""""""""""""""""""""""""""""""""""
+"autocmd VimEnter * MBEClose
+au BufWinEnter * MBEClose
 
 """""""""""""""""""""""""""""""""""""""""""""""
 " ruler tabs
@@ -339,6 +350,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set hlsearch
 set statusline+=%*
+
 
 """"""""""""""""""""""""""""""""""""""""""
 " => Ack searching and cope displaying
