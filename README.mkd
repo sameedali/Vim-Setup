@@ -1,3 +1,7 @@
+This repo contains a slightly modified version of https://github.com/ryanshow/vim-folder.git;
+I have only modified it slightly to meet my developmet requirements.
+Credit goes to the original author.
+
 Prerequisites
 -------------
 - git         (duh)
