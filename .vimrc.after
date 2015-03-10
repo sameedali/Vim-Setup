@@ -160,7 +160,7 @@ noremap <leader>Q :qa<CR>    " quits all buffers
 noremap <leader>] :bn<CR>    " next buffer
 noremap <leader>[ :bp<CR>    " prev buffer
 nnoremap <leader>l :ls<CR>   " list buffers
-nnoremap <leader>$ :!sh<CR>  " open a shell
+nnoremap <leader>$ :!sh<CR>  " open a shell alternate: :VimShellTab / :VimShellCreate (same buffer creates a tab)
 map <leader>d d%             " leader d deletes everything inside given paranthesis
 map <leader>y y%             " leader y copies everything inside given paranthesis
 "whitespace highlight
