@@ -101,7 +101,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
-setlocal statusline=%!airline#statusline(1)
+setlocal statusline=%!airline#statusline(2)
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=2048
@@ -124,7 +124,6 @@ exe s:l
 normal! zt
 1
 normal! 0
-lcd /home/dev/src/docker_test/DS/DS-Assignment1-Spring2015
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

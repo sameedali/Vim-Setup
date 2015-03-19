@@ -163,6 +163,7 @@ nnoremap <leader>l :ls<CR>   " list buffers
 nnoremap <leader>$ :!sh<CR>  " open a shell alternate: :VimShellTab / :VimShellCreate (same buffer creates a tab)
 map <leader>d d%             " leader d deletes everything inside given paranthesis
 map <leader>y y%             " leader y copies everything inside given paranthesis
+nnoremap <leader><leader> <C-P>
 "whitespace highlight
 nnoremap <Leader>wn :match ExtraWhitespace /^\s* \s*\<Bar>\s\+$/<CR>
 nnoremap <Leader>wf :match<CR>
@@ -255,7 +256,7 @@ let g:airline#extensions#tabline#enabled = 1
 "show airline everytime
 set laststatus=2
 let g:airline_section_b = '%{strftime("%c")}'
-let g:airline_section_y = 'Buffer Number: %{bufnr("%")} %{fugitive#statusline()}'
+let g:airline_section_y = 'Buffer Number: %{bufnr("%")}}'
 let g:airline_theme = 'wombat'
 
 " run command after all plugins load | set theme to wombat
@@ -340,14 +341,13 @@ let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 "               VIM Mini Buffer Explorer
 """"""""""""""""""""""""""""""""""""""""""""""""
 "autocmd VimEnter * MBEClose
-au BufWinEnter * MBEClose
 
 """""""""""""""""""""""""""""""""""""""""""""""
 " ruler tabs
 """""""""""""""""""""""""""""""""""""""""""""""
 "set ruler
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+set ruler
 set hlsearch
 set statusline+=%*
 
