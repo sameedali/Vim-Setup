@@ -152,15 +152,29 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <leader>- :set cursorline!<CR> :hi CursorLine cterm=bold ctermbg=DarkGray ctermfg=Green<CR>
 nnoremap <leader>_ :set cursorcolumn!<CR>
 
-" save file
-nnoremap <leader><cr> :wq<CR> " writes to disk and quits
-noremap <leader>w :w<CR>     " writes to file
-noremap <leader>q :q<CR>     " quits
-noremap <leader>Q :qa<CR>    " quits all buffers
-noremap <leader>] :bn<CR>    " next buffer
-noremap <leader>[ :bp<CR>    " prev buffer
+"toggle insert and normal mode
+inoremap <leader><leader> <Esc>
+nnoremap <leader><leader> i
+
+" manual autocomplte
+" inoremap <leader>a <C-P>
+
+" normal mode mappings
+nnoremap <leader><cr> :wq<CR>" writes to disk and quits
+nnoremap <leader>w :w<CR>    " writes to file
+nnoremap <leader>q :q<CR>    " quits
+nnoremap <leader>Q :qa<CR>   " quits all buffers
+nnoremap <leader>] :bn<CR>   " next buffer
+nnoremap <leader>[ :bp<CR>   " prev buffer
 nnoremap <leader>l :ls<CR>   " list buffers
-nnoremap <leader>$ :!sh<CR>  " open a shell alternate: :VimShellTab / :VimShellCreate (same buffer creates a tab)
+nnoremap <leader>$ :!sh<CR>  " open a shell alternate :  : VimShellTab / : VimShellCreate (same buffer creates a tab)
+
+" insert mode mappings
+inoremap <leader><cr> <Esc>:wq<CR> " writes to disk and quits
+inoremap <leader>w <Esc>:w<CR>     " writes to file
+inoremap <leader>q <Esc>:q<CR>     " quits
+
+
 map <leader>d d%             " leader d deletes everything inside given paranthesis
 map <leader>y y%             " leader y copies everything inside given paranthesis
 nnoremap <leader><leader> <C-P>
