@@ -11,7 +11,7 @@ Prerequisites
 Installation
 ------------
     cd ~
-    git clone http://github.com/ryanshow/vim-folder.git ~/.vim
+    git clone https://github.com/sameedali/Vim-Setup.git ~/.vim
     ln -s ~/.vim/vimrc ~/.vimrc
     cd ~/.vim
     git submodule update --init
@@ -19,3 +19,6 @@ Installation
 Upgrading The Submodules
 ------------------------
     git submodule foreach git pull origin master
+    OR
+    git submodule init
+    git submodule update
