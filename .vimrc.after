@@ -160,14 +160,26 @@ nnoremap <leader><leader> i
 " inoremap <leader>a <C-P>
 
 " normal mode mappings
-nnoremap <leader><cr> :wq<CR>" writes to disk and quits
-nnoremap <leader>w :w<CR>    " writes to file
-nnoremap <leader>q :q<CR>    " quits
-nnoremap <leader>Q :qa<CR>   " quits all buffers
-nnoremap <leader>] :bn<CR>   " next buffer
-nnoremap <leader>[ :bp<CR>   " prev buffer
-nnoremap <leader>l :ls<CR>   " list buffers
-nnoremap <leader>$ :!sh<CR>  " open a shell alternate :  : VimShellTab / : VimShellCreate (same buffer creates a tab)
+" delete word backwords
+nnoremap dq dbx
+"delete from current pos till end
+nnoremap d<TAB> d$
+" writes to disk and quits
+nnoremap <leader><cr> :wq<CR>
+" writes to file
+nnoremap <leader>w :w<CR>
+" quits
+nnoremap <leader>q :q<CR>
+" quits all buffers
+nnoremap <leader>Q :qa<CR>
+" next buffer
+nnoremap <leader>] :bn<CR>
+" prev buffer
+nnoremap <leader>[ :bp<CR>
+" list buffers
+nnoremap <leader>l :ls<CR>
+" open a shell alternate :  : VimShellTab / : VimShellCreate (same buffer creates a tab)
+nnoremap <leader>$ :!sh<CR>
 
 " insert mode mappings
 inoremap <leader><cr> <Esc>:wq<CR> " writes to disk and quits
@@ -348,7 +360,7 @@ let g:UltiSnipsEditSplit="vertical"
 "let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 "end
 
-""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""
 "           RainbowParentheses
 """""""""""""""""""""""""""""""""""""""""""""
 au VimEnter * RainbowParenthesesToggle
@@ -359,8 +371,8 @@ au Syntax * RainbowParenthesesLoadBraces
 """"""""""""""""""""""""""""""""""""""""""""""""
 "               VIM Mini Buffer Explorer
 """"""""""""""""""""""""""""""""""""""""""""""""
-"autocmd VimEnter * MBEClose
-
+autocmd VimEnter * MBEClose
+autocmd BufWinEnter * MBEClose
 """""""""""""""""""""""""""""""""""""""""""""""
 " ruler tabs
 """""""""""""""""""""""""""""""""""""""""""""""
