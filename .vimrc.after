@@ -140,10 +140,10 @@ set splitright
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " Smart way to move between windows
-map <C-j> <C-W>j    " Down
-map <C-k> <C-W>k    " Up
-map <C-h> <C-W>h    " right
-map <C-l> <C-W>l    " left
+"map <C-j> <C-W>j    " Down
+"map <C-k> <C-W>k    " Up
+"map <C-h> <C-W>h    " right
+"map <C-l> <C-W>l    " left
 
 " on press Space remove highlighting
 nnoremap <leader><space> :nohlsearch<CR>
@@ -158,12 +158,21 @@ nnoremap <leader><leader> i
 
 " manual autocomplte
 " inoremap <leader>a <C-P>
-
-" normal mode mappings
-" delete word backwords
+"""""""""""""""""""""""""""""""""""""""""""
+"       NORMAL MODE MAPPINGS
+"""""""""""""""""""""""""""""""""""""""""""
+" Delete word backwords
 nnoremap dq dbx
 "delete from current pos till end
-nnoremap d<TAB> d$
+nnoremap D d$
+nnoremap d<TAB> d%
+"map q to b
+nnoremap q b
+"map f to y its quicker
+noremap f y
+nnoremap f<TAB> y%
+
+"Leader mappings
 " writes to disk and quits
 nnoremap <leader><cr> :wq<CR>
 " writes to file
@@ -186,8 +195,6 @@ inoremap <leader><cr> <Esc>:wq<CR> " writes to disk and quits
 inoremap <leader>w <Esc>:w<CR>     " writes to file
 inoremap <leader>q <Esc>:q<CR>     " quits
 
-map <leader>d d%             " leader d deletes everything inside given paranthesis
-map <leader>y y%             " leader y copies everything inside given paranthesis
 "nnoremap <leader><leader> <C-P>
 "whitespace highlight
 nnoremap <Leader>wn :match ExtraWhitespace /^\s* \s*\<Bar>\s\+$/<CR>
@@ -201,8 +208,6 @@ noremap <leader>c1 :colorscheme iceberg<CR>
 
 "rebuild Ctags (mnemonic RC -> CR -> <cr>)
 nnoremap <leader>ctr :silent !myctags >/dev/null 2>&1 &<cr>:redraw!<cr>
-" Made D behave
-nnoremap D d$
 "indent Guides;
 nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
 "list navigation
