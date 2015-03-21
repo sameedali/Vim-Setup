@@ -174,10 +174,9 @@ inoremap <leader><cr> <Esc>:wq<CR> " writes to disk and quits
 inoremap <leader>w <Esc>:w<CR>     " writes to file
 inoremap <leader>q <Esc>:q<CR>     " quits
 
-
 map <leader>d d%             " leader d deletes everything inside given paranthesis
 map <leader>y y%             " leader y copies everything inside given paranthesis
-nnoremap <leader><leader> <C-P>
+"nnoremap <leader><leader> <C-P>
 "whitespace highlight
 nnoremap <Leader>wn :match ExtraWhitespace /^\s* \s*\<Bar>\s\+$/<CR>
 nnoremap <Leader>wf :match<CR>
@@ -311,7 +310,7 @@ let g:syntastic_cpp_auto_refresh_includes = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 0
 "new option added
 let g:syntastic_enable_signs = 1
 let g:syntastic_auto_jump = 0
@@ -320,7 +319,6 @@ let g:syntastic_mode_map = { "mode": "active", "active_filetypes": [], "passive_
 
 let g:syntastic_java_javac_delete_output=0  " Don't delete .class files after syntax check.
 set wildignore+=*.class
-"let g:syntastic_java_javac_classpath = '/vagrant/AP/robots/Assignment1/URLExtractor/src/'
 
 let g:pad_dir = "~/.vim/tmp"
 " linters
@@ -332,25 +330,32 @@ let g:indent_guides_indent_levels = 20
 "let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 "let g:indent_guides_default_mapping = 0
+
 """""""""""""""""""""""""""""""""""""""""""""""
 "                   Snippets
 """""""""""""""""""""""""""""""""""""""""""""""
 "+++++++++++++++++  Snippets ++++++++++++++++++
 "Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<!>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<!>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-""If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+"If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 "snipMate
-let g:snipMate = {}
-let g:snipMate.scope_aliases = {}
-let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
+"let g:snipMate = {}
+"let g:snipMate.scope_aliases = {}
+"let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 "end
+
+""""""""""""""""""""""""""""""""""""""""""""""
+"           RainbowParentheses
+"""""""""""""""""""""""""""""""""""""""""""""
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
 """"""""""""""""""""""""""""""""""""""""""""""""
 "               VIM Mini Buffer Explorer
 """"""""""""""""""""""""""""""""""""""""""""""""
