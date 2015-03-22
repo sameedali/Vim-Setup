@@ -9,6 +9,7 @@ Prerequisites
 - vimproc
 - cmake
 - python
+- npm
 
 Installation
 ------------
