@@ -6,7 +6,9 @@ Prerequisites
 -------------
 - git         (duh)
 - flake8      (python pep8 checker)
-
+- vimproc
+- cmake
+- python
 
 Installation
 ------------
@@ -20,6 +22,3 @@ Installation
 Upgrading The Submodules
 ------------------------
     git submodule foreach git pull origin master
-    OR
-    git submodule init
-    git submodule update
