@@ -46,14 +46,23 @@ au CursorHold * checktime
 set smarttab
 " 1 tab == 4 spaces
 set shiftwidth=4
-
-"list of characters to highlight when displaying linebreaks
+"Round to 'shiftwidth' for "<<" and ">>"
+set shiftround
+"
+"List of characters to highlight when displaying linebreaks
 "set listchars=tab:˙»
-
-" " Linebreak on 500 characters
+"
+"Display a line in column 80 to show you where to line break.
+"if exists('+colorcolumn')
+"        set colorcolumn=80
+"else
+"        au BufWinEnter *? let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+"endif
+"
+" Linebreak on 500 characters
 " set lbr
 " set tw=500
-"
+
 set ai                        "Auto indent
 set si                        "Smart indent
 set wrap                      "Wrap lines
@@ -75,9 +84,9 @@ set lazyredraw                  " redraw only when we need to. Don't redraw whil
 set showmatch                   " highlight matching [{()}]
 set incsearch                   " search as characters are entered
 set hlsearch                    " highlight matchesset hlsearch
-"set foldenable                  " enable folding
-"set foldlevelstart=10           " open most folds by default
-"set foldnestmax=10              " 10 nested fold max
+"set foldenable                 " enable folding
+"set foldlevelstart=10          " open most folds by default
+"set foldnestmax=10             " 10 nested fold max
 
 set foldmarker={,}
 set foldmethod=marker
