@@ -67,6 +67,7 @@ set showcmd                     " show command in bottom bar
 set nocursorline                " dont highlight current line by defualt
 set nocursorcolumn              " dont highlight cursorcolumn
 
+syntax on                       " turn syntax on
 filetype plugin indent on       " load filetype-specific indent files
 
 set wildmenu                    " visual autocomplete for command menu
@@ -157,24 +158,30 @@ nnoremap <leader>- :set cursorline!<CR> :hi CursorLine cterm=bold ctermbg=DarkGr
 nnoremap <leader>_ :set cursorcolumn!<CR>
 
 "toggle insert and normal mode
-inoremap <leader><leader> <Esc>
-nnoremap <leader><leader> i
+"inoremap <leader><leader> <Esc>
+"nnoremap <leader><leader> i
 
 " manual autocomplte
 " inoremap <leader>a <C-P>
 """""""""""""""""""""""""""""""""""""""""""
 "       NORMAL MODE MAPPINGS
 """""""""""""""""""""""""""""""""""""""""""
+" It's quicker
+" Map f to y
+noremap f y
+" Map q to b
+nnoremap q b
 " Delete word backwords
 nnoremap dq dbx
-"delete from current pos till end
+" From current pos till end
 nnoremap D d$
+nnoremap Y y$
+" Grab code blocks
 nnoremap d<TAB> d%
-"map q to b
-nnoremap q b
-"map f to y its quicker
-noremap f y
 nnoremap f<TAB> y%
+" Grab lines
+nnoremap f- y^
+nnoremap d- d^
 
 "Leader mappings
 " writes to disk and quits
@@ -195,9 +202,12 @@ nnoremap <leader>l :ls<CR>
 nnoremap <leader>$ :!sh<CR>
 
 " insert mode mappings
-inoremap <leader><cr> <Esc>:wq<CR> " writes to disk and quits
-inoremap <leader>w <Esc>:w<CR>     " writes to file
-inoremap <leader>q <Esc>:q<CR>     " quits
+" writes to disk and quits
+inoremap <leader><cr> <Esc>:wq<CR>
+" writes to files
+inoremap <leader>w <Esc>:w<CR>
+" quits
+inoremap <leader>q <Esc>:q<CR>
 
 "nnoremap <leader><leader> <C-P>
 "whitespace highlight
