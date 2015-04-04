@@ -150,3 +150,30 @@
 [submodule "bundle/vim-multiple-cursors"]
 	path = bundle/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors.git
+[submodule "InterestingPlugins/switch.vim"]
+	path = InterestingPlugins/switch.vim
+	url = https://github.com/AndrewRadev/switch.vim.git
+[submodule "InterestingPlugins/vim-easyoperator-line"]
+	path = InterestingPlugins/vim-easyoperator-line
+	url = https://github.com/haya14busa/vim-easyoperator-line.git
+[submodule "InterestingPlugins/vim-easyoperator-phrase"]
+	path = InterestingPlugins/vim-easyoperator-phrase
+	url = https://github.com/haya14busa/vim-easyoperator-phrase.git
+[submodule "InterestingPlugins/vim-ctrlspace"]
+	path = InterestingPlugins/vim-ctrlspace
+	url = https://github.com/szw/vim-ctrlspace.git
+[submodule "InterestingPlugins/vim-repeat"]
+	path = InterestingPlugins/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "InterestingPlugins/vim-abolish"]
+	path = InterestingPlugins/vim-abolish
+	url = https://github.com/tpope/vim-abolish.git
+[submodule "InterestingPlugins/vim-speeddating"]
+	path = InterestingPlugins/vim-speeddating
+	url = https://github.com/tpope/vim-speeddating.git
+[submodule "InterestingPlugins/vim-easyclip"]
+	path = InterestingPlugins/vim-easyclip
+	url = https://github.com/svermeulen/vim-easyclip.git
+[submodule "InterestingPlugins/vim-vinegar"]
+	path = InterestingPlugins/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
