@@ -175,22 +175,12 @@ nnoremap <leader>_ :set cursorcolumn!<CR>
 """""""""""""""""""""""""""""""""""""""""""
 "       NORMAL MODE MAPPINGS
 """""""""""""""""""""""""""""""""""""""""""
-" It's quicker
-" Map f to y
-noremap f y
-" Map q to b
-nnoremap q b
-" Delete word backwords
-nnoremap dq dbx
 " From current pos till end
 nnoremap D d$
 nnoremap Y y$
 " Grab code blocks
 nnoremap d<TAB> d%
-nnoremap f<TAB> y%
-" Grab lines
-nnoremap f- y^
-nnoremap d- d^
+nnoremap y<TAB> y%
 
 "Leader mappings
 " writes to disk and quits
