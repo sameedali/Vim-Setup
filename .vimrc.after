@@ -175,12 +175,13 @@ nnoremap <leader>_ :set cursorcolumn!<CR>
 """""""""""""""""""""""""""""""""""""""""""
 "       NORMAL MODE MAPPINGS
 """""""""""""""""""""""""""""""""""""""""""
+" Delete word backwords
+nnoremap dq dbx
 " From current pos till end
 nnoremap D d$
 nnoremap Y y$
 " Grab code blocks
 nnoremap d<TAB> d%
-nnoremap y<TAB> y%
 
 "Leader mappings
 " writes to disk and quits
@@ -199,7 +200,8 @@ nnoremap <leader>[ :bp<CR>
 nnoremap <leader>l :ls<CR>
 " open a shell alternate :  : VimShellTab / : VimShellCreate (same buffer creates a tab)
 nnoremap <leader>$ :!sh<CR>
-
+" easy motion
+" nnoremap <leader>/ <Plug>(easymotion-w)
 " insert mode mappings
 " writes to disk and quits
 inoremap <leader><cr> <Esc>:wq<CR>
@@ -350,9 +352,10 @@ let g:syntastic_mode_map = { "mode": "active", "active_filetypes": [], "passive_
 let g:syntastic_java_javac_delete_output=0  " Don't delete .class files after syntax check.
 set wildignore+=*.class
 
-let g:pad_dir = "~/.vim/tmp"
+let g:pad#dir = "~/.vim/tmp"
 " linters
 let g:linters_extra = []
+
 "NERDTREE TABS
 let g:NERDTreeDirArrows = 0
 "define indent guide level
