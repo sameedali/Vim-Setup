@@ -14,10 +14,6 @@
     path = bundle/vim-pad
     url = https://github.com/fmoralesc/vim-pad.git
     ignore = dirty
-[submodule "bundle/vim-cute-python"]
-    path = bundle/vim-cute-python
-    url = https://github.com/ehamberg/vim-cute-python.git
-    ignore = dirty
 [submodule "bundle/vim-fugitive"]
     path = bundle/vim-fugitive
     url = https://github.com/tpope/vim-fugitive.git
