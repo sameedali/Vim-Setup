@@ -175,8 +175,6 @@ nnoremap <leader>_ :set cursorcolumn!<CR>
 """""""""""""""""""""""""""""""""""""""""""
 "       NORMAL MODE MAPPINGS
 """""""""""""""""""""""""""""""""""""""""""
-" Delete word backwords
-nnoremap dq dbx
 " From current pos till end
 nnoremap D d$
 nnoremap Y y$
@@ -199,44 +197,47 @@ nnoremap <leader>[ :bp<CR>
 " list buffers
 nnoremap <leader>l :ls<CR>
 " open a shell alternate :  : VimShellTab / : VimShellCreate (same buffer creates a tab)
-nnoremap <leader>$ :!sh<CR>
-" easy motion
-" nnoremap <leader>/ <Plug>(easymotion-w)
+nnoremap <leader>! :!sh<CR>
+" Easy Motion
+" nnoremap <leader><leader> <Plug>(easymotion-w)
+""""""""""""""""""""""""""""""
 " insert mode mappings
-" writes to disk and quits
+""""""""""""""""""""""""""""""
+"
+" Writes to disk and quits
 inoremap <leader><cr> <Esc>:wq<CR>
-" writes to files
+" Writes to files
 inoremap <leader>w <Esc>:w<CR>
-" quits
+" Quits
 inoremap <leader>q <Esc>:q<CR>
 
-"nnoremap <leader><leader> <C-P>
-"whitespace highlight
+" Whitespace highlight
 nnoremap <Leader>wn :match ExtraWhitespace /^\s* \s*\<Bar>\s\+$/<CR>
 nnoremap <Leader>wf :match<CR>
 
-" show line breaks
+" Toggle show line breaks
 nmap <silent> <leader>lb :set nolist!<CR>
 
-"alternate colorscheme
+" Alternate colorscheme
 noremap <leader>c1 :colorscheme iceberg<CR>
 
-"rebuild Ctags (mnemonic RC -> CR -> <cr>)
+" Rebuild Ctags (mnemonic RC -> CR -> <cr>)
 nnoremap <leader>ctr :silent !myctags >/dev/null 2>&1 &<cr>:redraw!<cr>
-"indent Guides;
+" Indent Guides;
 nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
-"list navigation
-"nnoremap <left>  :cprev<cr>zvzz
-"nnoremap <right> :cnext<cr>zvzz
+" list navigation
+" nnoremap <left>  :cprev<cr>zvzz
+" nnoremap <right> :cnext<cr>zvzz
 nnoremap <leader>? :lprev<cr>zvzz "list previous
 nnoremap <leader>/ :lnext<cr>zvzz "list next
-"fix whitespace
-"bufexplorer
+"Fix whitespace
+" nnoremap <leader>fw :Fixwhitespace<CR>
+"mini buff-explorer
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-"               plugin Key bindings
+"               Plugin Key Bindings
 """""""""""""""""""""""""""""""""""""""""""""""""
-"gundo set
+" Gundo set
 nnoremap <F2> :GundoToggle<CR>
 
 " NERDTree
@@ -247,9 +248,10 @@ nmap <F4> :TagbarToggle<CR>
 
 " NERDTree tabs toggle
 " noremap <F5> :NERDTreeTabsToggle<CR>
+"
 " git gutter toggle
 " noremap <F6> :GitGutterSignsToggle<CR>
-
+"
 " Close the current buffer
 " map <leader>bd :Bclose<cr>
 "
@@ -363,7 +365,21 @@ let g:indent_guides_indent_levels = 20
 "let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 "let g:indent_guides_default_mapping = 0
-
+"
+"
+"""""""""""""""""""""""""""""""""""""""""""""""
+"            Auto-Completion                  "
+"""""""""""""""""""""""""""""""""""""""""""""""
+"
+"TERN completion
+"setlocal omnifunc=tern#Complete
+"call tern#Enable()
+"setlocal omnifunc=tern#Complete
+"call tern#Enable()
+"runtime after/ftplugin/javascript_tern.vim
+"set ft=html.javascript_tern
+"set ft=html.javascript
+"
 """""""""""""""""""""""""""""""""""""""""""""""
 "                   Snippets
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -375,7 +391,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-"snipMate
+"SnipMate
 "let g:snipMate = {}
 "let g:snipMate.scope_aliases = {}
 "let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
@@ -395,9 +411,9 @@ au Syntax * RainbowParenthesesLoadBraces
 autocmd VimEnter * MBEClose
 autocmd BufWinEnter * MBEClose
 """""""""""""""""""""""""""""""""""""""""""""""
-" ruler tabs
+" Ruler tabs
 """""""""""""""""""""""""""""""""""""""""""""""
-"set ruler
+"Set ruler
 set statusline+=%#warningmsg#
 set ruler
 set statusline+=%*
