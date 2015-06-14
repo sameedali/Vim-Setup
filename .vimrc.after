@@ -152,7 +152,7 @@ set splitright
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " KEY MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""
-
+" setlocal leader=","
 " Smart way to move between windows
 "map <C-j> <C-W>j    " Down
 "map <C-k> <C-W>k    " Up
@@ -345,11 +345,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-"new option added
 let g:syntastic_enable_signs = 1
 let g:syntastic_auto_jump = 0
 let g:syntastic_java_checker = 'javac'
-let g:syntastic_mode_map = { "mode": "active", "active_filetypes": [], "passive_filetypes": ['java', 'html', 'rst']}
+let g:syntastic_mode_map = { "mode": "passive", "active_filetypes": [], "passive_filetypes": ['java', 'html', 'rst', 'python']}
 
 let g:syntastic_java_javac_delete_output=0  " Don't delete .class files after syntax check.
 set wildignore+=*.class
