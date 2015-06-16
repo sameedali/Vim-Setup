@@ -8,8 +8,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " " Sets how many lines of history VIM has to remember
 set history=70
-"relative numbers
-set relativenumber
+set relativenumber " relative line numebers
 set wrap
 set nocompatible
 set title           " show title in console title bar"
@@ -17,7 +16,6 @@ set ttyfast         " smoother chanes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Using Pathogen
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-"using pathogen
 execute pathogen#infect()
 call pathogen#helptags()
 
@@ -30,7 +28,7 @@ set t_vb=
 set tm=500
 
 
-" continue where left off
+" Continue where left off
 au BufWinLeave ?* mkview
 au BufWinEnter ?* silent loadview
 
@@ -63,29 +61,29 @@ set shiftround
 " set lbr
 " set tw=500
 
-set ai                        "Auto indent
-set si                        "Smart indent
-set wrap                      "Wrap lines
+set ai                          " Auto indent
+set si                          " Smart indent
+set wrap                        " Wrap lines
 
-set tabstop=4                   " number of visual spaces per TAB
-set softtabstop=4               " number of spaces in tab when editing
+set tabstop=4                   " Number of visual spaces per TAB
+set softtabstop=4               " Number of spaces in tab when editing
 
-set expandtab                   " use spaces inseted of tabs
-set showcmd                     " show command in bottom bar
+set expandtab                   " Use spaces inseted of tabs
+set showcmd                     " Show command in bottom bar
 
-set nocursorline                " dont highlight current line by defualt
-set nocursorcolumn              " dont highlight cursorcolumn
+set nocursorline                " Dont highlight current line by defualt
+set nocursorcolumn              " Dont highlight cursorcolumn
 
-syntax on                       " turn syntax on
-filetype plugin indent on       " load filetype-specific indent files
+syntax on                       " Turn syntax on
+filetype plugin indent on       " Load filetype-specific indent files
 
-set wildmenu                    " visual autocomplete for command menu
-set lazyredraw                  " redraw only when we need to. Don't redraw while executing macros (good performance config)
-set showmatch                   " highlight matching [{()}]
-set incsearch                   " search as characters are entered
-set hlsearch                    " highlight matchesset hlsearch
-"set foldenable                 " enable folding
-"set foldlevelstart=10          " open most folds by default
+set wildmenu                    " Visual autocomplete for command menu
+set lazyredraw                  " Redraw only when we need to. Don't redraw while executing macros (good performance config)
+set showmatch                   " Highlight matching [{()}]
+set incsearch                   " Search as characters are entered
+set hlsearch                    " Highlight matchesset hlsearch
+"set foldenable                 " Enable folding
+"set foldlevelstart=10          " Open most folds by default
 "set foldnestmax=10             " 10 nested fold max
 
 set foldmarker={,}
@@ -203,7 +201,6 @@ nnoremap <leader>! :!sh<CR>
 """"""""""""""""""""""""""""""
 " insert mode mappings
 """"""""""""""""""""""""""""""
-"
 " Writes to disk and quits
 inoremap <leader><cr> <Esc>:wq<CR>
 " Writes to files
@@ -243,22 +240,22 @@ nnoremap <F2> :GundoToggle<CR>
 " NERDTree
 noremap <F3> :NERDTreeToggle<CR>
 
-"tagbar
+" Tagbar
 nmap <F4> :TagbarToggle<CR>
 
 " NERDTree tabs toggle
 " noremap <F5> :NERDTreeTabsToggle<CR>
 "
-" git gutter toggle
+" Git gutter toggle
 " noremap <F6> :GitGutterSignsToggle<CR>
 "
 " Close the current buffer
 " map <leader>bd :Bclose<cr>
 "
-"Close all the buffers
+" Close all the buffers
 " map <leader>ba :1,1000 bd!<cr>
 "
-"Useful mappings for managing tabs
+" Useful mappings for managing tabs
 " map <leader>tn :tabnew<cr>
 " map <leader>to :tabonly<cr>
 " map <leader>tc :tabclose<cr>
@@ -294,7 +291,7 @@ nmap <F4> :TagbarToggle<CR>
 "    set viminfo^=%)"')"'
 "
 """""""""""""""""""""""""""""""""""""""""""""""
-" vim airline
+"                vim airline
 """""""""""""""""""""""""""""""""""""""""""""""
 
 "vim airline
@@ -305,13 +302,9 @@ set laststatus=2
 let g:airline_section_b = '%{strftime("%c")}'
 let g:airline_section_y = 'Buffer Number: %{bufnr("%")}}'
 let g:airline_theme = 'wombat'
-
-" run command after all plugins load | set theme to wombat
-"autocmd VimEnter * AirlineTheme wombat
-
-
+"
 """""""""""""""""""""""""""""""""""""""""""""""
-" colorscheme
+"               colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""
 "solarized
 "let g:solarized_termcolors=256
@@ -327,9 +320,6 @@ colorscheme flatcolor
 
 " start NERDTree on startup
 " let g:nerdtree_tabs_open_on_console_startup=1
-
-" auto tab completion by delimitMate
-
 """""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -364,12 +354,9 @@ let g:indent_guides_indent_levels = 20
 "let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 "let g:indent_guides_default_mapping = 0
-"
-"
 """""""""""""""""""""""""""""""""""""""""""""""
 "            Auto-Completion                  "
 """""""""""""""""""""""""""""""""""""""""""""""
-"
 "TERN completion
 "setlocal omnifunc=tern#Complete
 "call tern#Enable()
@@ -395,7 +382,6 @@ let g:UltiSnipsEditSplit="vertical"
 "let g:snipMate.scope_aliases = {}
 "let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 "end
-
 """""""""""""""""""""""""""""""""""""""""""""
 "           RainbowParentheses
 """""""""""""""""""""""""""""""""""""""""""""
@@ -404,11 +390,6 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-""""""""""""""""""""""""""""""""""""""""""""""""
-"               VIM Mini Buffer Explorer
-""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd VimEnter * MBEClose
-autocmd BufWinEnter * MBEClose
 """""""""""""""""""""""""""""""""""""""""""""""
 " Ruler tabs
 """""""""""""""""""""""""""""""""""""""""""""""
