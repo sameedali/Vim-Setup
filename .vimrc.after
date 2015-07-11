@@ -97,8 +97,8 @@ set foldlevelstart=1
 "set foldclose=all               " close all folds
 
 set synmaxcol=2048              " Syntax coloring too-long lines is slow
-                                " Complete like most shells – longest substring first, then iterate through
-                                " full matches
+" Complete like most shells – longest substring first, then iterate through
+" full matches
 set wildmode=longest:full,full  " Show partial commands in the last line of the screen
 set showcmd
 set noswapfile                  " don't keep swp files
@@ -222,11 +222,21 @@ noremap <leader>c1 :colorscheme iceberg<CR>
 nnoremap <leader>ctr :silent !myctags >/dev/null 2>&1 &<cr>:redraw!<cr>
 " Indent Guides;
 nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
+nmap <silent> <Leader>i gg=G
+
+" move to the next change
+nnoremap <silent> <Leader>> :GitGutterNextHunk<cr>
+nnoremap <silent> <Leader>< :GitGutterPrevHunk<cr>
+
+" open vimrc
+nmap <silent> <Leader>r :vsp ~/.vimrc<cr>
+
 " list navigation
 " nnoremap <left>  :cprev<cr>zvzz
 " nnoremap <right> :cnext<cr>zvzz
 nnoremap <leader>? :lprev<cr>zvzz "list previous
 nnoremap <leader>/ :lnext<cr>zvzz "list next
+
 "Fix whitespace
 " nnoremap <leader>fw :Fixwhitespace<CR>
 "mini buff-explorer
@@ -248,6 +258,7 @@ nmap <F4> :TagbarToggle<CR>
 "
 " Git gutter toggle
 " noremap <F6> :GitGutterSignsToggle<CR>
+let g:gitgutter_max_signs = 1000
 "
 " Close the current buffer
 " map <leader>bd :Bclose<cr>
