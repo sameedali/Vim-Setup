@@ -8,9 +8,9 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " " Sets how many lines of history VIM has to remember
 set history=70
-set relativenumber " relative line numebers
+set relativenumber  " relative line numebers
 set wrap
-set nocompatible
+set nocompatible    " vim not vi
 set title           " show title in console title bar"
 set ttyfast         " smoother chanes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -18,7 +18,6 @@ set ttyfast         " smoother chanes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 execute pathogen#infect()
 call pathogen#helptags()
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " No annoying sound on errors
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -26,7 +25,6 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
-
 
 " Continue where left off
 au BufWinLeave ?* mkview
@@ -46,16 +44,16 @@ set smarttab
 set shiftwidth=4
 "Round to 'shiftwidth' for "<<" and ">>"
 set shiftround
-"
+
 "List of characters to highlight when displaying linebreaks
 "set listchars=tab:˙»
 "
 "Display a line in column 80 to show you where to line break.
-"if exists('+colorcolumn')
-"        set colorcolumn=80
+if exists('+colorcolumn')
+    set colorcolumn=80
 "else
 "        au BufWinEnter *? let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-"endif
+endif
 "
 " Linebreak on 500 characters
 " set lbr
@@ -118,7 +116,6 @@ set mat=2
 " Add a bit extra margin to the left
 " set foldcolumn=1
 
-
 " Set extra options when running in GUI mode
 " if has("gui_running")
 "   set guioptions-=T
@@ -126,7 +123,6 @@ set mat=2
 set t_Co=256
 "   set guitablabel=%M\ %t
 " endif
-"
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -134,6 +130,7 @@ set ffs=unix,dos,mac
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
+" set directories
 set undodir=~/.vim/tmp/undo//     " undo files
 set backupdir=~/.vim/tmp/backup// " backups
 set directory=~/.vim/tmp/swap//   " swap files"
@@ -146,7 +143,6 @@ set splitright
 " if has('mouse')
 "   set mouse=a
 "   endif
-
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " KEY MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -167,19 +163,18 @@ nnoremap <leader>_ :set cursorcolumn!<CR>
 "toggle insert and normal mode
 "inoremap <leader><leader> <Esc>
 "nnoremap <leader><leader> i
-
-" manual autocomplte
-" inoremap <leader>a <C-P>
 """""""""""""""""""""""""""""""""""""""""""
 "       NORMAL MODE MAPPINGS
 """""""""""""""""""""""""""""""""""""""""""
 " From current pos till end
 nnoremap D d$
 nnoremap Y y$
+
 " Grab code blocks
 nnoremap d<TAB> d%
+nnoremap y<TAB> y%
 
-"Leader mappings
+" Leader mappings
 " writes to disk and quits
 nnoremap <leader><cr> :wq<CR>
 " writes to file
@@ -198,19 +193,24 @@ nnoremap <leader>l :ls<CR>
 nnoremap <leader>! :!sh<CR>
 " Easy Motion
 " nnoremap <leader><leader> <Plug>(easymotion-w)
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 " insert mode mappings
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Writes to disk and quits
 inoremap <leader><cr> <Esc>:wq<CR>
+
 " Writes to files
 inoremap <leader>w <Esc>:w<CR>
+
 " Quits
 inoremap <leader>q <Esc>:q<CR>
 
 " Whitespace highlight
 nnoremap <Leader>wn :match ExtraWhitespace /^\s* \s*\<Bar>\s\+$/<CR>
 nnoremap <Leader>wf :match<CR>
+"Fix whitespace
+nnoremap <leader>fw :Fixwhitespace<CR>
 
 " Toggle show line breaks
 nmap <silent> <leader>lb :set nolist!<CR>
@@ -222,13 +222,16 @@ noremap <leader>c1 :colorscheme iceberg<CR>
 nnoremap <leader>ctr :silent !myctags >/dev/null 2>&1 &<cr>:redraw!<cr>
 " Indent Guides;
 nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
-nmap <silent> <Leader>i gg=G
+nmap <silent> <Leader>in gg=G
 
-" move to the next change
+" Toggle paste
+nnoremap <silent> <Leader>p :set nopaste!<cr>
+
+" Move to the next change
 nnoremap <silent> <Leader>> :GitGutterNextHunk<cr>
 nnoremap <silent> <Leader>< :GitGutterPrevHunk<cr>
 
-" open vimrc
+" Open vimrc
 nmap <silent> <Leader>r :vsp ~/.vimrc<cr>
 
 " list navigation
@@ -237,29 +240,27 @@ nmap <silent> <Leader>r :vsp ~/.vimrc<cr>
 nnoremap <leader>? :lprev<cr>zvzz "list previous
 nnoremap <leader>/ :lnext<cr>zvzz "list next
 
-"Fix whitespace
-" nnoremap <leader>fw :Fixwhitespace<CR>
-"mini buff-explorer
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
+" Remove the Windows ^M - when the encodings gets messed up
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "               Plugin Key Bindings
-"""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gundo set
 nnoremap <F2> :GundoToggle<CR>
 
 " NERDTree
-noremap <F3> :NERDTreeToggle<CR>
+nnoremap <F3> :NERDTreeToggle<CR>
 
 " Tagbar
-nmap <F4> :TagbarToggle<CR>
+nnoremap <F4> :TagbarToggle<CR>
 
 " NERDTree tabs toggle
 " noremap <F5> :NERDTreeTabsToggle<CR>
-"
+
 " Git gutter toggle
 " noremap <F6> :GitGutterSignsToggle<CR>
 let g:gitgutter_max_signs = 1000
-"
+
 " Close the current buffer
 " map <leader>bd :Bclose<cr>
 "
@@ -304,9 +305,9 @@ let g:gitgutter_max_signs = 1000
 """""""""""""""""""""""""""""""""""""""""""""""
 "                vim airline
 """""""""""""""""""""""""""""""""""""""""""""""
-
-"vim airline
-let g:airline#extensions#tabline#enabled = 1
+" vim airline
+" let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#syntastic#enabled=1
 
 "show airline everytime
 set laststatus=2
@@ -334,7 +335,6 @@ colorscheme flatcolor
 """""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
 """""""""""""""""""""""""""""""""""""""""""""""
-"Syntastic
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:syntastic_cpp_compiler_options = '-std=c++0x'
@@ -350,11 +350,41 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_auto_jump = 0
 let g:syntastic_java_checker = 'javac'
 let g:syntastic_mode_map = { "mode": "passive", "active_filetypes": [], "passive_filetypes": ['java', 'html', 'rst', 'python']}
-
 let g:syntastic_java_javac_delete_output=0  " Don't delete .class files after syntax check.
+
+" Syntastic errors.
+map <F5> :Errors<cr>
+map <leader>? :lprev<cr>
+map <leader>/ :lnext<cr>
+
 set wildignore+=*.class
 
+"" Set up ctags.
+"let Tlist_Ctags_Cmd = "/usr/bin/env ctags"
+"let Tlist_WinWidth = 50
+"map <F4> :TlistToggle<cr>
+"map <F5> :!/usr/bin/env ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
+"
+"" Set up delimit-mate.
+"let delimitMate_matchpairs = "(:),[:],{:}"
+"let delimitMate_quotes = "\" ' `"
+"let delimitMate_nesting_quotes = ['"', "'", "`"]
+"
+"" Enable all the things.
+"let delimitMate_expand_cr = 1
+"let delimitMate_expand_space = 1
+"let delimitMate_jump_expansion = 1
+"let delimitMate_smart_quotes = 1
+"let delimitMate_balance_matchpairs = 1
+"
+"" Easier tab management.
+"map <leader>n :tabprev<cr>
+"map <leader>m :tabnext<cr>
+"map <leader>tn :tabnew<cr>
+"map <leader>td :tabclose<cr>
+
 let g:pad#dir = "~/.vim/tmp"
+
 " linters
 let g:linters_extra = []
 
@@ -368,31 +398,39 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 """""""""""""""""""""""""""""""""""""""""""""""
 "            Auto-Completion                  "
 """""""""""""""""""""""""""""""""""""""""""""""
-"TERN completion
-"setlocal omnifunc=tern#Complete
-"call tern#Enable()
-"setlocal omnifunc=tern#Complete
-"call tern#Enable()
-"runtime after/ftplugin/javascript_tern.vim
-"set ft=html.javascript_tern
-"set ft=html.javascript
-"
+" TERN completion
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+" setlocal omnifunc=tern#Complete
+" call tern#Enable()
+" set omnifunc=syntaxcomplete#Complete
+" call tern#Enable()
+" runtime after/ftplugin/javascript_tern.vim
+" set ft=html.javascript_tern
+" set ft=html.javascript
 """""""""""""""""""""""""""""""""""""""""""""""
 "                   Snippets
 """""""""""""""""""""""""""""""""""""""""""""""
-"+++++++++++++++++  Snippets ++++++++++++++++++
 "Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-"If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsExpandTrigger="<C-J>"
+let g:UltiSnipsJumpForwardTrigger="<C-J>"
+let g:UltiSnipsJumpBackwardTrigger="<C-K>"
+" If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
 "SnipMate
 "let g:snipMate = {}
 "let g:snipMate.scope_aliases = {}
 "let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
-"end
 """""""""""""""""""""""""""""""""""""""""""""
 "           RainbowParentheses
 """""""""""""""""""""""""""""""""""""""""""""
@@ -451,12 +489,9 @@ set statusline+=%*
 " map <leader>sa zg
 " map <leader>s? z=
 "
-"
 " """"""""""""""""""""""""""""""""""""""""""""""""""
 " " => Misc
 " """"""""""""""""""""""""""""""""""""""""""""""""""
-" " Remove the Windows ^M - when the encodings gets messed up
-" noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 "
 " " Quickly open a buffer for scribble
 " map <leader>q :e ~/buffer<cr>
@@ -466,21 +501,12 @@ set statusline+=%*
 "
 " " Toggle paste mode on and off
 " map <leader>pp :setlocal paste!<cr>]
-"
-"
-"
-"
-"
-"
+
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 " Important:
-" "       This requries that you install https://github.com/amix/vimrc !
-" "
-" """""""""""""""""""""""""""""""""""""""""""
-"
-"
+" This requries that you install https://github.com/amix/vimrc !
 " """"""""""""""""""""
 " " => Load pathogen paths
 " """"""""""""""""""""
@@ -503,7 +529,6 @@ set statusline+=%*
 " """"""""""""""""""""
 " let MRU_Max_Entries = 400
 " map <leader>f :MRU<CR>
-"
 "
 " """"""""""""""""""""
 " " => YankRing
@@ -534,20 +559,17 @@ set statusline+=%*
 " " Enable all functions in all modes
 " let g:user_zen_mode='a'
 "
-"
 " """"""""""""""""""""""""
 " " => snipMate (beside <TAB> support <CTRL-j>)
 " """""""""""""""""""""""""
 " ino <c-j> <c-r>=snipMate#TriggerSnippet()<cr>
 " snor <c-j> <esc>i<right><c-r>=snipMate#TriggerSnippet()<cr>
 "
-"
 " """"""""""""""""""""""""
 " " => Vim grep
 " """""""""""""""""""""""""
 " let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
 " set grepprg=/bin/grep\ -nH
-"
 "
 " """""""""""""""""""""""""""""""""""""""""""""""""""
 " " => Nerd Tree
@@ -556,12 +578,10 @@ set statusline+=%*
 " map <leader>nb :NERDTreeFromBookmark
 " map <leader>nf :NERDTreeFind<cr>
 "
-"
 " """""""""""""""""""""""""""""""""""""""""""""""""""
 " " => vim-multiple-cursors
 " """""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:multi_cursor_next_key="\<C-s>"
-"
 "
 " """""""""""""""""""""""""""""""""""""""""""""""""""
 " " => surround.vim config
@@ -569,7 +589,6 @@ set statusline+=%*
 " """""""""""""""""""""""""""""""""""""""""""""""""""
 " vmap Si S(i_<esc>f)
 " au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
-"
 "
 " """""""""""""""""""""""""""""""""""""""""""""""""""
 " " => vim-airline config (force color)
