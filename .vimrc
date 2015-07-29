@@ -51,11 +51,11 @@ set shiftround
 "set listchars=tab:˙»
 "
 "Display a line in column 80 to show you where to line break.
-"if exists('+colorcolumn')
-"    set colorcolumn=80
+if exists('+colorcolumn')
+    set colorcolumn=80
 "else
 "        au BufWinEnter *? let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-"endif
+endif
 "
 " Linebreak on 500 characters
 " set lbr
@@ -244,13 +244,6 @@ nnoremap <leader>/ :lnext<cr>zvzz "list next
 
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               make
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType python nnoremap <leader>e :! python %
-autocmd FileType html nnoremap <leader>e :! firefox %
-autocmd FileType c nnoremap <leader>e :!make %
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "               Plugin Key Bindings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
