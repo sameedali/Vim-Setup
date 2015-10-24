@@ -6,7 +6,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-" " Sets how many lines of history VIM has to remember
+" Sets how many lines of history VIM has to remember
 set history=70
 set relativenumber  " relative line numebers
 set wrap
@@ -15,6 +15,10 @@ set nomodeline      " disable modeline
 set modelines=0     " disable modeline
 set title           " show title in console title bar"
 set ttyfast         " smoother chanes
+
+" Title for tmux -- disable if performance issues
+" autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window 'vim | " . expand("%:t") . "'")
+" autocmd VimLeave * call system("tmux rename-window 'bash'")
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Using Pathogen
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -32,7 +36,8 @@ set tm=500
 au BufWinLeave ?* mkview
 au BufWinEnter ?* silent loadview
 
-" Check file change every 4 seconds ('CursorHold') and reload the buffer upon detecting change
+" Check file change every 4 seconds ('CursorHold')
+" and reload the buffer upon detecting change
 set autoread
 au CursorHold * checktime
 
@@ -51,11 +56,11 @@ set shiftround
 "set listchars=tab:˙»
 "
 "Display a line in column 80 to show you where to line break.
-if exists('+colorcolumn')
-    set colorcolumn=80
+"if exists('+colorcolumn')
+"    set colorcolumn=80
 "else
 "        au BufWinEnter *? let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
+"endif
 "
 " Linebreak on 500 characters
 " set lbr
@@ -78,10 +83,14 @@ syntax on                       " Turn syntax on
 filetype plugin indent on       " Load filetype-specific indent files
 
 set wildmenu                    " Visual autocomplete for command menu
-set lazyredraw                  " Redraw only when we need to. Don't redraw while executing macros (good performance config)
+set lazyredraw                  " Redraw only when we need to.
+                                " Don't redraw while executing macros
+                                " (good performance config)
+
 set showmatch                   " Highlight matching [{()}]
 set incsearch                   " Search as characters are entered
 set hlsearch                    " Highlight matchesset hlsearch
+
 "set foldenable                 " Enable folding
 "set foldlevelstart=10          " Open most folds by default
 "set foldnestmax=10             " 10 nested fold max
@@ -145,6 +154,8 @@ set splitright
 " if has('mouse')
 "   set mouse=a
 "   endif
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " KEY MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -162,9 +173,9 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <leader>- :set cursorline!<CR> :hi CursorLine cterm=bold ctermbg=DarkGray ctermfg=Green<CR>
 nnoremap <leader>_ :set cursorcolumn!<CR>
 
-"toggle insert and normal mode
-"inoremap <leader><leader> <Esc>
-"nnoremap <leader><leader> i
+" toggle insert and normal mode
+" inoremap <leader><leader> <Esc>
+" nnoremap <leader><leader> i
 """""""""""""""""""""""""""""""""""""""""""
 "       NORMAL MODE MAPPINGS
 """""""""""""""""""""""""""""""""""""""""""
@@ -172,7 +183,7 @@ nnoremap <leader>_ :set cursorcolumn!<CR>
 nnoremap D d$
 nnoremap Y y$
 
-" Grab code blocks
+" Grab code blocks in parenthesis
 nnoremap d<TAB> d%
 nnoremap y<TAB> y%
 
@@ -189,8 +200,16 @@ nnoremap <leader>Q :qa<CR>
 nnoremap <leader>] :bn<CR>
 " prev buffer
 nnoremap <leader>[ :bp<CR>
+" next tab
+nnoremap <leader>} :tabn<CR>
+" prev tab
+nnoremap <leader>{ :tabp<CR>
 " list buffers
 nnoremap <leader>l :ls<CR>
+" list tabs
+nnoremap <leader>L :tabs<CR>
+" format tabs
+nnoremap <leader><tab> :retab<CR>
 " open a shell alternate :  : VimShellTab / : VimShellCreate (same buffer creates a tab)
 nnoremap <leader>! :!sh<CR>
 " Easy Motion
@@ -213,6 +232,7 @@ nnoremap <Leader>wn :match ExtraWhitespace /^\s* \s*\<Bar>\s\+$/<CR>
 nnoremap <Leader>wf :match<CR>
 "Fix whitespace
 nnoremap <leader>fw :Fixwhitespace<CR>
+nnoremap <leader>ff :set nofoldenable!<CR>
 
 " Toggle show line breaks
 nmap <silent> <leader>lb :set nolist!<CR>
@@ -222,9 +242,9 @@ noremap <leader>c1 :colorscheme iceberg<CR>
 
 " Rebuild Ctags (mnemonic RC -> CR -> <cr>)
 nnoremap <leader>ctr :silent !myctags >/dev/null 2>&1 &<cr>:redraw!<cr>
+
 " Indent Guides;
 nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
-nmap <silent> <Leader>in gg=G
 
 " Toggle paste
 nnoremap <silent> <Leader>p :set nopaste!<cr>
@@ -244,6 +264,13 @@ nnoremap <leader>/ :lnext<cr>zvzz "list next
 
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               make
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType python nnoremap <leader>e :! python %
+autocmd FileType c nnoremap <leader>e :!make %
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "               Plugin Key Bindings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -316,7 +343,7 @@ set laststatus=2
 let g:airline_section_b = '%{strftime("%c")}'
 let g:airline_section_y = 'Buffer Number: %{bufnr("%")}}'
 let g:airline_theme = 'wombat'
-"
+
 """""""""""""""""""""""""""""""""""""""""""""""
 "               colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -412,6 +439,7 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+
 " setlocal omnifunc=tern#Complete
 " call tern#Enable()
 " set omnifunc=syntaxcomplete#Complete
@@ -419,6 +447,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 " runtime after/ftplugin/javascript_tern.vim
 " set ft=html.javascript_tern
 " set ft=html.javascript
+
 """""""""""""""""""""""""""""""""""""""""""""""
 "                   Snippets
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -433,6 +462,7 @@ let g:UltiSnipsEditSplit="vertical"
 "let g:snipMate = {}
 "let g:snipMate.scope_aliases = {}
 "let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
+
 """""""""""""""""""""""""""""""""""""""""""""
 "           RainbowParentheses
 """""""""""""""""""""""""""""""""""""""""""""
@@ -449,6 +479,18 @@ set statusline+=%#warningmsg#
 set ruler
 set statusline+=%*
 
+
+" """"""""""""""""""""""""""""""""""""""""""
+" " => Spell checking
+" """"""""""""""""""""""""""""""""""""""""""
+" " Pressing ,ss will toggle and untoggle spell checking
+" map <leader>ss :setlocal spell!<cr>
+" 
+" " Shortcuts using <leader>
+" map <leader>sn ]s
+" map <leader>sp [s
+" map <leader>sa zg
+" map <leader>s? z=
 
 """"""""""""""""""""""""""""""""""""""""""
 " => Ack searching and cope displaying
@@ -479,18 +521,7 @@ set statusline+=%*
 " map <leader>n :cn<cr>
 " map <leader>p :cp<cr>
 "
-" """"""""""""""""""""""""""""""""""""""""""
-" " => Spell checking
-" """"""""""""""""""""""""""""""""""""""""""
-" " Pressing ,ss will toggle and untoggle spell checking
-" map <leader>ss :setlocal spell!<cr>
-"
-" " Shortcuts using <leader>
-" map <leader>sn ]s
-" map <leader>sp [s
-" map <leader>sa zg
-" map <leader>s? z=
-"
+
 " """"""""""""""""""""""""""""""""""""""""""""""""""
 " " => Misc
 " """"""""""""""""""""""""""""""""""""""""""""""""""
