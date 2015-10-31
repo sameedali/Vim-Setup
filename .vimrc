@@ -15,6 +15,7 @@ set nomodeline      " disable modeline
 set modelines=0     " disable modeline
 set title           " show title in console title bar"
 set ttyfast         " smoother chanes
+" set paste           " trun on paste mode
 
 " Title for tmux -- disable if performance issues
 " autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window 'vim | " . expand("%:t") . "'")
