@@ -11,8 +11,8 @@ set history=70
 set relativenumber  " relative line numebers
 set wrap
 set nocompatible    " vim not vi
-set nomodeline      " disable modeline
 set modelines=0     " disable modeline
+set nomodeline      " disable modeline
 set title           " show title in console title bar"
 set ttyfast         " smoother chanes
 " set paste           " trun on paste mode
@@ -96,11 +96,12 @@ set hlsearch                    " Highlight matchesset hlsearch
 "set foldlevelstart=10          " Open most folds by default
 "set foldnestmax=10             " 10 nested fold max
 
-set foldmarker={,}
-set foldmethod=marker
-set foldtext=substitute(getline(v:foldstart),'{.*','{...}',)
-set foldcolumn=4
-set foldlevelstart=1
+"set foldmarker={,}
+"set foldmethod=marker
+"set foldtext=substitute(getline(v:foldstart),'{.*','{...}',)
+"set foldcolumn=4
+"set foldlevelstart=1
+set nofoldenable
 
 "set foldmethod=syntax           " fold on basis of indent
 "set foldlevel=1                 " level of folding
