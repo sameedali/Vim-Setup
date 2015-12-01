@@ -27,9 +27,7 @@ execute pathogen#infect()
 call pathogen#helptags()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " No annoying sound on errors
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set noerrorbells
-set novisualbell
+"""""""""""""""""""""""""""""""""""""""""""""""""""""" set noerrorbells set novisualbell
 set t_vb=
 set tm=500
 
@@ -170,7 +168,6 @@ set splitright
 
 " on press Space remove highlighting
 nnoremap <leader><space> :nohlsearch<CR>
-
 " toggle cursor line
 nnoremap <leader>- :set cursorline!<CR> :hi CursorLine cterm=bold ctermbg=DarkGray ctermfg=Green<CR>
 nnoremap <leader>_ :set cursorcolumn!<CR>
@@ -342,11 +339,12 @@ let g:gitgutter_max_signs = 1000
 " vim airline
 " let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#syntastic#enabled=1
+" let g:airline_powerline_fonts=1
 
 "show airline everytime
 set laststatus=2
 let g:airline_section_b = '%{strftime("%c")}'
-let g:airline_section_y = 'Buffer Number: %{bufnr("%")}}'
+let g:airline_section_y = 'Buffer Number: %{bufnr("%")}'
 let g:airline_theme = 'wombat'
 
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -386,6 +384,18 @@ let g:syntastic_java_checker = 'javac'
 let g:syntastic_mode_map = { "mode": "passive", "active_filetypes": [], "passive_filetypes": ['java', 'html', 'rst', 'python']}
 let g:syntastic_java_javac_delete_output=0  " Don't delete .class files after syntax check.
 
+let g:syntastic_enable_signs = 1
+let g:syntastic_auto_jump = 1
+let g:syntastic_stl_ormat = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+
+" Syntax Checkers
+let g:syntastic_python_checkers=['pyflakes']
+let g:syntastic_javascript_checkers = ['jslint']
+let g:syntastic_css_checkers = ['csslint']
+" let g:syntastic_html_checkers = ['w3']
+" let g:syntastic_php_checkers = ['phpcs']
+" let g:syntastic_php_phpcs_args="--report=csv --standard=WordPress"
+
 " Syntastic errors.
 map <F5> :Errors<cr>
 map <leader>? :lprev<cr>
@@ -394,11 +404,11 @@ map <leader>/ :lnext<cr>
 set wildignore+=*.class
 
 "" Set up ctags.
-"let Tlist_Ctags_Cmd = "/usr/bin/env ctags"
-"let Tlist_WinWidth = 50
-"map <F4> :TlistToggle<cr>
-"map <F5> :!/usr/bin/env ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
-"
+" let Tlist_Ctags_Cmd = "/usr/bin/env ctags"
+" let Tlist_WinWidth = 50
+" map <F4> :TlistToggle<cr>
+" map <F5> :!/usr/bin/env ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
+
 "" Set up delimit-mate.
 "let delimitMate_matchpairs = "(:),[:],{:}"
 "let delimitMate_quotes = "\" ' `"
@@ -452,6 +462,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 " runtime after/ftplugin/javascript_tern.vim
 " set ft=html.javascript_tern
 " set ft=html.javascript
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
 """""""""""""""""""""""""""""""""""""""""""""""
 "                   Snippets
@@ -480,17 +491,17 @@ au Syntax * RainbowParenthesesLoadBraces
 " Ruler tabs
 """""""""""""""""""""""""""""""""""""""""""""""
 "Set ruler
-set statusline+=%#warningmsg#
 set ruler
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 
 " """"""""""""""""""""""""""""""""""""""""""
 " " => Spell checking
 " """"""""""""""""""""""""""""""""""""""""""
 " " Pressing ,ss will toggle and untoggle spell checking
 " map <leader>ss :setlocal spell!<cr>
-" 
+"
 " " Shortcuts using <leader>
 " map <leader>sn ]s
 " map <leader>sp [s
@@ -640,9 +651,3 @@ set statusline+=%*
 " let g:goyo_margin_top = 2
 " let g:goyo_margin_bottom = 2
 " nnoremap <silent> <leader>z :Goyo<cr>
-"
-"
-" """""""""""""""""""""""""""""""""""""""""""""""""""
-" " => Syntastic (syntax checker)
-" """""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:syntastic_python_checkers=['pyflakes']))

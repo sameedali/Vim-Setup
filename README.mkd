@@ -10,6 +10,9 @@ Prerequisites
 - cmake
 - python
 - npm
+- jslint
+- csslint
+- exubernt-c-tags
 
 Installation
 ------------

@@ -1,3 +1,4 @@
 .netrwhist
 vimrc_secrets
 view/
+.ycm_extra_conf.pyc
