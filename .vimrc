@@ -230,7 +230,7 @@ inoremap <leader>q <Esc>:q<CR>
 nnoremap <Leader>wn :match ExtraWhitespace /^\s* \s*\<Bar>\s\+$/<CR>
 nnoremap <Leader>wf :match<CR>
 "Fix whitespace
-nnoremap <leader>fw :Fixwhitespace<CR>
+nnoremap <leader>fw :FixWhitespace<CR>
 nnoremap <leader>ff :set nofoldenable!<CR>
 
 " Toggle show line breaks
@@ -291,6 +291,9 @@ nnoremap <F4> :TagbarToggle<CR>
 " Git gutter toggle
 " noremap <F6> :GitGutterSignsToggle<CR>
 let g:gitgutter_max_signs = 1000
+
+" search visually highlighted text
+vnoremap // y/<C-R>"<CR>
 
 " Close the current buffer
 " map <leader>bd :Bclose<cr>
