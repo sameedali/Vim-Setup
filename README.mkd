@@ -20,7 +20,7 @@ Installation
     cd ~
     # clone the repo
     git clone https://github.com/sameedali/Vim-Setup.git ~/.vim
-    git checkout vimplug
+    # git checkout vimplug -- master by default
     # install vim plug
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     # links the vimrc file
