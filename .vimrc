@@ -4,6 +4,118 @@
 "   VIMRC FILE BEGIN
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Make sure you use single quotes
+" Plug 'junegunn/seoul256.vim'
+" Plug 'junegunn/vim-easy-align'
+"
+" Plug 'https://github.com/scrooloose/nerdtree.git'
+"
+" Group dependencies, vim-snippets depends on ultisnips
+""Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+"
+" On-demand loading
+"Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+"Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+"
+" Using git URL
+"Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+"
+" Using a non-master branch
+"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+"
+" Plugin options
+"Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+"
+" Plugin outside ~/.vim/plugged with post-update hook
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"
+" Unmanaged plugin (manually installed and updated)
+"Plug '~/my-prototype-plugin'
+
+"" MY PLUGINS
+" Plug 'https://github.com/tpope/vim-pathogen.git'
+" Plug 'https://github.com/altercation/vim-colors-solarized'
+" Plug 'https://github.com/fmoralesc/vim-pad.git'
+" Plug 'https://github.com/myusuf3/numbers.vim.git'
+" Plug 'https://github.com/jlanzarotta/bufexplorer.git'
+" Plug 'https://github.com/nathanaelkane/vim-indent-guides.git'
+" Plug 'https://github.com/vim-scripts/AutoComplPop.git'
+" Plug 'https://github.com/kien/ctrlp.vim.git'
+" Plug 'https://github.com/fholgado/minibufexpl.vim.git'
+" Plug 'https://github.com/Shougo/unite.vim.git'
+" Plug 'https://github.com/altercation/vim-colors-solarized'
+" Plug 'https://github.com/Shougo/vimshell.vim.git'
+" Plug 'https://github.com/ervandew/supertab.git'
+
+call plug#begin('~/.vim/bundle')
+Plug 'https://github.com/scrooloose/nerdtree.git' , { 'on':  'NERDTreeToggle' }
+Plug 'https://github.com/tpope/vim-fugitive.git'
+
+Plug 'https://github.com/Lokaltog/powerline.git'
+Plug 'https://github.com/flazz/vim-colorschemes.git'
+
+Plug 'https://github.com/vim-scripts/Align'
+Plug 'https://github.com/chriskempson/base16-vim.git'
+
+Plug 'https://github.com/Raimondi/delimitMate'
+Plug 'http://github.com/sjl/gundo.vim.git'
+Plug 'https://bitbucket.org/tim_heap/linters.vim'
+
+Plug 'https://github.com/scrooloose/nerdcommenter'
+Plug 'https://github.com/scrooloose/syntastic.git'
+
+Plug 'https://github.com/majutsushi/tagbar'
+Plug 'https://github.com/tomtom/tlib_vim.git'
+Plug 'https://github.com/SirVer/ultisnips.git' | Plug 'https://github.com/honza/vim-snippets.git'
+Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
+
+Plug 'https://github.com/bling/vim-airline'
+Plug 'https://github.com/airblade/vim-gitgutter'
+
+Plug 'https://github.com/jistr/vim-nerdtree-tabs'
+
+Plug 'https://github.com/Shougo/vimproc.vim.git'
+
+Plug 'https://github.com/tpope/vim-surround.git'
+Plug 'https://github.com/bronson/vim-trailing-whitespace'
+Plug 'https://github.com/terryma/vim-expand-region.git'
+
+Plug 'https://github.com/guns/vim-clojure-static.git', { 'for': 'clojure' }
+Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'for': 'c' }
+
+Plug 'https://github.com/marijnh/tern_for_vim.git', { 'for': 'javascript' }
+
+Plug 'https://github.com/skammer/vim-css-color.git', { 'for': 'html' }
+
+Plug 'https://github.com/terryma/vim-multiple-cursors.git'
+Plug 'https://github.com/Lokaltog/vim-easymotion.git'
+Plug 'https://github.com/luochen1990/rainbow.git'
+
+Plug 'https://github.com/mattn/emmet-vim.git', { 'for': 'html' }
+
+" Loaded when clojure file is opened
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+" Multiple file types
+Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme'] }
+
+" Multiple commands
+" Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity']
+" }
+"
+" On-demand loading on both conditions
+" Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
+
+" Code to execute when the plugin is loaded on demand
+Plug 'Valloric/YouCompleteMe', { 'for': 'cpp' }
+autocmd! User YouCompleteMe call youcompleteme#Enable()
+
+" Add plugins to &runtimepath
+call plug#end()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
@@ -16,6 +128,8 @@ set nomodeline      " disable modeline
 set title           " show title in console title bar"
 set ttyfast         " smoother chanes
 " set paste           " trun on paste mode
+" set exrc          " load local vimrc
+" set secure          " for sex dont load all options change in rc file
 
 " Title for tmux -- disable if performance issues
 " autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window 'vim | " . expand("%:t") . "'")
@@ -23,8 +137,8 @@ set ttyfast         " smoother chanes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Using Pathogen
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-execute pathogen#infect()
-call pathogen#helptags()
+"execute pathogen#infect()
+"call pathogen#helptags()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " No annoying sound on errors
 """""""""""""""""""""""""""""""""""""""""""""""""""""" set noerrorbells set novisualbell
@@ -466,6 +580,10 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 " set ft=html.javascript_tern
 " set ft=html.javascript
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
+" emmet
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
 """""""""""""""""""""""""""""""""""""""""""""""
 "                   Snippets

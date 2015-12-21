@@ -18,11 +18,17 @@ Prerequisites
 Installation
 ------------
     cd ~
+    # clone the repo
     git clone https://github.com/sameedali/Vim-Setup.git ~/.vim
+    git checkout vimplug
+    # install vim plug
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    # links the vimrc file
     ln -s ~/.vim/vimrc ~/.vimrc
     cd ~/.vim
     git submodule update --init
-    mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+    # do :PlugInstall
+    vi +PlugInstall +qall
 
 Upgrading The Submodules
 ------------------------
