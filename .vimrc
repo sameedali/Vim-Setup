@@ -95,6 +95,8 @@ Plug 'https://github.com/luochen1990/rainbow.git'
 
 Plug 'https://github.com/mattn/emmet-vim.git', { 'for': 'html' }
 
+Plug 'https://github.com/vim-scripts/AutoComplPop.git'
+
 " Loaded when clojure file is opened
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 

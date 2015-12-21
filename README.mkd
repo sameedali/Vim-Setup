@@ -29,6 +29,12 @@ Installation
     git submodule update --init
     # do :PlugInstall
     vi +PlugInstall +qall
+    # install YCM
+    cd ~/.vim/bundle/YouCompleteMe/
+    python install.py
+    cd ~/.vim/bundle/vimproc.vim/
+    make
+    cd ~
 
 Upgrading The Submodules
 ------------------------
