@@ -83,7 +83,7 @@ Plug 'https://github.com/bronson/vim-trailing-whitespace'
 Plug 'https://github.com/terryma/vim-expand-region.git'
 
 Plug 'https://github.com/guns/vim-clojure-static.git', { 'for': 'clojure' }
-Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'for': 'c' }
+Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'for': ['c', 'cpp'] }
 
 Plug 'https://github.com/marijnh/tern_for_vim.git', { 'for': 'javascript' }
 
@@ -114,8 +114,36 @@ Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme'] }
 Plug 'Valloric/YouCompleteMe', { 'for': 'cpp' }
 autocmd! User YouCompleteMe call youcompleteme#Enable()
 
+Plug 'https://github.com/junegunn/limelight.vim'
+autocmd! User Limelight Limelight 0.4
+
 " Add plugins to &runtimepath
 call plug#end()
+
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.7
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 1
+
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -388,6 +416,7 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType python nnoremap <leader>e :! python %
 autocmd FileType c nnoremap <leader>e :!make %
+autocmd FileType clojure nnoremap <leader>E :%Eval<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "               Plugin Key Bindings
