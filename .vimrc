@@ -3,8 +3,9 @@
 "
 "   VIMRC FILE BEGIN
 "
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins
+" => Vim Plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " Make sure you use single quotes
 " Plug 'junegunn/seoul256.vim'
@@ -50,6 +51,7 @@
 " Plug 'https://github.com/ervandew/supertab.git'
 
 call plug#begin('~/.vim/bundle')
+
 Plug 'https://github.com/scrooloose/nerdtree.git' , { 'on':  'NERDTreeToggle' }
 Plug 'https://github.com/tpope/vim-fugitive.git'
 
@@ -85,9 +87,13 @@ Plug 'https://github.com/terryma/vim-expand-region.git'
 Plug 'https://github.com/guns/vim-clojure-static.git', { 'for': 'clojure' }
 Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'for': ['c', 'cpp'] }
 
+" Code to execute when the plugin is loaded on demand
+" Plug 'Valloric/YouCompleteMe', { 'for': 'cpp' }
+autocmd! User YouCompleteMe call youcompleteme#Enable()
+
 Plug 'https://github.com/marijnh/tern_for_vim.git', { 'for': 'javascript' }
 
-Plug 'https://github.com/skammer/vim-css-color.git', { 'for': 'html' }
+Plug 'https://github.com/skammer/vim-css-color.git', { 'for': ['html', 'css'] }
 
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 Plug 'https://github.com/Lokaltog/vim-easymotion.git'
@@ -103,47 +109,27 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 " Multiple file types
 Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme'] }
 
+Plug 'fatih/vim-go', { 'for' : ['go'] }
+
 " Multiple commands
-" Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity']
-" }
-"
+" Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
+
 " On-demand loading on both conditions
 " Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
 
-" Code to execute when the plugin is loaded on demand
-Plug 'Valloric/YouCompleteMe', { 'for': 'cpp' }
-autocmd! User YouCompleteMe call youcompleteme#Enable()
-
-Plug 'https://github.com/junegunn/limelight.vim'
-autocmd! User Limelight Limelight 0.4
+" Plug 'https://github.com/junegunn/limelight.vim'
+" autocmd! User Limelight Limelight 0.4
 
 " Add plugins to &runtimepath
 call plug#end()
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
-
-" Color name (:help gui-colors) or RGB color
-let g:limelight_conceal_guifg = 'DarkGray'
-let g:limelight_conceal_guifg = '#777777'
-
-" Default: 0.5
-let g:limelight_default_coefficient = 0.7
-
-" Number of preceding/following paragraphs to include (default: 0)
-let g:limelight_paragraph_span = 1
-
-" Beginning/end of paragraph
-"   When there's no empty line between the paragraphs
-"   and each paragraph starts with indentation
-let g:limelight_bop = '^\s'
-let g:limelight_eop = '\ze\n^\s'
-
-" Highlighting priority (default: 10)
-"   Set it to -1 not to overrule hlsearch
-let g:limelight_priority = -1
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => If using Pathogen
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"execute pathogen#infect()
+"call pathogen#helptags()
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -157,23 +143,21 @@ set modelines=0     " disable modeline
 set nomodeline      " disable modeline
 set title           " show title in console title bar"
 set ttyfast         " smoother chanes
-" set paste           " trun on paste mode
+" set paste         " trun on paste mode
 " set exrc          " load local vimrc
-" set secure          " for sex dont load all options change in rc file
+" set secure exrc   " for sec dont load all options change in rc file
 
 " Title for tmux -- disable if performance issues
 " autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window 'vim | " . expand("%:t") . "'")
 " autocmd VimLeave * call system("tmux rename-window 'bash'")
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Using Pathogen
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"execute pathogen#infect()
-"call pathogen#helptags()
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" No annoying sound on errors
-"""""""""""""""""""""""""""""""""""""""""""""""""""""" set noerrorbells set novisualbell
+
+" no annoying visual bells or sounds
+set noerrorbells
+set novisualbell
 set t_vb=
 set tm=500
+" Linebreak on 500 characters
+" set lbr
 
 " Continue where left off
 au BufWinLeave ?* mkview
@@ -187,27 +171,23 @@ au CursorHold * checktime
 " Disable replace mode
 " nnoremap R <Esc>
 
-" => Text, tab and indent related
+" Text, tab and indent related
 " Be smart when using tabs
 set smarttab
 " 1 tab == 4 spaces
 set shiftwidth=4
-"Round to 'shiftwidth' for "<<" and ">>"
+" Round to 'shiftwidth' for "<<" and ">>"
 set shiftround
 
-"List of characters to highlight when displaying linebreaks
-"set listchars=tab:˙»
+" " List of characters to highlight when displaying linebreaks
+" set listchars=tab:˙»
 "
-"Display a line in column 80 to show you where to line break.
-"if exists('+colorcolumn')
-"    set colorcolumn=80
-"else
-"        au BufWinEnter *? let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-"endif
-"
-" Linebreak on 500 characters
-" set lbr
-" set tw=500
+" " Display a line in column 80 to show you where to line break.
+" if exists('+colorcolumn')
+"     set colorcolumn=80
+" else
+"     au BufWinEnter *? let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+" endif
 
 set ai                          " Auto indent
 set si                          " Smart indent
@@ -301,14 +281,14 @@ set splitright
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" KEY MAPPINGS
+"=> KEY MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " setlocal leader=","
 " Smart way to move between windows
 "map <C-j> <C-W>j    " Down
 "map <C-k> <C-W>k    " Up
-"map <C-h> <C-W>h    " right
-"map <C-l> <C-W>l    " left
+"map <C-h> <C-W>h    " Right
+"map <C-l> <C-W>l    " Left
 
 " on press Space remove highlighting
 nnoremap <leader><space> :nohlsearch<CR>
@@ -320,7 +300,7 @@ nnoremap <leader>_ :set cursorcolumn!<CR>
 " inoremap <leader><leader> <Esc>
 " nnoremap <leader><leader> i
 """""""""""""""""""""""""""""""""""""""""""
-"       NORMAL MODE MAPPINGS
+" => NORMAL MODE MAPPINGS
 """""""""""""""""""""""""""""""""""""""""""
 " From current pos till end
 nnoremap D d$
@@ -357,8 +337,9 @@ nnoremap <leader><tab> :retab<CR>
 nnoremap <leader>! :!sh<CR>
 " Easy Motion
 " nnoremap <leader><leader> <Plug>(easymotion-w)
+
 """""""""""""""""""""""""""""""""""""""""""""""""""
-" insert mode mappings
+" INSERT MODE MAPPINGS
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Writes to disk and quits
@@ -373,6 +354,7 @@ inoremap <leader>q <Esc>:q<CR>
 " Whitespace highlight
 nnoremap <Leader>wn :match ExtraWhitespace /^\s* \s*\<Bar>\s\+$/<CR>
 nnoremap <Leader>wf :match<CR>
+
 "Fix whitespace
 nnoremap <leader>fw :FixWhitespace<CR>
 nnoremap <leader>ff :set nofoldenable!<CR>
@@ -411,15 +393,19 @@ nnoremap <leader>/ :lnext<cr>zvzz "list next
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
+" Convert to hex
+nnoremap <leader>hh :%!xxd<CR>
+nnoremap <leader>h<space> :%!xxd -r<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               make
+" => MAKE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType python nnoremap <leader>e :! python %
 autocmd FileType c nnoremap <leader>e :!make %
 autocmd FileType clojure nnoremap <leader>E :%Eval<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"               Plugin Key Bindings
+" => Plugin Key Bindings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gundo set
 nnoremap <F2> :GundoToggle<CR>
@@ -480,9 +466,9 @@ vnoremap // y/<C-R>"<CR>
 "       \ endif
 " Remember info about open buffers on close
 "    set viminfo^=%)"')"'
-"
+
 """""""""""""""""""""""""""""""""""""""""""""""
-"                vim airline
+" => Vim Airline
 """""""""""""""""""""""""""""""""""""""""""""""
 " vim airline
 " let g:airline#extensions#tabline#enabled = 1
@@ -496,7 +482,7 @@ let g:airline_section_y = 'Buffer Number: %{bufnr("%")}'
 let g:airline_theme = 'wombat'
 
 """""""""""""""""""""""""""""""""""""""""""""""
-"               colorscheme
+" => Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""
 "solarized
 "let g:solarized_termcolors=256
@@ -512,8 +498,9 @@ colorscheme flatcolor
 
 " start NERDTree on startup
 " let g:nerdtree_tabs_open_on_console_startup=1
+
 """""""""""""""""""""""""""""""""""""""""""""""
-" Syntastic
+" => Syntastic
 """""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
@@ -575,7 +562,7 @@ set wildignore+=*.class
 "map <leader>tn :tabnew<cr>
 "map <leader>td :tabclose<cr>
 
-let g:pad#dir = "~/.vim/tmp"
+" let g:pad#dir = "~/.vim/tmp"
 
 " linters
 let g:linters_extra = []
@@ -587,6 +574,7 @@ let g:indent_guides_indent_levels = 20
 "let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 "let g:indent_guides_default_mapping = 0
+
 """""""""""""""""""""""""""""""""""""""""""""""
 "            Auto-Completion                  "
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -660,6 +648,33 @@ let g:rainbow_active=1
 "    \   }
 "    \}
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Limelight config
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.7
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 1
+
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
+
 """""""""""""""""""""""""""""""""""""""""""""""
 " Ruler tabs
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -724,6 +739,8 @@ set statusline+=%*
 " " Toggle paste mode on and off
 " map <leader>pp :setlocal paste!<cr>]
 
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+" shameless refrence lol
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""
