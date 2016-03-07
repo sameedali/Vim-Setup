@@ -14,6 +14,7 @@ Prerequisites
 - jslint
 - csslint
 - exubernt-c-tags
+- superp
 
 Installation
 ------------
