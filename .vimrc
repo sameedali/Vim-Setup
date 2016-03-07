@@ -57,9 +57,9 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 
 Plug 'https://github.com/Lokaltog/powerline.git'
 Plug 'https://github.com/flazz/vim-colorschemes.git'
+Plug 'https://github.com/chriskempson/base16-vim.git'
 
 Plug 'https://github.com/vim-scripts/Align'
-Plug 'https://github.com/chriskempson/base16-vim.git'
 
 Plug 'https://github.com/Raimondi/delimitMate'
 Plug 'http://github.com/sjl/gundo.vim.git'
@@ -306,6 +306,10 @@ nnoremap <leader>_ :set cursorcolumn!<CR>
 nnoremap D d$
 nnoremap Y y$
 
+" Find all files in all non-dot directories starting in the working directory.
+" Fuzzy select one of those. Open the selected file with :e.
+nnoremap <leader><C-f> :call SelectaCommand("find * -type f", "", ":e")<cr>
+
 " Grab code blocks in parenthesis
 nnoremap d<TAB> d%
 nnoremap y<TAB> y%
@@ -363,7 +367,7 @@ nnoremap <leader>ff :set nofoldenable!<CR>
 nmap <silent> <leader>lb :set nolist!<CR>
 
 " Alternate colorscheme
-noremap <leader>c1 :colorscheme iceberg<CR>
+noremap <leader>c1 :colorscheme iceberg<CR>:set background=light<CR>
 
 " Rebuild Ctags (mnemonic RC -> CR -> <cr>)
 nnoremap <leader>ctr :silent !myctags >/dev/null 2>&1 &<cr>:redraw!<cr>
@@ -495,7 +499,9 @@ let g:airline_theme = 'wombat'
 "colorscheme 256-grayvim
 "colorscheme desert256
 colorscheme flatcolor
+"colorscheme 256-grayvim
 
+" let base16colorspace=256
 " start NERDTree on startup
 " let g:nerdtree_tabs_open_on_console_startup=1
 
@@ -841,3 +847,21 @@ set statusline+=%*
 " let g:goyo_margin_top = 2
 " let g:goyo_margin_bottom = 2
 " nnoremap <silent> <leader>z :Goyo<cr>
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""
+" " => Custom functions
+" """""""""""""""""""""""""""""""""""""""""""""""""""
+" Run a given vim command on the results of fuzzy selecting from a given shell
+" command. See usage below.
+function! SelectaCommand(choice_command, selecta_args, vim_command)
+  try
+    let selection = system(a:choice_command . " | selecta " . a:selecta_args)
+  catch /Vim:Interrupt/
+    " Swallow the ^C so that the redraw below happens; otherwise there will be
+    " leftovers from selecta on the screen
+    redraw!
+    return
+  endtry
+  redraw!
+  exec a:vim_command . " " . selection
+endfunction
