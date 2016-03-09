@@ -49,6 +49,7 @@
 " Plug 'https://github.com/altercation/vim-colors-solarized'
 " Plug 'https://github.com/Shougo/vimshell.vim.git'
 " Plug 'https://github.com/ervandew/supertab.git'
+" Plug 'https://github.com/altercation/vim-colors-solarized.git'
 
 call plug#begin('~/.vim/bundle')
 
@@ -489,17 +490,18 @@ let g:airline_theme = 'wombat'
 " => Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""
 "solarized
-"let g:solarized_termcolors=256
-"set background=dark
-"colorscheme solarized
+" syntax enable
+" set background=dark
+" let g:solarized_termcolors=256
+" colorscheme solarized
 "end solarized
 
 "colorscheme base16-default
 "colorscheme darkzen
 "colorscheme 256-grayvim
 "colorscheme desert256
-colorscheme flatcolor
-"colorscheme 256-grayvim
+"colorscheme flatcolor
+colorscheme 256-grayvim
 
 " let base16colorspace=256
 " start NERDTree on startup
