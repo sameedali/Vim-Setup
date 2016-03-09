@@ -283,6 +283,12 @@ set splitright
 "   endif
 
 
+"" Key timeouts
+"set timeout           " for mappings
+"set timeoutlen=1000   " default value
+"set ttimeout          " for key codes
+"set ttimeoutlen=10    " unnoticeable small value
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 "=> KEY MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""
