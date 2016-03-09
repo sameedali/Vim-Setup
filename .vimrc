@@ -510,9 +510,9 @@ let g:airline_theme = 'wombat'
 "colorscheme 256-grayvim
 "colorscheme desert256
 "colorscheme flatcolor
-" colorscheme 256-grayvim
+colorscheme 256-grayvim
 
-colorscheme janah
+" colorscheme janah
 
 " let base16colorspace=256
 " start NERDTree on startup
