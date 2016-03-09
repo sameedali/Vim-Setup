@@ -59,6 +59,7 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/Lokaltog/powerline.git'
 Plug 'https://github.com/flazz/vim-colorschemes.git'
 Plug 'https://github.com/chriskempson/base16-vim.git'
+Plug 'https://github.com/mhinz/vim-janah.git'
 
 Plug 'https://github.com/vim-scripts/Align'
 
@@ -237,6 +238,7 @@ set wildmode=longest:full,full  " Show partial commands in the last line of the 
 set showcmd
 set noswapfile                  " don't keep swp files
 set nobackup                    " no backups
+set nowritebackup                    " no backups
 set nowb                        " nobackups
 
 "" Use case insensitive search, except when using capital letters
@@ -286,13 +288,16 @@ set splitright
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " setlocal leader=","
 " Smart way to move between windows
-"map <C-j> <C-W>j    " Down
-"map <C-k> <C-W>k    " Up
-"map <C-h> <C-W>h    " Right
-"map <C-l> <C-W>l    " Left
+" nnoremap <C-j> <C-W>j    " Down
+" nnoremap <C-k> <C-W>k    " Up
+" nnoremap <C-h> <C-W>h    " Right
+" nnoremap <C-l> <C-W>l    " Left
 
 " on press Space remove highlighting
 nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <expr> n  'Nn'[v:searchforward]
+nnoremap <expr> N  'nN'[v:searchforward]
+
 " toggle cursor line
 nnoremap <leader>- :set cursorline!<CR> :hi CursorLine cterm=bold ctermbg=DarkGray ctermfg=Green<CR>
 nnoremap <leader>_ :set cursorcolumn!<CR>
@@ -365,7 +370,7 @@ nnoremap <leader>fw :FixWhitespace<CR>
 nnoremap <leader>ff :set nofoldenable!<CR>
 
 " Toggle show line breaks
-nmap <silent> <leader>lb :set nolist!<CR>
+nnoremap <silent> <leader>lb :set nolist!<CR>
 
 " Alternate colorscheme
 noremap <leader>c1 :colorscheme iceberg<CR>:set background=light<CR>
@@ -374,7 +379,7 @@ noremap <leader>c1 :colorscheme iceberg<CR>:set background=light<CR>
 nnoremap <leader>ctr :silent !myctags >/dev/null 2>&1 &<cr>:redraw!<cr>
 
 " Indent Guides;
-nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
+nnoremap <silent> <Leader>ig <Plug>IndentGuidesToggle
 
 " Toggle paste
 nnoremap <silent> <Leader>p :set nopaste!<cr>
@@ -384,7 +389,7 @@ nnoremap <silent> <Leader>> :GitGutterNextHunk<cr>
 nnoremap <silent> <Leader>< :GitGutterPrevHunk<cr>
 
 " Open vimrc
-nmap <silent> <Leader>r :vsp ~/.vimrc<cr>
+nnoremap <silent> <Leader>r :e ~/.vimrc<cr>
 
 " scroll synchroniously
 nnoremap <silent> <Leader>sb :set scrollbind<cr>
@@ -401,6 +406,10 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " Convert to hex
 nnoremap <leader>hh :%!xxd<CR>
 nnoremap <leader>h<space> :%!xxd -r<CR>
+
+" Dont lose visual selection on indent
+xnoremap <  <gv
+xnoremap >  >gv
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => MAKE
@@ -501,7 +510,9 @@ let g:airline_theme = 'wombat'
 "colorscheme 256-grayvim
 "colorscheme desert256
 "colorscheme flatcolor
-colorscheme 256-grayvim
+" colorscheme 256-grayvim
+
+colorscheme janah
 
 " let base16colorspace=256
 " start NERDTree on startup
