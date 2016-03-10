@@ -50,6 +50,8 @@
 " Plug 'https://github.com/Shougo/vimshell.vim.git'
 " Plug 'https://github.com/ervandew/supertab.git'
 " Plug 'https://github.com/altercation/vim-colors-solarized.git'
+" fast fold not configured
+" Plug 'https://github.com/Konfekt/FastFold.git'
 
 call plug#begin('~/.vim/bundle')
 
@@ -59,7 +61,6 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/Lokaltog/powerline.git'
 Plug 'https://github.com/flazz/vim-colorschemes.git'
 Plug 'https://github.com/chriskempson/base16-vim.git'
-Plug 'https://github.com/mhinz/vim-janah.git'
 
 Plug 'https://github.com/vim-scripts/Align'
 
@@ -121,6 +122,10 @@ Plug 'fatih/vim-go', { 'for' : ['go'] }
 
 " Plug 'https://github.com/junegunn/limelight.vim'
 " autocmd! User Limelight Limelight 0.4
+
+" Themes
+" Plug 'https://github.com/mhinz/vim-janah.git'
+" Plug 'morhetz/gruvbox'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -518,7 +523,10 @@ let g:airline_theme = 'wombat'
 "colorscheme flatcolor
 colorscheme 256-grayvim
 
-" colorscheme janah
+"colorscheme janah
+"let g:gruvbox_italic=1
+" let g:gruvbox_termcolors=16
+" colorscheme gruvbox
 
 " let base16colorspace=256
 " start NERDTree on startup
@@ -674,32 +682,32 @@ let g:rainbow_active=1
 "    \}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Limelight config
+"" => Limelight config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
-
-" Color name (:help gui-colors) or RGB color
-let g:limelight_conceal_guifg = 'DarkGray'
-let g:limelight_conceal_guifg = '#777777'
-
-" Default: 0.5
-let g:limelight_default_coefficient = 0.7
-
-" Number of preceding/following paragraphs to include (default: 0)
-let g:limelight_paragraph_span = 1
-
-" Beginning/end of paragraph
-"   When there's no empty line between the paragraphs
-"   and each paragraph starts with indentation
-let g:limelight_bop = '^\s'
-let g:limelight_eop = '\ze\n^\s'
-
-" Highlighting priority (default: 10)
-"   Set it to -1 not to overrule hlsearch
-let g:limelight_priority = -1
-
+"" Color name (:help cterm-colors) or ANSI code
+"let g:limelight_conceal_ctermfg = 'gray'
+"let g:limelight_conceal_ctermfg = 240
+"
+"" Color name (:help gui-colors) or RGB color
+"let g:limelight_conceal_guifg = 'DarkGray'
+"let g:limelight_conceal_guifg = '#777777'
+"
+"" Default: 0.5
+"let g:limelight_default_coefficient = 0.7
+"
+"" Number of preceding/following paragraphs to include (default: 0)
+"let g:limelight_paragraph_span = 1
+"
+"" Beginning/end of paragraph
+""   When there's no empty line between the paragraphs
+""   and each paragraph starts with indentation
+"let g:limelight_bop = '^\s'
+"let g:limelight_eop = '\ze\n^\s'
+"
+"" Highlighting priority (default: 10)
+""   Set it to -1 not to overrule hlsearch
+"let g:limelight_priority = -1
+"
 """""""""""""""""""""""""""""""""""""""""""""""
 " Ruler tabs
 """""""""""""""""""""""""""""""""""""""""""""""
