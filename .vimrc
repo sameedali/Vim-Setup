@@ -50,8 +50,13 @@
 " Plug 'https://github.com/Shougo/vimshell.vim.git'
 " Plug 'https://github.com/ervandew/supertab.git'
 " Plug 'https://github.com/altercation/vim-colors-solarized.git'
-" fast fold not configured
+" not configured -- fast fold
 " Plug 'https://github.com/Konfekt/FastFold.git'
+" not configured smart . operator . works for some plugin commands after this
+" Plug 'https://github.com/tpope/vim-repeat.git'
+" --
+" seems intersting: lib for VimL
+" https://github.com/vim-scripts/L9.git
 
 call plug#begin('~/.vim/bundle')
 
@@ -74,6 +79,7 @@ Plug 'https://github.com/scrooloose/syntastic.git'
 Plug 'https://github.com/majutsushi/tagbar'
 Plug 'https://github.com/tomtom/tlib_vim.git'
 Plug 'https://github.com/SirVer/ultisnips.git' | Plug 'https://github.com/honza/vim-snippets.git'
+" Check if it is needed by any plugin -- vim-addon-mw-utils
 Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
 
 Plug 'https://github.com/bling/vim-airline'
@@ -113,6 +119,9 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme'] }
 
 Plug 'fatih/vim-go', { 'for' : ['go'] }
+
+Plug 'https://github.com/tpope/vim-speeddating.git', { 'for' : 'org' }
+Plug 'jceb/vim-orgmode', { 'for' : 'org' }
 
 " Multiple commands
 " Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
