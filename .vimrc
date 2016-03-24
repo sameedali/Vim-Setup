@@ -188,6 +188,7 @@ au CursorHold * checktime
 " nnoremap R <Esc>
 
 " Text, tab and indent related
+" set autoindent " copy indent from previous line
 " Be smart when using tabs
 set smarttab
 " 1 tab == 4 spaces
@@ -229,11 +230,14 @@ set lazyredraw                  " Redraw only when we need to.
 set showmatch                   " Highlight matching [{()}]
 set incsearch                   " Search as characters are entered
 set hlsearch                    " Highlight matchesset hlsearch
+" set noshowmode                " don't show mode -- using airline
+" set more                      " Stop in list
 
 "set foldenable                 " Enable folding
 "set foldlevelstart=10          " Open most folds by default
 "set foldnestmax=10             " 10 nested fold max
 
+"set foldignore=                " don't ignore anything when folding
 "set foldmarker={,}
 "set foldmethod=marker
 "set foldtext=substitute(getline(v:foldstart),'{.*','{...}',)
@@ -293,9 +297,14 @@ set splitright
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 " if has('mouse')
-"   set mouse=a
-"   endif
-
+"     set mouse=a
+" endif
+"
+" " If linux then set ttymouse
+" let s:uname = system("echo -n \"$(uname)\"")
+" if !v:shell_error && s:uname == "Linux" && !has('nvim')
+"     set ttymouse=xterm
+" endif
 
 "" Key timeouts
 "set timeout           " for mappings
@@ -367,6 +376,7 @@ nnoremap <leader><tab> :retab<CR>
 nnoremap <leader>! :!sh<CR>
 " Easy Motion
 " nnoremap <leader><leader> <Plug>(easymotion-w)
+" save file as html :TOhtml
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " INSERT MODE MAPPINGS
