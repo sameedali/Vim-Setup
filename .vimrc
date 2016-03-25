@@ -63,7 +63,6 @@ call plug#begin('~/.vim/bundle')
 Plug 'https://github.com/scrooloose/nerdtree.git' , { 'on':  'NERDTreeToggle' }
 Plug 'https://github.com/tpope/vim-fugitive.git'
 
-Plug 'https://github.com/Lokaltog/powerline.git'
 Plug 'https://github.com/flazz/vim-colorschemes.git'
 Plug 'https://github.com/chriskempson/base16-vim.git'
 
@@ -82,7 +81,10 @@ Plug 'https://github.com/SirVer/ultisnips.git' | Plug 'https://github.com/honza/
 " Check if it is needed by any plugin -- vim-addon-mw-utils
 Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
 
-Plug 'https://github.com/bling/vim-airline'
+Plug 'https://github.com/vim-airline/vim-airline.git'
+Plug 'vim-airline/vim-airline-themes'
+" Plug 'https://github.com/powerline/powerline.git'
+
 Plug 'https://github.com/airblade/vim-gitgutter'
 
 Plug 'https://github.com/jistr/vim-nerdtree-tabs'

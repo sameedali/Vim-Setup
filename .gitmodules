@@ -1,4 +1,0 @@
-[submodule "extra/powerline"]
-    path = extra/powerline
-    url = https://github.com/Lokaltog/powerline.git
-    ignore = dirty
