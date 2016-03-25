@@ -99,13 +99,13 @@ Plug 'https://github.com/bronson/vim-trailing-whitespace'
 Plug 'https://github.com/terryma/vim-expand-region.git'
 
 Plug 'https://github.com/guns/vim-clojure-static.git', { 'for': 'clojure' }
-Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'for': ['c', 'cpp'] }
+Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'for': ['c', 'cpp', 'python', 'javascript'] }
 
 " Code to execute when the plugin is loaded on demand
 " Plug 'Valloric/YouCompleteMe', { 'for': 'cpp' }
 autocmd! User YouCompleteMe call youcompleteme#Enable()
 
-Plug 'https://github.com/marijnh/tern_for_vim.git', { 'for': 'javascript' }
+" Plug 'https://github.com/marijnh/tern_for_vim.git', { 'for': 'javascript' }
 
 Plug 'https://github.com/skammer/vim-css-color.git', { 'for': ['html', 'css'] }
 
@@ -662,17 +662,17 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 "            Auto-Completion                  "
 """""""""""""""""""""""""""""""""""""""""""""""
 " TERN completion
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+" autocmd FileType python set omnifunc=pythoncomplete#Complete
+" autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+" autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+" autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+" autocmd FileType c set omnifunc=ccomplete#Complete
+" autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+" autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+" autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+" autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 " setlocal omnifunc=tern#Complete
 " call tern#Enable()
