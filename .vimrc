@@ -83,6 +83,7 @@ Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
 
 Plug 'https://github.com/vim-airline/vim-airline.git'
 Plug 'vim-airline/vim-airline-themes'
+" do install as in docs in github
 " Plug 'https://github.com/powerline/powerline.git'
 
 Plug 'https://github.com/airblade/vim-gitgutter'
