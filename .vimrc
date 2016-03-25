@@ -54,6 +54,8 @@
 " Plug 'https://github.com/Konfekt/FastFold.git'
 " not configured smart . operator . works for some plugin commands after this
 " Plug 'https://github.com/tpope/vim-repeat.git'
+" syntax highlighting for a ton of languages
+" Plug 'https://github.com/sheerun/vim-polyglot.git'
 " --
 " seems intersting: lib for VimL
 " https://github.com/vim-scripts/L9.git
@@ -126,19 +128,32 @@ Plug 'fatih/vim-go', { 'for' : ['go'] }
 Plug 'https://github.com/tpope/vim-speeddating.git', { 'for' : 'org' }
 Plug 'jceb/vim-orgmode', { 'for' : 'org' }
 
+" Ruby/Rails Plugins
+" read up on these two -- for rails
+" Plug 'tpope/vim-rails'    , { 'for' : 'ruby'}
+" Plug 'tpope/vim-bundler'  , { 'for' : 'ruby'}
+
+" adds end in ruby
+Plug 'tpope/vim-endwise'  , { 'for' : 'ruby'}
+
+" maybe not needed
+"Plug 'tpope/vim-dispatch' , { 'for' : 'ruby'}
+
+" maybe not needed
+" Plug 'tpope/vim-dotenv'   , { 'for' : 'ruby'}
+
+""""""""""""""""""""""""""""""""
+" Reference
+""""""""""""""""""""""""""""""""
 " Multiple commands
 " Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
-
 " On-demand loading on both conditions
 " Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
-
 " Plug 'https://github.com/junegunn/limelight.vim'
 " autocmd! User Limelight Limelight 0.4
-
 " Themes
 " Plug 'https://github.com/mhinz/vim-janah.git'
 " Plug 'morhetz/gruvbox'
-
 " Add plugins to &runtimepath
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -149,6 +164,13 @@ call plug#end()
 "execute pathogen#infect()
 "call pathogen#helptags()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => nvim settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" if has('nvim')
+"   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" end
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -588,6 +610,9 @@ let g:syntastic_css_checkers = ['csslint']
 " let g:syntastic_html_checkers = ['w3']
 " let g:syntastic_php_checkers = ['phpcs']
 " let g:syntastic_php_phpcs_args="--report=csv --standard=WordPress"
+
+" Syntax Highlighting -- polyglot plugin
+" let g:polyglot_disabled = ['css']
 
 " Syntastic errors.
 map <F5> :Errors<cr>
