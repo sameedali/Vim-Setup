@@ -1,4 +1,4 @@
-This repo contains a modified version of https://github.com/ryanshow/vim-folder.git;
+This repo contains a modified version of [vim](https://github.com/ryanshow/vim-folder.git);
 I have only modified it to meet my development requirements.
 
 Credits to the original author.
@@ -49,7 +49,8 @@ Removing a submodule
     # or, if you want to leave it in your working tree
     git rm --cached asubmodule
 
-    But you seem to still need a:
+    # But you seem to still need a:
     rm -rf .git/modules/asubmodule
-    # and remove the entry form git adn .girsubmodules
+    # and remove the entry form git adn .gitsubmodules
+    # remove modules from .git/config if need be
 
