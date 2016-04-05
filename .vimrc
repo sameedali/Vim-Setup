@@ -190,6 +190,8 @@ set ttyfast         " smoother chanes
 " set paste         " trun on paste mode
 " set exrc          " load local vimrc
 " set secure exrc   " for sec dont load all options change in rc file
+" set clipboard=unnamedplus " use system clipboard
+" set hidden        " hides buffers insted of closing them
 
 " Title for tmux -- disable if performance issues
 " autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window 'vim | " . expand("%:t") . "'")
@@ -226,6 +228,8 @@ set smarttab
 set shiftwidth=4
 " Round to 'shiftwidth' for "<<" and ">>"
 set shiftround
+" not sure of following one
+" set copyindent    " copy the previous indentation on autoindenting
 
 " " List of characters to highlight when displaying linebreaks
 " set listchars=tab:˙»
