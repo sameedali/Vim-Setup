@@ -109,6 +109,9 @@ autocmd! User YouCompleteMe call youcompleteme#Enable()
 
 Plug 'https://github.com/skammer/vim-css-color.git', { 'for': ['html', 'css'] }
 
+" Autoload page in browser
+" Plug 'jaxbot/browserlink.vim', { 'for': ['html'] }
+
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 Plug 'https://github.com/Lokaltog/vim-easymotion.git'
 Plug 'https://github.com/luochen1990/rainbow.git'
@@ -203,6 +206,9 @@ set tm=500
 " Continue where left off
 au BufWinLeave ?* mkview
 au BufWinEnter ?* silent loadview
+
+" Don’t show the intro message when starting Vim
+set shortmess=atI
 
 " Check file change every 4 seconds ('CursorHold')
 " and reload the buffer upon detecting change
@@ -301,7 +307,7 @@ set mat=2
 " if has("gui_running")
 "   set guioptions-=T
 "   set guioptions-=e
-set t_Co=256
+"set t_Co=256
 "   set guitablabel=%M\ %t
 " endif
 
@@ -336,6 +342,11 @@ set splitright
 "set timeoutlen=1000   " default value
 "set ttimeout          " for key codes
 "set ttimeoutlen=10    " unnoticeable small value
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+"=> COMMAND MAPPINGS
+""""""""""""""""""""""""""""""""""""""""""""""""""
+cmap w!! w !sudo tee % >/dev/null
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 "=> KEY MAPPINGS
