@@ -46,10 +46,8 @@
 " Plug 'https://github.com/kien/ctrlp.vim.git'
 " Plug 'https://github.com/fholgado/minibufexpl.vim.git'
 " Plug 'https://github.com/Shougo/unite.vim.git'
-" Plug 'https://github.com/altercation/vim-colors-solarized'
 " Plug 'https://github.com/Shougo/vimshell.vim.git'
 " Plug 'https://github.com/ervandew/supertab.git'
-" Plug 'https://github.com/altercation/vim-colors-solarized.git'
 " not configured -- fast fold
 " Plug 'https://github.com/Konfekt/FastFold.git'
 " not configured smart . operator . works for some plugin commands after this
@@ -67,6 +65,7 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 
 Plug 'https://github.com/flazz/vim-colorschemes.git'
 Plug 'https://github.com/chriskempson/base16-vim.git'
+Plug 'https://github.com/altercation/vim-colors-solarized.git'
 
 Plug 'https://github.com/vim-scripts/Align'
 
@@ -80,6 +79,7 @@ Plug 'https://github.com/scrooloose/syntastic.git'
 Plug 'https://github.com/majutsushi/tagbar'
 Plug 'https://github.com/tomtom/tlib_vim.git'
 Plug 'https://github.com/SirVer/ultisnips.git' | Plug 'https://github.com/honza/vim-snippets.git'
+
 " Check if it is needed by any plugin -- vim-addon-mw-utils
 Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
 
@@ -351,6 +351,7 @@ set splitright
 "=> COMMAND MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""
 cmap w!! w !sudo tee % >/dev/null
+cmap cfd w !diff % -
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 "=> KEY MAPPINGS
@@ -566,7 +567,7 @@ let g:airline#extensions#syntastic#enabled=1
 set laststatus=2
 let g:airline_section_b = '%{strftime("%c")}'
 let g:airline_section_y = 'Buffer Number: %{bufnr("%")}'
-let g:airline_theme = 'wombat'
+let g:airline_theme = 'base16_default'
 
 """""""""""""""""""""""""""""""""""""""""""""""
 " => Colorscheme
@@ -583,7 +584,8 @@ let g:airline_theme = 'wombat'
 "colorscheme 256-grayvim
 "colorscheme desert256
 "colorscheme flatcolor
-colorscheme 256-grayvim
+"colorscheme 256-grayvim
+colorscheme 256-jungle
 
 "colorscheme janah
 "let g:gruvbox_italic=1
