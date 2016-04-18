@@ -65,7 +65,7 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 
 Plug 'https://github.com/flazz/vim-colorschemes.git'
 Plug 'https://github.com/chriskempson/base16-vim.git'
-Plug 'https://github.com/altercation/vim-colors-solarized.git'
+" Plug 'https://github.com/altercation/vim-colors-solarized.git'
 
 Plug 'https://github.com/vim-scripts/Align'
 
@@ -114,7 +114,7 @@ Plug 'https://github.com/skammer/vim-css-color.git', { 'for': ['html', 'css'] }
 
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 Plug 'https://github.com/Lokaltog/vim-easymotion.git'
-Plug 'https://github.com/luochen1990/rainbow.git'
+Plug 'https://github.com/luochen1990/rainbow.git', { 'for': 'clojure' }
 
 Plug 'https://github.com/mattn/emmet-vim.git', { 'for': 'html' }
 
@@ -142,6 +142,14 @@ Plug 'tpope/vim-endwise'  , { 'for' : 'ruby'}
 " maybe not needed
 "Plug 'tpope/vim-dispatch' , { 'for' : 'ruby'}
 
+" searching inside vim
+" Plug 'https://github.com/mileszs/ack.vim'
+" Plug 'https://github.com/rking/ag.vim'
+" Handy ] mappings
+" Plag 'git://github.com/tpope/vim-unimpaired.git'
+" window swap
+" Plug 'https://github.com/wesQ3/vim-windowswap.git'
+
 " maybe not needed
 " Plug 'tpope/vim-dotenv'   , { 'for' : 'ruby'}
 
@@ -157,6 +165,11 @@ Plug 'tpope/vim-endwise'  , { 'for' : 'ruby'}
 " Themes
 " Plug 'https://github.com/mhinz/vim-janah.git'
 " Plug 'morhetz/gruvbox'
+
+" markdown syntax
+Plug 'godlygeek/tabular',  { 'for' : 'markdown' }
+Plug 'plasticboy/vim-mar', { 'for' : 'markdown' }
+
 " Add plugins to &runtimepath
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -347,11 +360,23 @@ set splitright
 "set ttimeout          " for key codes
 "set ttimeoutlen=10    " unnoticeable small value
 
+" use Ag instead of grep if possible
+if executable('ag')
+    " Use ag over grep
+    set grepprg=ag\ --nogroup\ --nocolor
+    " set grepprg=ag\ --vimgrep\ $*
+    " set grepformat=%f:%l:%c:%m
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    " ag is fast enough that CtrlP doesn't need to cache
+    " t://github.com/tpope/vim-unimpaired.gitlet g:ctrlp_use_caching = 0
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 "=> COMMAND MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""
 cmap w!! w !sudo tee % >/dev/null
-cmap cfd w !diff % -
+cmap df w !diff % -
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 "=> KEY MAPPINGS
