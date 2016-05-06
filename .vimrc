@@ -66,6 +66,7 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/flazz/vim-colorschemes.git'
 Plug 'https://github.com/chriskempson/base16-vim.git'
 " Plug 'https://github.com/altercation/vim-colors-solarized.git'
+Plug 'whatyouhide/vim-gotham'
 
 Plug 'https://github.com/vim-scripts/Align'
 
@@ -168,7 +169,7 @@ Plug 'tpope/vim-endwise'  , { 'for' : 'ruby'}
 
 " markdown syntax
 Plug 'godlygeek/tabular',  { 'for' : 'markdown' }
-Plug 'plasticboy/vim-mar', { 'for' : 'markdown' }
+" Plug 'plasticboy/vim-mar', { 'for' : 'markdown' }
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -381,7 +382,9 @@ cmap df w !diff % -
 """"""""""""""""""""""""""""""""""""""""""""""""""
 "=> KEY MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" setlocal leader=","
+" let mapleader = "\<Space>"
+" let maplocalleader = "\\"
+" nnoremap <localleader><cr> <Esc>:wq<CR>
 " Smart way to move between windows
 " nnoremap <C-j> <C-W>j    " Down
 " nnoremap <C-k> <C-W>k    " Up
@@ -610,7 +613,9 @@ let g:airline_theme = 'base16_default'
 "colorscheme desert256
 "colorscheme flatcolor
 "colorscheme 256-grayvim
-colorscheme 256-jungle
+"colorscheme 256-jungle
+colorscheme gotham256
+let g:airline_theme = 'gotham256'
 
 "colorscheme janah
 "let g:gruvbox_italic=1
