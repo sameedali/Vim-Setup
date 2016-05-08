@@ -171,6 +171,9 @@ Plug 'tpope/vim-endwise'  , { 'for' : 'ruby'}
 Plug 'godlygeek/tabular',  { 'for' : 'markdown' }
 " Plug 'plasticboy/vim-mar', { 'for' : 'markdown' }
 
+Plug 'https://github.com/sheerun/vim-polyglot.git'
+Plug 'https://github.com/maxbrunsfeld/vim-yankstack.git'
+
 " Add plugins to &runtimepath
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -595,7 +598,7 @@ let g:airline#extensions#syntastic#enabled=1
 set laststatus=2
 let g:airline_section_b = '%{strftime("%c")}'
 let g:airline_section_y = 'Buffer Number: %{bufnr("%")}'
-let g:airline_theme = 'base16_default'
+" let g:airline_theme = 'base16_default'
 
 """""""""""""""""""""""""""""""""""""""""""""""
 " => Colorscheme
@@ -614,8 +617,8 @@ let g:airline_theme = 'base16_default'
 "colorscheme flatcolor
 "colorscheme 256-grayvim
 "colorscheme 256-jungle
-colorscheme gotham256
-let g:airline_theme = 'gotham256'
+colorscheme zenburn
+let g:airline_theme = 'zenburn'
 
 "colorscheme janah
 "let g:gruvbox_italic=1
