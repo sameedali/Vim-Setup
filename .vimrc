@@ -3,7 +3,7 @@
 "
 "   VIMRC FILE BEGIN
 "
-"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim Plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -50,11 +50,7 @@
 " Plug 'https://github.com/ervandew/supertab.git'
 " not configured -- fast fold
 " Plug 'https://github.com/Konfekt/FastFold.git'
-" not configured smart . operator . works for some plugin commands after this
-" Plug 'https://github.com/tpope/vim-repeat.git'
-" syntax highlighting for a ton of languages
-" Plug 'https://github.com/sheerun/vim-polyglot.git'
-" --
+"
 " seems intersting: lib for VimL
 " https://github.com/vim-scripts/L9.git
 
@@ -64,20 +60,21 @@ Plug 'https://github.com/scrooloose/nerdtree.git' , { 'on':  'NERDTreeToggle' }
 Plug 'https://github.com/tpope/vim-fugitive.git'
 
 Plug 'https://github.com/flazz/vim-colorschemes.git'
-Plug 'https://github.com/chriskempson/base16-vim.git'
+" Plug 'https://github.com/chriskempson/base16-vim.git'
 " Plug 'https://github.com/altercation/vim-colors-solarized.git'
-Plug 'whatyouhide/vim-gotham'
+" Plug 'whatyouhide/vim-gotham'
 
 Plug 'https://github.com/vim-scripts/Align'
 
 Plug 'https://github.com/Raimondi/delimitMate'
 Plug 'http://github.com/sjl/gundo.vim.git'
-Plug 'https://bitbucket.org/tim_heap/linters.vim'
 
-Plug 'https://github.com/scrooloose/nerdcommenter'
-Plug 'https://github.com/scrooloose/syntastic.git'
+Plug 'https://bitbucket.org/tim_heap/linters.vim', { 'for': ['c', 'cpp', 'python', 'javascript'] }
+Plug 'https://github.com/scrooloose/syntastic.git', { 'for': ['c', 'cpp', 'python', 'javascript'] }
+Plug 'https://github.com/scrooloose/nerdcommenter', { 'for': ['c', 'cpp', 'python', 'javascript'] }
 
-Plug 'https://github.com/majutsushi/tagbar'
+Plug 'https://github.com/majutsushi/tagbar', { 'for': ['c', 'cpp', 'python', 'javascript'] }
+
 Plug 'https://github.com/tomtom/tlib_vim.git'
 Plug 'https://github.com/SirVer/ultisnips.git' | Plug 'https://github.com/honza/vim-snippets.git'
 
@@ -91,19 +88,22 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'https://github.com/airblade/vim-gitgutter'
 
-Plug 'https://github.com/jistr/vim-nerdtree-tabs'
+" Plug 'https://github.com/jistr/vim-nerdtree-tabs'
 
-Plug 'https://github.com/Shougo/vimproc.vim.git'
+Plug 'https://github.com/Shougo/vimproc.vim.git', {'do': 'make'}
+
+" additional motions
+Plug 'https://github.com/wellle/targets.vim.git'
+Plug 'https://github.com/christoomey/vim-sort-motion.git'
 
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/bronson/vim-trailing-whitespace'
 Plug 'https://github.com/terryma/vim-expand-region.git'
 
 Plug 'https://github.com/guns/vim-clojure-static.git', { 'for': 'clojure' }
-Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'for': ['c', 'cpp', 'python', 'javascript'] }
 
 " Code to execute when the plugin is loaded on demand
-" Plug 'Valloric/YouCompleteMe', { 'for': 'cpp' }
+Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.py', 'for': ['c', 'cpp', 'python', 'javascript'] }
 autocmd! User YouCompleteMe call youcompleteme#Enable()
 
 " Plug 'https://github.com/marijnh/tern_for_vim.git', { 'for': 'javascript' }
@@ -115,6 +115,7 @@ Plug 'https://github.com/skammer/vim-css-color.git', { 'for': ['html', 'css'] }
 
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 Plug 'https://github.com/Lokaltog/vim-easymotion.git'
+
 Plug 'https://github.com/luochen1990/rainbow.git', { 'for': 'clojure' }
 
 Plug 'https://github.com/mattn/emmet-vim.git', { 'for': 'html' }
@@ -125,7 +126,7 @@ Plug 'https://github.com/vim-scripts/AutoComplPop.git'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Multiple file types
-Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme'] }
+Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme', 'lisp'] }
 
 Plug 'fatih/vim-go', { 'for' : ['go'] }
 
@@ -147,7 +148,7 @@ Plug 'tpope/vim-endwise'  , { 'for' : 'ruby'}
 " Plug 'https://github.com/mileszs/ack.vim'
 " Plug 'https://github.com/rking/ag.vim'
 " Handy ] mappings
-" Plag 'git://github.com/tpope/vim-unimpaired.git'
+" Plug 'git://github.com/tpope/vim-unimpaired.git'
 " window swap
 " Plug 'https://github.com/wesQ3/vim-windowswap.git'
 
@@ -171,8 +172,12 @@ Plug 'tpope/vim-endwise'  , { 'for' : 'ruby'}
 Plug 'godlygeek/tabular',  { 'for' : 'markdown' }
 " Plug 'plasticboy/vim-mar', { 'for' : 'markdown' }
 
-Plug 'https://github.com/sheerun/vim-polyglot.git'
-Plug 'https://github.com/maxbrunsfeld/vim-yankstack.git'
+" Plug 'https://github.com/sheerun/vim-polyglot.git'
+Plug 'https://github.com/maxbrunsfeld/vim-yankstack.git', {'for': ['lisp', 'clojure', 'scheme']}
+
+" experimental
+" Plug 'https://github.com/rbong/vim-vertical.git'
+" Plug 'https://github.com/tpope/vim-repeat.git'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -416,6 +421,7 @@ nnoremap Y y$
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
 nnoremap <leader><C-f> :call SelectaCommand("find * -type f", "", ":e")<cr>
+" nnoremap <leader><C-f> :call SelectaCommand("ag * -U -l -G -f", "", ":e")<cr>
 
 " Grab code blocks in parenthesis
 nnoremap d<TAB> d%
@@ -438,6 +444,13 @@ nnoremap <leader>[ :bp<CR>
 nnoremap <leader>} :tabn<CR>
 " prev tab
 nnoremap <leader>{ :tabp<CR>
+
+" tab management.
+" nnoremap <leader>tn :tabprev<cr>
+" nnoremap <leader>tm :tabnext<cr>
+" nnoremap <leader>tn :tabnew<cr>
+" nnoremap <leader>td :tabclose<cr>
+
 " list buffers
 nnoremap <leader>l :ls<CR>
 " list tabs
@@ -547,37 +560,36 @@ vnoremap // y/<C-R>"<CR>
 
 " Close the current buffer
 " map <leader>bd :Bclose<cr>
-"
+
 " Close all the buffers
 " map <leader>ba :1,1000 bd!<cr>
-"
+
 " Useful mappings for managing tabs
 " map <leader>tn :tabnew<cr>
 " map <leader>to :tabonly<cr>
 " map <leader>tc :tabclose<cr>
 " map <leader>tm :tabmove
 " map <leader>t<leader> :tabnext
-"
+
 "Let 'tl' toggle between this and the last accessed tab
 " let g:lasttab = 1
 " nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 " au TabLeave * let g:lasttab = tabpagenr()
-"
-"
+
 "Opens a new tab with the current buffer's path
 "Super useful when editing files in the same directory
 " map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-"
+
 "Switch CWD to the directory of the open buffer
 " map <leader>cd :cd %:p:h<cr>:pwd<cr>
-"
+
 "Specify the behavior when switching between buffers
 " try
 "   set switchbuf=useopen,usetab,newtab
 "     set stal=2
 "     catch
 "     endtry
-"
+
 " Return to last edit position when opening files (You want this!)
 "     autocmd BufReadPost *
 "       \ if line("'\") > 0 && line("'\") <= line("$") |
@@ -594,7 +606,7 @@ vnoremap // y/<C-R>"<CR>
 let g:airline#extensions#syntastic#enabled=1
 " let g:airline_powerline_fonts=1
 
-"show airline everytime
+" show airline everytime
 set laststatus=2
 let g:airline_section_b = '%{strftime("%c")}'
 let g:airline_section_y = 'Buffer Number: %{bufnr("%")}'
@@ -617,8 +629,9 @@ let g:airline_section_y = 'Buffer Number: %{bufnr("%")}'
 "colorscheme flatcolor
 "colorscheme 256-grayvim
 "colorscheme 256-jungle
-colorscheme zenburn
-let g:airline_theme = 'zenburn'
+"colorscheme zenburn
+colorscheme 256-grayvim
+" let g:airline_theme = 'zenburn'
 
 "colorscheme janah
 "let g:gruvbox_italic=1
@@ -689,12 +702,6 @@ set wildignore+=*.class
 "let delimitMate_smart_quotes = 1
 "let delimitMate_balance_matchpairs = 1
 "
-"" Easier tab management.
-"map <leader>n :tabprev<cr>
-"map <leader>m :tabnext<cr>
-"map <leader>tn :tabnew<cr>
-"map <leader>td :tabclose<cr>
-
 " let g:pad#dir = "~/.vim/tmp"
 
 " linters
@@ -740,14 +747,14 @@ autocmd FileType html,css EmmetInstall
 """""""""""""""""""""""""""""""""""""""""""""""
 "                   Snippets
 """""""""""""""""""""""""""""""""""""""""""""""
-"Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<C-J>"
 let g:UltiSnipsJumpForwardTrigger="<C-J>"
 let g:UltiSnipsJumpBackwardTrigger="<C-K>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-"SnipMate
+" SnipMate
 "let g:snipMate = {}
 "let g:snipMate.scope_aliases = {}
 "let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
@@ -781,37 +788,9 @@ let g:rainbow_active=1
 "    \   }
 "    \}
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => Limelight config
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Color name (:help cterm-colors) or ANSI code
-"let g:limelight_conceal_ctermfg = 'gray'
-"let g:limelight_conceal_ctermfg = 240
-"
-"" Color name (:help gui-colors) or RGB color
-"let g:limelight_conceal_guifg = 'DarkGray'
-"let g:limelight_conceal_guifg = '#777777'
-"
-"" Default: 0.5
-"let g:limelight_default_coefficient = 0.7
-"
-"" Number of preceding/following paragraphs to include (default: 0)
-"let g:limelight_paragraph_span = 1
-"
-"" Beginning/end of paragraph
-""   When there's no empty line between the paragraphs
-""   and each paragraph starts with indentation
-"let g:limelight_bop = '^\s'
-"let g:limelight_eop = '\ze\n^\s'
-"
-"" Highlighting priority (default: 10)
-""   Set it to -1 not to overrule hlsearch
-"let g:limelight_priority = -1
-"
 """""""""""""""""""""""""""""""""""""""""""""""
 " Ruler tabs
 """""""""""""""""""""""""""""""""""""""""""""""
-"Set ruler
 set ruler
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -820,10 +799,10 @@ set statusline+=%*
 " """"""""""""""""""""""""""""""""""""""""""
 " " => Spell checking
 " """"""""""""""""""""""""""""""""""""""""""
-" " Pressing ,ss will toggle and untoggle spell checking
+" pressing ,ss will toggle and untoggle spell checking
 " map <leader>ss :setlocal spell!<cr>
 "
-" " Shortcuts using <leader>
+" shortcuts using <leader>
 " map <leader>sn ]s
 " map <leader>sp [s
 " map <leader>sa zg
@@ -857,64 +836,25 @@ set statusline+=%*
 " map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 " map <leader>n :cn<cr>
 " map <leader>p :cp<cr>
-"
 
-" """"""""""""""""""""""""""""""""""""""""""""""""""
-" " => Misc
-" """"""""""""""""""""""""""""""""""""""""""""""""""
-"
-" " Quickly open a buffer for scribble
-" map <leader>q :e ~/buffer<cr>
-"
-" " Quickly open a markdown buffer for scribble
-" map <leader>x :e ~/buffer.md<cr>
-"
-" " Toggle paste mode on and off
-" map <leader>pp :setlocal paste!<cr>]
-
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-" shameless refrence lol
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Important:
-" This requries that you install https://github.com/amix/vimrc !
-" """"""""""""""""""""
-" " => Load pathogen paths
-" """"""""""""""""""""
-" call pathogen#infect('~/.vim_runtime/sources_forked/{}')
-" call pathogen#infect('~/.vim_runtime/sources_non_forked/{}')
-" call pathogen#helptags()
-"
-" """"""""""""""""""""
-" " => bufExplorer plugin
-" """"""""""""""""""""
-" let g:bufExplorerDefaultHelp=0
-" let g:bufExplorerShowRelativePath=1
-" let g:bufExplorerFindActive=1
-" let g:bufExplorerSortBy='name'
-" map <leader>o :BufExplorer<cr>
-"
-"
 " """"""""""""""""""""
 " " => MRU plugin
 " """"""""""""""""""""
 " let MRU_Max_Entries = 400
 " map <leader>f :MRU<CR>
-"
+
 " """"""""""""""""""""
 " " => YankRing
 " """"""""""""""""""""
 " if has("win16") || has("win32")
 "     " Don't do anything
-"     else
-"         let g:yankring_history_dir = '~/.vim_runtime/temp_dirs/'
-"         endif
-"
-"
-"         """"""""""""""""""""""""
+"else
+"   let g:yankring_history_dir = '~/.vim_runtime/temp_dirs/'
+"endif
+
+"""""""""""""""""""""""""
 " => CTRL-P
-" """""""""""""""""""""""""
+"""""""""""""""""""""""""
 " let g:ctrlp_working_path_mode = 0
 "
 " let g:ctrlp_map = '<c-f>'
@@ -923,50 +863,25 @@ set statusline+=%*
 "
 " let g:ctrlp_max_height = 20
 " let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
-"
-"
-" """"""""""""""""""""""""
-" " => ZenCoding
-" """""""""""""""""""""""""
+
+" """""""""""""""""""""""""""""""""""""""""""""""""
+" => ZenCoding
+" """""""""""""""""""""""""""""""""""""""""""""""""
 " " Enable all functions in all modes
 " let g:user_zen_mode='a'
-"
-" """"""""""""""""""""""""
-" " => snipMate (beside <TAB> support <CTRL-j>)
-" """""""""""""""""""""""""
-" ino <c-j> <c-r>=snipMate#TriggerSnippet()<cr>
-" snor <c-j> <esc>i<right><c-r>=snipMate#TriggerSnippet()<cr>
-"
-" """"""""""""""""""""""""
-" " => Vim grep
-" """""""""""""""""""""""""
+
+" """"""""""""""""""""""""""""""""""""""""""""""""
+" => Vim grep
+" """""""""""""""""""""""""""""""""""""""""""""""""
 " let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
-" set grepprg=/bin/grep\ -nH
-"
-" """""""""""""""""""""""""""""""""""""""""""""""""""
-" " => Nerd Tree
-" """""""""""""""""""""""""""""""""""""""""""""""""""
-" map <leader>nn :NERDTreeToggle<cr>
-" map <leader>nb :NERDTreeFromBookmark
-" map <leader>nf :NERDTreeFind<cr>
-"
-" """""""""""""""""""""""""""""""""""""""""""""""""""
-" " => vim-multiple-cursors
-" """""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:multi_cursor_next_key="\<C-s>"
-"
+
 " """""""""""""""""""""""""""""""""""""""""""""""""""
 " " => surround.vim config
 " " Annotate strings with gettext http://amix.dk/blog/post/19678
 " """""""""""""""""""""""""""""""""""""""""""""""""""
 " vmap Si S(i_<esc>f)
 " au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
-"
-" """""""""""""""""""""""""""""""""""""""""""""""""""
-" " => vim-airline config (force color)
-" """""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:airline_theme="luna"
-"
+
 " """""""""""""""""""""""""""""""""""""""""""""""""""
 " " => Vimroom
 " """""""""""""""""""""""""""""""""""""""""""""""""""
