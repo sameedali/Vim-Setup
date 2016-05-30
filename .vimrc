@@ -73,7 +73,7 @@ Plug 'https://bitbucket.org/tim_heap/linters.vim', { 'for': ['c', 'cpp', 'python
 Plug 'https://github.com/scrooloose/syntastic.git', { 'for': ['c', 'cpp', 'python', 'javascript'] }
 Plug 'https://github.com/scrooloose/nerdcommenter', { 'for': ['c', 'cpp', 'python', 'javascript'] }
 
-Plug 'https://github.com/majutsushi/tagbar', { 'for': ['c', 'cpp', 'python', 'javascript'] }
+Plug 'https://github.com/majutsushi/tagbar', { 'for': ['c', 'cpp', 'cuda', 'python', 'javascript'] }
 
 Plug 'https://github.com/tomtom/tlib_vim.git'
 Plug 'https://github.com/SirVer/ultisnips.git' | Plug 'https://github.com/honza/vim-snippets.git'
@@ -83,7 +83,8 @@ Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
 
 Plug 'https://github.com/vim-airline/vim-airline.git'
 Plug 'vim-airline/vim-airline-themes'
-" do install as in docs in github
+
+" Do install as in docs in github
 " Plug 'https://github.com/powerline/powerline.git'
 
 Plug 'https://github.com/airblade/vim-gitgutter'
@@ -92,13 +93,13 @@ Plug 'https://github.com/airblade/vim-gitgutter'
 
 Plug 'https://github.com/Shougo/vimproc.vim.git', {'do': 'make'}
 
-" additional motions
+" Additional motions
 Plug 'https://github.com/wellle/targets.vim.git'
 Plug 'https://github.com/christoomey/vim-sort-motion.git'
 
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/bronson/vim-trailing-whitespace'
-Plug 'https://github.com/terryma/vim-expand-region.git'
+Plug 'https://github.com/terryma/vim-expand-region.git', {'for': 'html'}
 
 Plug 'https://github.com/guns/vim-clojure-static.git', { 'for': 'clojure' }
 
@@ -106,6 +107,7 @@ Plug 'https://github.com/guns/vim-clojure-static.git', { 'for': 'clojure' }
 Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.py', 'for': ['c', 'cpp', 'python', 'javascript'] }
 autocmd! User YouCompleteMe call youcompleteme#Enable()
 
+" YCM has tern
 " Plug 'https://github.com/marijnh/tern_for_vim.git', { 'for': 'javascript' }
 
 Plug 'https://github.com/skammer/vim-css-color.git', { 'for': ['html', 'css'] }
@@ -120,7 +122,7 @@ Plug 'https://github.com/luochen1990/rainbow.git', { 'for': 'clojure' }
 
 Plug 'https://github.com/mattn/emmet-vim.git', { 'for': 'html' }
 
-Plug 'https://github.com/vim-scripts/AutoComplPop.git'
+" Plug 'https://github.com/vim-scripts/AutoComplPop.git'
 
 " Loaded when clojure file is opened
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
@@ -172,12 +174,12 @@ Plug 'tpope/vim-endwise'  , { 'for' : 'ruby'}
 Plug 'godlygeek/tabular',  { 'for' : 'markdown' }
 " Plug 'plasticboy/vim-mar', { 'for' : 'markdown' }
 
-" Plug 'https://github.com/sheerun/vim-polyglot.git'
 Plug 'https://github.com/maxbrunsfeld/vim-yankstack.git', {'for': ['lisp', 'clojure', 'scheme']}
 
 " experimental
-" Plug 'https://github.com/rbong/vim-vertical.git'
-" Plug 'https://github.com/tpope/vim-repeat.git'
+Plug 'https://github.com/sheerun/vim-polyglot.git'
+Plug 'https://github.com/rbong/vim-vertical.git'
+Plug 'https://github.com/tpope/vim-repeat.git'
 
 " Add plugins to &runtimepath
 call plug#end()
