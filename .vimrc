@@ -110,6 +110,12 @@ autocmd! User YouCompleteMe call youcompleteme#Enable()
 " YCM has tern
 " Plug 'https://github.com/marijnh/tern_for_vim.git', { 'for': 'javascript' }
 
+" Source graph shows sample code while typing
+" Plug 'sourcegraph/sourcegraph-vim', {'for': ['go']} " depreciated?
+
+" Kite co pilot for programing
+"Plug 'https://github.com/kiteco/plugins.git', {'for': ['python']}
+
 Plug 'https://github.com/skammer/vim-css-color.git', { 'for': ['html', 'css'] }
 
 " Autoload page in browser
@@ -517,6 +523,12 @@ nnoremap <silent> <Leader>sb :set scrollbind<cr>
 nnoremap <leader>? :lprev<cr>zvzz "list previous
 nnoremap <leader>/ :lnext<cr>zvzz "list next
 
+" search visually highlighted text
+vnoremap // y/<C-R>"<CR>
+
+" find number of occurances of last search term
+nnoremap <leader>* *<C-O>:%s///gn<CR>
+
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
@@ -556,9 +568,6 @@ nnoremap <F4> :TagbarToggle<CR>
 " Git gutter toggle
 " noremap <F6> :GitGutterSignsToggle<CR>
 let g:gitgutter_max_signs = 1000
-
-" search visually highlighted text
-vnoremap // y/<C-R>"<CR>
 
 " Close the current buffer
 " map <leader>bd :Bclose<cr>
