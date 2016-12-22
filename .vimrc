@@ -149,6 +149,9 @@ Plug 'jceb/vim-orgmode', { 'for' : 'org' }
 " adds end in ruby
 Plug 'tpope/vim-endwise'  , { 'for' : 'ruby'}
 
+" editor config
+Plug 'https://github.com/editorconfig/editorconfig-vim.git'
+
 " maybe not needed
 "Plug 'tpope/vim-dispatch' , { 'for' : 'ruby'}
 
