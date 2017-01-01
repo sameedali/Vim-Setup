@@ -185,6 +185,9 @@ Plug 'godlygeek/tabular',  { 'for' : 'markdown' }
 
 Plug 'https://github.com/maxbrunsfeld/vim-yankstack.git', {'for': ['lisp', 'clojure', 'scheme']}
 
+Plug 'LaTeX-Box-Team/LaTeX-Box', {'for': 'tex'}
+Plug 'chrisbra/csv.vim', {'for': 'csv'}
+
 " experimental
 Plug 'https://github.com/sheerun/vim-polyglot.git'
 Plug 'https://github.com/rbong/vim-vertical.git'
@@ -204,9 +207,11 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => nvim settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-" if has('nvim')
-"   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-" end
+if has('nvim')
+  " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  " set termguicolors
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+end
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -344,7 +349,7 @@ set mat=2
 " if has("gui_running")
 "   set guioptions-=T
 "   set guioptions-=e
-"set t_Co=256
+" set t_Co=256
 "   set guitablabel=%M\ %t
 " endif
 
