@@ -193,6 +193,8 @@ Plug 'https://github.com/sheerun/vim-polyglot.git'
 Plug 'https://github.com/rbong/vim-vertical.git'
 Plug 'https://github.com/tpope/vim-repeat.git'
 
+Plug 'w0rp/ale', {'for': ['cpp', 'js', 'clojure', 'python']}
+
 " Add plugins to &runtimepath
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -207,11 +209,11 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => nvim settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('nvim')
-  " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  " set termguicolors
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-end
+" if has('nvim')
+"   " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"   " set termguicolors
+"   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+" end
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -648,8 +650,8 @@ let g:airline_section_y = 'Buffer Number: %{bufnr("%")}'
 "colorscheme flatcolor
 "colorscheme 256-grayvim
 "colorscheme 256-jungle
-"colorscheme zenburn
-colorscheme 256-grayvim
+colorscheme zenburn
+"colorscheme 256-grayvim
 " let g:airline_theme = 'zenburn'
 
 "colorscheme janah
