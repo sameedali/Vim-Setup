@@ -1,9 +1,8 @@
 " Sample vimrcs were a lot of help in making this file;
 " Credits to where the're due
 "
-"   VIMRC FILE BEGIN
+"   VIMRC FILE
 "
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim Plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -34,7 +33,6 @@
 "
 " Unmanaged plugin (manually installed and updated)
 "Plug '~/my-prototype-plugin'
-
 "" MY PLUGINS
 " Plug 'https://github.com/tpope/vim-pathogen.git'
 " Plug 'https://github.com/altercation/vim-colors-solarized'
@@ -53,121 +51,9 @@
 "
 " seems intersting: lib for VimL
 " https://github.com/vim-scripts/L9.git
-
-call plug#begin('~/.vim/bundle')
-
-Plug 'https://github.com/scrooloose/nerdtree.git' , { 'on':  'NERDTreeToggle' }
-Plug 'https://github.com/tpope/vim-fugitive.git'
-
-Plug 'https://github.com/flazz/vim-colorschemes.git'
-" Plug 'https://github.com/chriskempson/base16-vim.git'
-" Plug 'https://github.com/altercation/vim-colors-solarized.git'
-" Plug 'whatyouhide/vim-gotham'
-
-Plug 'https://github.com/vim-scripts/Align'
-
-Plug 'https://github.com/Raimondi/delimitMate'
-Plug 'http://github.com/sjl/gundo.vim.git'
-
-Plug 'https://bitbucket.org/tim_heap/linters.vim', { 'for': ['c', 'cpp', 'python', 'javascript'] }
-Plug 'https://github.com/scrooloose/syntastic.git', { 'for': ['c', 'cpp', 'python', 'javascript'] }
-Plug 'https://github.com/scrooloose/nerdcommenter', { 'for': ['c', 'cpp', 'python', 'javascript'] }
-
-Plug 'https://github.com/majutsushi/tagbar', { 'for': ['c', 'cpp', 'cuda', 'python', 'javascript'] }
-
-Plug 'https://github.com/tomtom/tlib_vim.git'
-Plug 'https://github.com/SirVer/ultisnips.git' | Plug 'https://github.com/honza/vim-snippets.git'
-
-" Check if it is needed by any plugin -- vim-addon-mw-utils
-Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
-
-Plug 'https://github.com/vim-airline/vim-airline.git'
-Plug 'vim-airline/vim-airline-themes'
-
-" Do install as in docs in github
-" Plug 'https://github.com/powerline/powerline.git'
-
-Plug 'https://github.com/airblade/vim-gitgutter'
-
-" Plug 'https://github.com/jistr/vim-nerdtree-tabs'
-
-Plug 'https://github.com/Shougo/vimproc.vim.git', {'do': 'make'}
-
-" Additional motions
-Plug 'https://github.com/wellle/targets.vim.git'
-Plug 'https://github.com/christoomey/vim-sort-motion.git'
-
-Plug 'https://github.com/tpope/vim-surround.git'
-Plug 'https://github.com/bronson/vim-trailing-whitespace'
-Plug 'https://github.com/terryma/vim-expand-region.git', {'for': 'html'}
-
-Plug 'https://github.com/guns/vim-clojure-static.git', { 'for': 'clojure' }
-
-" Code to execute when the plugin is loaded on demand
-Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.py', 'for': ['c', 'cpp', 'python', 'javascript'] }
-autocmd! User YouCompleteMe call youcompleteme#Enable()
-
-" YCM has tern
-" Plug 'https://github.com/marijnh/tern_for_vim.git', { 'for': 'javascript' }
-
-" Source graph shows sample code while typing
-" Plug 'sourcegraph/sourcegraph-vim', {'for': ['go']} " depreciated?
-
-" Kite co pilot for programing
-"Plug 'https://github.com/kiteco/plugins.git', {'for': ['python']}
-
-Plug 'https://github.com/skammer/vim-css-color.git', { 'for': ['html', 'css'] }
-
-" Autoload page in browser
-" Plug 'jaxbot/browserlink.vim', { 'for': ['html'] }
-
-Plug 'https://github.com/terryma/vim-multiple-cursors.git'
-Plug 'https://github.com/Lokaltog/vim-easymotion.git'
-
-Plug 'https://github.com/luochen1990/rainbow.git', { 'for': 'clojure' }
-
-Plug 'https://github.com/mattn/emmet-vim.git', { 'for': 'html' }
-
-" Plug 'https://github.com/vim-scripts/AutoComplPop.git'
-
-" Loaded when clojure file is opened
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" Multiple file types
-Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme', 'lisp'] }
-
-Plug 'fatih/vim-go', { 'for' : ['go'] }
-
-Plug 'https://github.com/tpope/vim-speeddating.git', { 'for' : 'org' }
-Plug 'jceb/vim-orgmode', { 'for' : 'org' }
-
-" Ruby/Rails Plugins
-" read up on these two -- for rails
-" Plug 'tpope/vim-rails'    , { 'for' : 'ruby'}
-" Plug 'tpope/vim-bundler'  , { 'for' : 'ruby'}
-
-" adds end in ruby
-Plug 'tpope/vim-endwise'  , { 'for' : 'ruby'}
-
-" editor config
-Plug 'https://github.com/editorconfig/editorconfig-vim.git'
-
-" maybe not needed
-"Plug 'tpope/vim-dispatch' , { 'for' : 'ruby'}
-
-" searching inside vim
-" Plug 'https://github.com/mileszs/ack.vim'
-" Plug 'https://github.com/rking/ag.vim'
-" Handy ] mappings
-" Plug 'git://github.com/tpope/vim-unimpaired.git'
-" window swap
-" Plug 'https://github.com/wesQ3/vim-windowswap.git'
-
-" maybe not needed
-" Plug 'tpope/vim-dotenv'   , { 'for' : 'ruby'}
-
+"
 """"""""""""""""""""""""""""""""
-" Reference
+" Reference [VIMPLUG]
 """"""""""""""""""""""""""""""""
 " Multiple commands
 " Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
@@ -178,42 +64,170 @@ Plug 'https://github.com/editorconfig/editorconfig-vim.git'
 " Themes
 " Plug 'https://github.com/mhinz/vim-janah.git'
 " Plug 'morhetz/gruvbox'
+" searching inside vim
+" Plug 'https://github.com/mileszs/ack.vim'
+" Plug 'https://github.com/rking/ag.vim'
+" Handy ] mappings
+" Plug 'git://github.com/tpope/vim-unimpaired.git'
+" window swap
+" Plug 'https://github.com/wesQ3/vim-windowswap.git'
 
-" markdown syntax
+call plug#begin('~/.vim/bundle')
+
+" navigation
+Plug 'https://github.com/scrooloose/nerdtree.git' , { 'on':  'NERDTreeToggle' }
+" Plug 'https://github.com/jistr/vim-nerdtree-tabs'
+
+" git plugins
+Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'http://github.com/sjl/gundo.vim.git'
+Plug 'https://github.com/airblade/vim-gitgutter'
+
+" bottom display bar
+Plug 'https://github.com/vim-airline/vim-airline.git'
+Plug 'vim-airline/vim-airline-themes'
+" Do install as in docs in github
+" Plug 'https://github.com/powerline/powerline.git'
+
+" colorschemes
+Plug 'https://github.com/flazz/vim-colorschemes.git'
+" Plug 'https://github.com/chriskempson/base16-vim.git'
+" Plug 'https://github.com/altercation/vim-colors-solarized.git'
+" Plug 'whatyouhide/vim-gotham'
+
+" syntax highlighting
+Plug 'https://github.com/sheerun/vim-polyglot.git'
+
+" libs
+Plug 'https://github.com/Shougo/vimproc.vim.git', {'do': 'make'}
+Plug 'https://github.com/tomtom/tlib_vim.git'
+" Check if it is needed by any plugin -- vim-addon-mw-utils
+Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
+
+" Motions plugins
+Plug 'https://github.com/wellle/targets.vim.git'
+Plug 'https://github.com/christoomey/vim-sort-motion.git'
+Plug 'https://github.com/terryma/vim-multiple-cursors.git'
+Plug 'https://github.com/Lokaltog/vim-easymotion.git'
+Plug 'https://github.com/tpope/vim-surround.git'
+Plug 'https://github.com/bronson/vim-trailing-whitespace'
+
+" Clojure plugins
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'https://github.com/luochen1990/rainbow.git', { 'for': 'clojure' }
+Plug 'https://github.com/guns/vim-clojure-static.git', { 'for': 'clojure' }
+Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme', 'lisp'] }
+Plug 'https://github.com/maxbrunsfeld/vim-yankstack.git', {'for': ['lisp', 'clojure', 'scheme']}
+
+" haskell
+Plug 'https://github.com/neovimhaskell/haskell-vim.git', { 'for': 'haskell' }
+
+" Ruby/Rails
+Plug 'tpope/vim-endwise'  , { 'for' : 'ruby'}
+" read up on these two -- for rails
+" Plug 'tpope/vim-rails'    , { 'for' : 'ruby'}
+" Plug 'tpope/vim-bundler'  , { 'for' : 'ruby'}
+" adds end in ruby
+" maybe not needed
+"Plug 'tpope/vim-dispatch' , { 'for' : 'ruby'}
+" maybe not needed
+" Plug 'tpope/vim-dotenv'   , { 'for' : 'ruby'}
+
+" golang
+Plug 'fatih/vim-go', { 'for' : ['go'] }
+
+" org
+Plug 'https://github.com/tpope/vim-speeddating.git', { 'for' : 'org' }
+Plug 'jceb/vim-orgmode', { 'for' : 'org' }
+
+" markdown
 Plug 'godlygeek/tabular',  { 'for' : 'markdown' }
 " Plug 'plasticboy/vim-mar', { 'for' : 'markdown' }
 
-Plug 'https://github.com/maxbrunsfeld/vim-yankstack.git', {'for': ['lisp', 'clojure', 'scheme']}
-
+" tex
 Plug 'LaTeX-Box-Team/LaTeX-Box', {'for': 'tex'}
+
+" csv
 Plug 'chrisbra/csv.vim', {'for': 'csv'}
 
-" experimental
-Plug 'https://github.com/sheerun/vim-polyglot.git'
-Plug 'https://github.com/rbong/vim-vertical.git'
-Plug 'https://github.com/tpope/vim-repeat.git'
+" alda
+" under development
+" Plug 'https://github.com/daveyarwood/vim-alda', {'for': 'alda'}
 
-Plug 'w0rp/ale', {'for': ['cpp', 'js', 'clojure', 'python']}
+" => AUTO COMPLETERS <=
+
+" text/type helpers
+Plug 'https://github.com/vim-scripts/Align'
+Plug 'https://github.com/Raimondi/delimitMate'
+Plug 'https://github.com/SirVer/ultisnips.git' | Plug 'https://github.com/honza/vim-snippets.git'
+" Plug 'https://github.com/vim-scripts/AutoComplPop.git'
+
+" CODE COMPLETION
+" Code to execute when the plugin is loaded on demand
+Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.py', 'for': ['c', 'cpp', 'python', 'javascript'] }
+autocmd! User YouCompleteMe call youcompleteme#Enable()
+
+Plug 'w0rp/ale', {'for': ['c', 'cpp', 'javascript', 'clojure', 'python']}
+Plug 'https://bitbucket.org/tim_heap/linters.vim', { 'for': ['c', 'cpp', 'python', 'javascript'] }
+Plug 'https://github.com/scrooloose/syntastic.git', { 'for': ['c', 'cpp', 'python', 'javascript'] }
+Plug 'https://github.com/scrooloose/nerdcommenter', { 'for': ['c', 'cpp', 'python', 'javascript'] }
+
+" YCM has tern
+" Plug 'https://github.com/marijnh/tern_for_vim.git', { 'for': 'javascript' }
+
+" Source graph shows sample code while typing
+" Plug 'sourcegraph/sourcegraph-vim', {'for': ['go']} " depreciated?
+
+" Kite co pilot for programing
+"Plug 'https://github.com/kiteco/plugins.git', {'for': ['python']}
+
+Plug 'https://github.com/majutsushi/tagbar', { 'for': ['c', 'cpp', 'cuda', 'python', 'javascript'] }
+" => END <=
+
+" => WEB DEV <=
+Plug 'https://github.com/skammer/vim-css-color.git', { 'for': ['html', 'css'] }
+Plug 'https://github.com/terryma/vim-expand-region.git', {'for': 'html'}
+
+" Autoload page in browser
+" Plug 'jaxbot/browserlink.vim', { 'for': ['html'] }
+
+Plug 'https://github.com/mattn/emmet-vim.git', { 'for': 'html' }
+" => END <=
+
+" editor config
+Plug 'https://github.com/editorconfig/editorconfig-vim.git'
+
+" experimental
+" Plug 'https://github.com/rbong/vim-vertical.git'
+Plug 'https://github.com/tpope/vim-repeat.git'
 
 " Add plugins to &runtimepath
 call plug#end()
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => If using Pathogen
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"execute pathogen#infect()
-"call pathogen#helptags()
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => nvim settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-" if has('nvim')
-"   " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-"   " set termguicolors
-"   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-" end
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  " set termguicolors
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+  " terminal config
+  tnoremap <A-h> <C-\><C-N><C-w>h
+  tnoremap <A-j> <C-\><C-N><C-w>j
+  tnoremap <A-k> <C-\><C-N><C-w>k
+  tnoremap <A-l> <C-\><C-N><C-w>l
+  inoremap <A-h> <C-\><C-N><C-w>h
+  inoremap <A-j> <C-\><C-N><C-w>j
+  inoremap <A-k> <C-\><C-N><C-w>k
+  inoremap <A-l> <C-\><C-N><C-w>l
+  nnoremap <A-h> <C-w>h
+  nnoremap <A-j> <C-w>j
+  nnoremap <A-k> <C-w>k
+  nnoremap <A-l> <C-w>l
+end
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -816,6 +830,17 @@ set ruler
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" haskell-vim plugin config
+"""""""""""""""""""""""""""""""""""""""""""""""
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
 " """"""""""""""""""""""""""""""""""""""""""
 " " => Spell checking
