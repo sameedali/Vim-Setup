@@ -113,6 +113,7 @@ Plug 'https://github.com/Raimondi/delimitMate'
 autocmd! User delimitMate call Initdelimitmate()
 
 Plug 'https://github.com/SirVer/ultisnips.git' | Plug 'https://github.com/honza/vim-snippets.git'
+Plug 'https://github.com/dhruvasagar/vim-table-mode', {'on': 'TableModeToggle'}
 
 " Plug 'https://github.com/vim-scripts/AutoComplPop.git'
 
@@ -597,8 +598,8 @@ let g:gitgutter_max_signs = 1000
 """""""""""""""""""""""""""""""""""""""""""""""
 " => Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""
-"colorscheme zenburn
-colorscheme janah
+colorscheme zenburn
+" colorscheme janah
 " autocmd ColorScheme janah highlight Normal ctermbg=235
 " colorscheme janah
 
