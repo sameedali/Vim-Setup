@@ -9,6 +9,9 @@ Plug 'https://github.com/scrooloose/nerdtree.git' , { 'on':  'NERDTreeToggle' }
 " Plug 'https://github.com/jistr/vim-nerdtree-tabs'
 autocmd! User nerdtree call Initnerdtree()
 
+" SEARCH
+" Plug 'mileszs/ack.vim'
+
 " recently used files
 Plug 'https://github.com/yegappan/mru.git', {'on': 'MRU'}
 autocmd! User mru call Initmru()
@@ -190,6 +193,8 @@ if has('nvim')
   nnoremap <A-j> <C-w>j
   nnoremap <A-k> <C-w>k
   nnoremap <A-l> <C-w>l
+
+  tnoremap <Esc> <C-\><C-n>
 end
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -245,6 +250,10 @@ set smarttab
 set shiftwidth=4
 " Round to 'shiftwidth' for "<<" and ">>"
 set shiftround
+
+" Mutt mail
+au BufRead /tmp/mutt-* set tw=72
+
 " not sure of following one
 " set copyindent    " copy the previous indentation on autoindenting
 
@@ -367,12 +376,15 @@ set splitright
 if executable('ag')
     " Use ag over grep
     set grepprg=ag\ --nogroup\ --nocolor
+    "   let g:ackprg = 'ag --vimgrep'
     " set grepprg=ag\ --vimgrep\ $*
     " set grepformat=%f:%l:%c:%m
     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
     " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
     " ag is fast enough that CtrlP doesn't need to cache
     " t://github.com/tpope/vim-unimpaired.gitlet g:ctrlp_use_caching = 0
+    " " bind K to grep word under cursor
+    " nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 endif
 
 " ruler tabs
@@ -418,8 +430,9 @@ nnoremap Y y$
 
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
-nnoremap <leader><C-f> :call SelectaCommand("find * -type f", "", ":e")<cr>
-" nnoremap <leader><C-f> :call SelectaCommand("ag * -U -l -G -f", "", ":e")<cr>
+" nnoremap <leader><C-f> :call SelectaCommand("find * -type f", "", ":e")<cr>
+" nnoremap <leader><C-f> :call SelectaCommand("ag * -U -l -g -f", "", ":vsp")<cr>
+nnoremap <leader><C-t> :vsp term://bash<cr>
 
 " Grab code blocks in parenthesis
 nnoremap d<TAB> d%
