@@ -1,1 +1,1 @@
-/home/mint/.vimrc
+vimrc

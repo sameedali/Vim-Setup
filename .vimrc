@@ -168,6 +168,9 @@ autocmd! User emmet-vim call Initemmetvim()
 " Plug 'https://github.com/rbong/vim-vertical.git'
 Plug 'https://github.com/tpope/vim-repeat.git'
 
+" GTAGS
+" Plug '~/.vim/user-plugins/gtags'
+
 " Add plugins to &runtimepath
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
