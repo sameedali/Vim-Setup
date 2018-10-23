@@ -3,6 +3,16 @@
 "
 "   VIMRC FILE
 "
+" diffmode dont load any plugs
+if &diff
+    colorscheme evening
+    autocmd BufWritePost * diffupdate
+    finish
+endif
+
+"colorschele
+set t_Co=256
+
 call plug#begin('~/.vim/bundle')
 " navigation
 Plug 'https://github.com/scrooloose/nerdtree.git' , { 'on':  'NERDTreeToggle' }
@@ -26,6 +36,18 @@ Plug 'https://github.com/editorconfig/editorconfig-vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'http://github.com/sjl/gundo.vim.git'
 Plug 'https://github.com/airblade/vim-gitgutter'
+" diffconflicts config:
+" git config --global merge.tool diffconflicts
+" git config --global mergetool.diffconflicts.cmd 'vim -c DiffConflicts "$MERGED" "$BASE" "$LOCAL" "$REMOTE"'
+" git config --global mergetool.diffconflicts.trustExitCode true
+" git config --global mergetool.keepBackup false
+" :DiffConflictsShowHistory opens tab containing BASE LOCAL and REMOTE
+" diff conflicts
+Plug 'https://github.com/whiteinge/diffconflicts'
+" error in plugin
+"Plug 'https://github.com/vim-scripts/ConflictMotions.git'
+" error in plugin
+" Plug 'https://github.com/vim-scripts/ConflictDetection.git'
 
 " bottom display bar
 "Plug 'https://github.com/vim-airline/vim-airline.git'
@@ -67,10 +89,6 @@ autocmd! User rainbow call Initrainbow()
 Plug 'https://github.com/guns/vim-clojure-static.git', { 'for': 'clojure' }
 Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme', 'lisp'] }
 Plug 'https://github.com/maxbrunsfeld/vim-yankstack.git', {'for': ['lisp', 'clojure', 'scheme']}
-if has('nvim')
-    Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
-    autocmd! User async-clj-omni call Initaysnycljomni()
-end
 
 " haskell
 Plug 'https://github.com/neovimhaskell/haskell-vim.git', { 'for': 'haskell' }
@@ -122,10 +140,12 @@ Plug 'https://github.com/dhruvasagar/vim-table-mode', {'on': 'TableModeToggle'}
 
 " CODE COMPLETION
 " Code to execute when the plugin is loaded on demand
-Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.py', 'for': ['c', 'cpp', 'python', 'javascript'] }
+Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.py --clang-completer', 'for': ['c', 'cpp', 'python', 'javascript'] }
 autocmd! User YouCompleteMe call Initycm()
 
 if has('nvim')
+    " set before loading for completion
+    let g:ale_completion_enabled = 1
     Plug 'w0rp/ale', {'for': ['c', 'cpp', 'javascript', 'clojure', 'python', 'lua']}
 else
     Plug 'https://github.com/scrooloose/syntastic.git', { 'for': ['c', 'cpp', 'python', 'javascript'] }
@@ -136,10 +156,21 @@ Plug 'https://bitbucket.org/tim_heap/linters.vim', { 'for': ['c', 'cpp', 'python
 " Plug 'https://github.com/scrooloose/nerdcommenter', { 'for': ['c', 'cpp', 'python', 'javascript'] }
 
 " autocompleter for multiple languages
-if has('nvim')
-    let g:deoplete#enable_at_startup = 1
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-end
+if has("python3")
+    if has('nvim')
+        let g:deoplete#enable_at_startup = 1
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': ['c', 'cpp', 'python']}
+        " pip install --user nrepl-python-client
+        Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
+        autocmd! User async-clj-omni call Initaysnycljomni()
+        "Plug 'SevereOverfl0w/deoplete-github'
+
+    else
+        "Plug 'Shougo/deoplete.nvim'
+        "Plug 'roxma/nvim-yarp'
+        "Plug 'roxma/vim-hug-neovim-rpc'
+    endif
+endif
 
 " YCM has tern
 " Plug 'https://github.com/marijnh/tern_for_vim.git', { 'for': 'javascript' }
@@ -150,7 +181,7 @@ end
 " Kite co pilot for programing
 "Plug 'https://github.com/kiteco/plugins.git', {'for': ['python']}
 
-"Plug 'https://github.com/majutsushi/tagbar', { 'for': ['c', 'cpp', 'cuda', 'python', 'javascript'], 'on': 'TagbarToggle'}
+Plug 'https://github.com/majutsushi/tagbar', { 'for': ['c', 'cpp', 'cuda', 'python', 'javascript'], 'on': 'TagbarToggle'}
 " => END <=
 
 " => WEB DEV <=
@@ -336,6 +367,7 @@ set mat=2
 " Add a bit extra margin to the left
 " set foldcolumn=1
 
+" colorscheme
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
@@ -565,7 +597,7 @@ nnoremap <leader>f :MRU<CR>
 nnoremap <F2> :GundoToggle<CR>
 
 " tagbar
-" nnoremap <F4> :TagbarToggle<CR>
+nnoremap <F4> :TagbarToggle<CR>
 
 " Git gutter toggle
 " noremap <F6> :GitGutterSignsToggle<CR>
