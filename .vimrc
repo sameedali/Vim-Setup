@@ -19,12 +19,14 @@ Plug 'https://github.com/scrooloose/nerdtree.git' , { 'on':  'NERDTreeToggle' }
 " Plug 'https://github.com/jistr/vim-nerdtree-tabs'
 autocmd! User nerdtree call Initnerdtree()
 
+" Plug 'https://github.com/pelodelfuego/vim-swoop'
 " SEARCH
 " Plug 'mileszs/ack.vim'
 
 " recently used files
-Plug 'https://github.com/yegappan/mru.git', {'on': 'MRU'}
-autocmd! User mru call Initmru()
+" Plug 'https://github.com/yegappan/mru.git', {'on': 'MRU'}
+" autocmd! User mru call Initmru()
+" Plug 'vim-ctrlspace/vim-ctrlspace'
 
 " editor config
 Plug 'https://github.com/editorconfig/editorconfig-vim.git'
@@ -146,6 +148,9 @@ autocmd! User YouCompleteMe call Initycm()
 if has('nvim')
     " set before loading for completion
     let g:ale_completion_enabled = 1
+    let g:ale_python_pyls_executable = 'pyls'
+    let g:ale_lint_on_text_changed = 1
+    let g:ale_linters = {'python': ["pyls"]}
     Plug 'w0rp/ale', {'for': ['c', 'cpp', 'javascript', 'clojure', 'python', 'lua']}
 else
     Plug 'https://github.com/scrooloose/syntastic.git', { 'for': ['c', 'cpp', 'python', 'javascript'] }
@@ -182,6 +187,13 @@ endif
 "Plug 'https://github.com/kiteco/plugins.git', {'for': ['python']}
 
 Plug 'https://github.com/majutsushi/tagbar', { 'for': ['c', 'cpp', 'cuda', 'python', 'javascript'], 'on': 'TagbarToggle'}
+
+" (Optional) Multi-entry selection UI.
+" Plug 'junegunn/fzf'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" make
+Plug 'neomake/neomake', { 'for': ['c', 'cpp', 'cuda', 'python', 'javascript'], 'on': 'Neomake'}
+
 " => END <=
 
 " => WEB DEV <=
@@ -247,7 +259,7 @@ set ttyfast         " smoother chanes
 " set exrc          " load local vimrc
 " set secure exrc   " for sec dont load all options change in rc file
 " set clipboard=unnamedplus " use system clipboard
-" set hidden        " hides buffers insted of closing them
+set hidden        " hides buffers insted of closing them
 
 " Title for tmux -- disable if performance issues
 " autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window 'vim | " . expand("%:t") . "'")
@@ -507,6 +519,8 @@ nnoremap <leader><tab> :retab<CR>
 nnoremap <leader>! :!sh<CR>
 " Easy Motion
 " nnoremap <leader><leader> <Plug>(easymotion-w)
+" CtrlSpace mapping
+" nnoremap <silent><C-p> :CtrlSpace<CR>
 " save file as html :TOhtml
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -775,9 +789,9 @@ function! Initsyntastic()
     set statusline+=%*
 
     " errors
-    map <F5> :Errors<cr>
-    map <leader>? :lprev<cr>
-    map <leader>/ :lnext<cr>
+    nnoremap <F5> :Errors<cr>
+    nnoremap <leader>? :lprev<cr>
+    nnoremap <leader>/ :lnext<cr>
 
     let g:syntastic_cpp_compiler = 'g++'
     let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
@@ -859,6 +873,12 @@ endfunction
 
 function! Initmru()
     let MRU_Max_Entries = 100
+endfunction
+
+function! InitCtrlSpace()
+    if executable("ag")
+        let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
+    endif
 endfunction
 
 " function! Inityankring()
