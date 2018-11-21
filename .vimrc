@@ -115,8 +115,8 @@ Plug 'https://github.com/tpope/vim-speeddating.git', { 'for' : 'org' }
 Plug 'jceb/vim-orgmode', { 'for' : 'org' }
 
 " markdown
-Plug 'godlygeek/tabular',  { 'for' : 'markdown' }
-" Plug 'plasticboy/vim-mar', { 'for' : 'markdown' }
+" Plug 'godlygeek/tabular',  { 'for' : 'markdown' }
+Plug 'plasticboy/vim-mar', { 'for' : 'markdown' }
 
 " tex
 Plug 'LaTeX-Box-Team/LaTeX-Box', {'for': 'tex'}
@@ -131,7 +131,7 @@ Plug 'chrisbra/csv.vim', {'for': 'csv'}
 " => AUTO COMPLETERS <=
 
 " text/type helpers
-Plug 'https://github.com/vim-scripts/Align'
+Plug 'https://github.com/vim-scripts/Align', {'on': 'Align'}
 Plug 'https://github.com/Raimondi/delimitMate'
 autocmd! User delimitMate call Initdelimitmate()
 
@@ -147,11 +147,12 @@ autocmd! User YouCompleteMe call Initycm()
 
 if has('nvim')
     " set before loading for completion
-    let g:ale_completion_enabled = 1
+    " disabled for speed
+    let g:ale_completion_enabled = 0
     let g:ale_python_pyls_executable = 'pyls'
-    let g:ale_lint_on_text_changed = 1
+    let g:ale_lint_on_text_changed = 0
     let g:ale_linters = {'python': ["pyls"]}
-    Plug 'w0rp/ale', {'for': ['c', 'cpp', 'javascript', 'clojure', 'python', 'lua']}
+    Plug 'w0rp/ale', {'for': ['c', 'cpp', 'javascript', 'clojure', 'python', 'lua'], 'on': 'AlEEnable'}
 else
     Plug 'https://github.com/scrooloose/syntastic.git', { 'for': ['c', 'cpp', 'python', 'javascript'] }
     autocmd! User syntastic call Initsyntastic()
