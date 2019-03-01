@@ -65,6 +65,7 @@ Plug 'https://github.com/flazz/vim-colorschemes.git'
 " Plug 'https://github.com/chriskempson/base16-vim.git'
 " Plug 'https://github.com/altercation/vim-colors-solarized.git'
 " Plug 'whatyouhide/vim-gotham'
+Plug 'kaicataldo/material.vim'
 
 " syntax highlighting
 Plug 'https://github.com/sheerun/vim-polyglot.git'
@@ -116,7 +117,7 @@ Plug 'jceb/vim-orgmode', { 'for' : 'org' }
 
 " markdown
 " Plug 'godlygeek/tabular',  { 'for' : 'markdown' }
-Plug 'plasticboy/vim-mar', { 'for' : 'markdown' }
+Plug 'plasticboy/vim-markdown', { 'for' : 'markdown' }
 
 " tex
 Plug 'LaTeX-Box-Team/LaTeX-Box', {'for': 'tex'}
@@ -617,6 +618,7 @@ nnoremap <F4> :TagbarToggle<CR>
 " Git gutter toggle
 " noremap <F6> :GitGutterSignsToggle<CR>
 let g:gitgutter_max_signs = 1000
+set updatetime=100
 
 " Close the current buffer
 " map <leader>bd :Bclose<cr>
@@ -661,10 +663,11 @@ let g:gitgutter_max_signs = 1000
 """""""""""""""""""""""""""""""""""""""""""""""
 " => Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""
-colorscheme zenburn
+ colorscheme zenburn
+" set background=dark
+" colorscheme material
 " colorscheme janah
 " autocmd ColorScheme janah highlight Normal ctermbg=235
-" colorscheme janah
 
 " => Statusline
 " ==> Vim Airline
