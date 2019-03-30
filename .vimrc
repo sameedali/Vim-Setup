@@ -82,7 +82,12 @@ Plug 'https://github.com/christoomey/vim-sort-motion.git'
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 Plug 'https://github.com/Lokaltog/vim-easymotion.git'
 Plug 'https://github.com/tpope/vim-surround.git'
+
 Plug 'https://github.com/bronson/vim-trailing-whitespace'
+" only fix whitespace of edited lines
+Plug 'thirtythreeforty/lessspace.vim', {'for': 'c'}
+autocmd! User lessspace call Initlessspace()
+Plug 'houtsnip/vim-emacscommandline'
 
 " Clojure plugins
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
@@ -195,7 +200,8 @@ Plug 'https://github.com/majutsushi/tagbar', { 'for': ['c', 'cpp', 'cuda', 'pyth
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " make
 Plug 'neomake/neomake', { 'for': ['c', 'cpp', 'cuda', 'python', 'javascript'], 'on': 'Neomake'}
-
+" interactive coding
+" Plugin 'metakirby5/codi.vim'
 " => END <=
 
 " => WEB DEV <=
@@ -884,7 +890,6 @@ function! InitCtrlSpace()
         let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
     endif
 endfunction
-
 " function! Inityankring()
 "     if has("win16") || has("win32")
 "         " Don't do anything
@@ -893,6 +898,9 @@ endfunction
 "     endif
 " endfunction
 
+function! Initlessspace()
+    let g:lessspace_enabled = 0
+endfunction
 " """"""""""""""""""""""""""""""""""""""""""""""""
 " => Vim grep
 " """""""""""""""""""""""""""""""""""""""""""""""""
