@@ -148,8 +148,8 @@ Plug 'https://github.com/dhruvasagar/vim-table-mode', {'on': 'TableModeToggle'}
 
 " CODE COMPLETION
 " Code to execute when the plugin is loaded on demand
-Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.py --clang-completer', 'for': ['c', 'cpp', 'python', 'javascript'] }
-autocmd! User YouCompleteMe call Initycm()
+" Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.py --clang-completer', 'for': ['c', 'cpp', 'python', 'javascript'] }
+" autocmd! User YouCompleteMe call Initycm()
 
 if has('nvim')
     " set before loading for completion
